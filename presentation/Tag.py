@@ -19,8 +19,8 @@ class Tag:
     Defines the tags for each message shown in the output.
     """
 
-    error = '[' + Color.red + Color.bold + 'ERROR' + Color.end + '] '
-    info = '[' + Color.green + '*' + Color.end + '] '
-    warning = '[' + Color.yellow + Color.bold + 'ERROR' + Color.end + '] '
-    move = Color.bold + Color.yellow + '-> ' + Color.end
-    debug = '>> '
+    error = "[" + Color.red + Color.bold + "ERROR" + Color.end + "] "
+    info = "[" + Color.green + "*" + Color.end + "] "
+    warning = "[" + Color.yellow + Color.bold + "ERROR" + Color.end + "] "
+    move = Color.bold + Color.yellow + "-> " + Color.end
+    debug = ">> "

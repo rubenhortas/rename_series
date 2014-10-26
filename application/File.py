@@ -12,6 +12,15 @@
 import os
 from presentation import Messages
 
+TRANSLATED_NAMES = {
+    "Family Guy":   "Padre de familia",
+    "Marvels Agents of S H I E L D": "Marvel\"s Agents Of S.H.I.E.L.D.",
+    "Supernatural": "Sobrenatural",
+    "The Simpsons": "Los Simpson",
+    "Warehouse 13": "Almacén 13",
+    "Warehouse13": "Almacén 13"
+}
+
 
 class File:
     """
@@ -20,14 +29,14 @@ class File:
             to child classes videofile and subtitlefile.
     """
 
-    files_path = ''
-    f_abs_original_path = ''  # Absolute orignal file path
-    f_abs_new_path = ''
-    file_name = ''
-    file_name_new = ''
-    show_name = ''
-    extension = ''
-    episode = ''  # episode of the file well formated -> 1x07
+    files_path = ""
+    f_abs_original_path = ""  # Absolute orignal file path
+    f_abs_new_path = ""
+    file_name = ""
+    file_name_new = ""
+    show_name = ""
+    extension = ""
+    episode = ""  # episode of the file well formated -> 1x07
 
     debugging = False
     testing = False
@@ -52,17 +61,15 @@ class File:
                 Messages.error_msg(e)
 
         if self.debugging:
-            Messages.debug_msg('_Rename info:')
-            Messages.debug_msg('\tself.f_abs_original_path: %s'
-                               % self.f_abs_original_path)
-            Messages.debug_msg('\tself.f_abs_new_path: %s'
-                               % self.f_abs_new_path)
-            Messages.debug_msg('\tself.file_name: %s' % self.file_name)
-            Messages.debug_msg('\tself.file_name_new: %s' % self.file_name_new)
-            Messages.debug_msg('\tself.extension: %s' % self.extension)
-            Messages.debug_msg('\tself.show_name %s' % self.show_name)
-            Messages.debug_msg('\tself.episode: %s' % self.episode)
-            Messages.debug_msg('\tself.ov: %s' % self.ov)
+            Messages.debug_msg("_Rename info:")
+            Messages.debug_msg("\tself.f_abs_original_path: {0}".format(self.f_abs_original_path))
+            Messages.debug_msg("\tself.f_abs_new_path: {0}".format(self.f_abs_new_path))
+            Messages.debug_msg("\tself.file_name: {0}".format(self.file_name))
+            Messages.debug_msg("\tself.file_name_new: {0}".format(self.file_name_new))
+            Messages.debug_msg("\tself.extension: {0}".format(self.extension))
+            Messages.debug_msg("\tself.show_name {0}".format(self.show_name))
+            Messages.debug_msg("\tself.episode: {0}".format(self.episode))
+            Messages.debug_msg("\tself.ov: {0}".format(self.ov))
 
         if self.testing:
             self.__print_move()
@@ -84,17 +91,8 @@ class File:
 
         name = self.show_name
 
-        translated_names = {
-            'Family Guy':   'Padre de familia',
-            'Marvels Agents of S H I E L D': 'Marvel\'s Agents Of S.H.I.E.L.D.',
-            'Supernatural': 'Sobrenatural',
-            'The Simpsons': 'Los Simpson',
-            'Warehouse 13': 'Almacén 13',
-            'Warehouse13': 'Almacén 13'
-        }
-
-        if name in translated_names:
-            translated_name = translated_names.get(name)
+        if name in TRANSLATED_NAMES:
+            translated_name = TRANSLATED_NAMES.get(name)
             self.file_name_new = self.file_name_new.replace(name, translated_name)
 
     def __remove_quality(self):
@@ -103,11 +101,11 @@ class File:
             Removes video quality from file
         """
 
-        if '720p' in self.file_name:
-            self.file_name = self.file_name.replace('720p', '')
-        elif '1080p' in self.file_name:
-            self.file_name = self.file_name.replace('1080p', '')
+        if "720p" in self.file_name:
+            self.file_name = self.file_name.replace("720p", "")
+        elif "1080p" in self.file_name:
+            self.file_name = self.file_name.replace("1080p", "")
 
-        self.file_name = self.file_name.replace('..', '.')
+        self.file_name = self.file_name.replace("..", ".")
         self.file_name = self.file_name.strip()
 

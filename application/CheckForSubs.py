@@ -17,32 +17,34 @@ from presentation import Messages
 
 def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
 
-    Messages.info_msg('Checking for subs in %s' % current_path)
+    subtitles_found = False
+
+    Messages.info_msg("Checking for subs in {0}".format(current_path))
 
     for video in l_videos:
         if debugging:
-            Messages.debug_msg('check_for_subs:')
-            Messages.debug_msg('\tvideo: %s' % video)
+            Messages.debug_msg("check_for_subs:")
+            Messages.debug_msg("\tvideo: {0}".format(video))
 
-        if '(VO)' in video:
+        if "(VO)" in video:
             video_name = os.path.splitext(video)[0]
             video_extension = os.path.splitext(video)[1]
 
-            name_pattern = re.compile('^[\w \(\)]*', re.UNICODE)
+            name_pattern = re.compile("^[\w \(\)]*", re.UNICODE)
 
             video_match = name_pattern.search(video_name)
 
             if video_match:
                 video_name_clean = video_match.group(0)
 
-                if '(VO)' in video_name_clean:
-                    video_name_clean = video_name_clean.replace('(VO)', '')
+                if "(VO)" in video_name_clean:
+                    video_name_clean = video_name_clean.replace("(VO)", "")
 
                 video_name_clean = video_name_clean.strip()
 
             for subtitle in l_subtitles:
                 if debugging:
-                    Messages.debug_msg('\tsub: %s' % subtitle)
+                    Messages.debug_msg("\tsub: {0}".format(subtitle))
 
                 subtitle_name = os.path.splitext(subtitle)[0]
 
@@ -53,9 +55,11 @@ def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
                     subtitle_name_clean = subtitle_name_clean.strip()
 
                     if debugging:
-                        Messages.debug_msg('\t\tvideo: %s vs sub: %s' % (video_name_clean, subtitle_name_clean))
+                        Messages.debug_msg("\t\tvideo: {0} vs sub: {1}".format(video_name_clean, subtitle_name_clean))
 
                     if video_name_clean == subtitle_name_clean:
+                        subtitles_found = True
+
                         new_video_name = subtitle_name + video_extension
                         l_subtitles.remove(subtitle)
 
@@ -71,3 +75,8 @@ def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
                             except IOError as ex:
                                 Messages.error_msg(ex)
                                 print()
+                        break
+
+    if not subtitles_found:
+        print("Subtitles not found")
+        print()

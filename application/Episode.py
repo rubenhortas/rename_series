@@ -11,6 +11,11 @@
 
 import re
 
+PAT1 = re.compile("[0-9]{1,2}x[0-9]{1,2}")
+PAT2 = re.compile("S[0-9]{1,2}E[0-9]{1,2}")
+PAT3 = re.compile("\[Cap.[0-9]*\]")
+PAT4 = re.compile("[0-9]{3,5}")
+
 
 class Episode():
 
@@ -27,30 +32,26 @@ class Episode():
         episode_in_name = None
 
         # Format 1x20
-        pat1 = re.compile('[0-9]{1,2}x[0-9]{1,2}')
-        episode_match = pat1.search(file_name)
+        episode_match = PAT1.search(file_name)
         if episode_match:
             episode_in_name = episode_match.group(0)
             ep = episode_in_name
 
         else:  # Format S01E20 or S1E20
-            pat2 = re.compile('S[0-9]{1,2}E[0-9]{1,2}')
-            episode_match = pat2.search(file_name)
+            episode_match = PAT2.search(file_name)
             if episode_match:
                 episode_in_name = episode_match.group(0)
                 ep = self.__get_ep_format_1(episode_in_name)
 
             else:  # Format [Cap.120]
-                pat3 = re.compile('\[Cap.[0-9]*\]')
-                episode_match = pat3.search(file_name)
+                episode_match = PAT3.search(file_name)
                 if episode_match:
                     episode_in_name = episode_match.group(0)
                     ep = self.__get_ep_format_2(episode_in_name)
                     ep = self.__get_ep_format_3(ep)
 
                 else:  # Format 120
-                    pat4 = re.compile('[0-9]{3,5}')
-                    episode_match = pat4.search(file_name)
+                    episode_match = PAT4.search(file_name)
                     if episode_match:
                         episode_in_name = episode_match.group(0)
                         # Check the length
@@ -67,20 +68,20 @@ class Episode():
 
         episode = episode_orig
 
-        if 'S0' in episode:
-            episode = episode.replace('S0', '')
+        if "S0" in episode:
+            episode = episode.replace("S0", "")
 
-        else:  # If only 'S' is in episode
-            episode = episode.replace('S', '')
+        else:  # If only "S" is in episode
+            episode = episode.replace("S", "")
 
-        episode = episode.replace('E', 'x')
+        episode = episode.replace("E", "x")
 
         return episode
 
     def __get_ep_format_2(self, episode_orig):  # Format [Cap.120]
 
-        episode = episode_orig.replace('[Cap.', '')
-        episode = episode.replace(']', '')
+        episode = episode_orig.replace("[Cap.", "")
+        episode = episode.replace("]", "")
 
         return episode
 
@@ -89,6 +90,6 @@ class Episode():
         episode_num = episode_orig[-2:]
         season_num = episode_orig[:-2]
 
-        episode = season_num + 'x' + episode_num
+        episode = season_num + "x" + episode_num
 
         return episode

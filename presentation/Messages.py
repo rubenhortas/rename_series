@@ -67,7 +67,7 @@ def mv_msg(orig, dest):
         - dest: (string) Destiny file path/name.
     """
 
-    mv_msg = orig + ' -> ' + Color.bold_green + dest + Color.end
+    mv_msg = orig + " -> " + Color.bold_green + dest + Color.end
     print(mv_msg)
 
 
@@ -90,8 +90,8 @@ def Header(current_path, debugging, testing):
     """
 
     if debugging or testing:
-        print('Renaming files in ' + Color.bold + Color.red + current_path +
-              ' [TEST]' + Color.end + '\n')
+        print("Renaming files in " + Color.bold + Color.red + current_path +
+              " [TEST]" + Color.end + "\n")
     else:
-        print('Renaming files in ' + Color.bold + Color.red + current_path +
-              Color.end + '\n')
+        print("Renaming files in " + Color.bold + Color.red + current_path +
+              Color.end + "\n")

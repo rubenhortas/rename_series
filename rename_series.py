@@ -124,7 +124,7 @@ if __name__ == '__main__':
 
         # Check for subs
         l_videos, l_subs = __get_files(user_dir)
-        check_for_subs(l_videos, l_subs, user_dir)
+        check_for_subs(l_videos, l_subs, user_dir, debugging, testing)
 
     else:
         for current_path in shows_paths:
@@ -140,7 +140,8 @@ if __name__ == '__main__':
 
                 # Check for subs
                 l_videos, l_subs = __get_files(current_path)
-                check_for_subs(l_videos, l_subs, current_path)
+                check_for_subs(l_videos, l_subs, current_path, debugging,
+                               testing)
 
     if not valid_dirs:
         Messages.error_msg('Has not entered any directory')
