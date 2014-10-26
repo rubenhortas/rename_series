@@ -42,6 +42,7 @@ class File:
     testing = False
 
     def __init__(self, files_path, file_name, testing, debugging):
+        self.files_path = files_path
         self.file_name = file_name
         self.f_abs_original_path = os.path.join(files_path, self.file_name)
         self.__remove_quality()
@@ -56,6 +57,7 @@ class File:
 
         if (not self.testing) and (not self.debugging):
             try:
+                self.f_abs_new_path = os.path.join(self.files_path, self.file_name_new)
                 os.rename(self.f_abs_original_path, self.f_abs_new_path)
             except IOError as e:
                 Messages.error_msg(e)
