@@ -9,8 +9,6 @@
 @file:    VideoFile.py
 """
 
-# TODO: Change remove 720/1080 to a method
-
 import os
 import re
 
@@ -74,9 +72,9 @@ EXPANDED_NAMES = {
     "TrDetective":   "True detective",
 }
 
-TRACKER_NAMES = [
-    "[www.newpct.com]"
-    ]
+# TRACKER_NAMES = [
+#     "[www.newpct.com]"
+#     ]
 
 EPISODE_TITLE_PATTERN = re.compile("[\w ]*", re.UNICODE)
 IS_WELL_FORMATED_COMPILED_PATTERN = re.compile("^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
@@ -233,22 +231,22 @@ class VideoFile(File):
         if "newpct" not in self.file_name:
             self.ov = True
 
-    def __remove_tracker_name(self, file_name):
-        """
-        __remove_tracker_names(self, file_name)
-            Removes tracker name from file name.
-
-        Arguments:
-            -- file_name
-        """
-
-        clean_name = file_name
-
-        for name in TRACKER_NAMES:
-            if name in file_name:
-                clean_name = file_name.replace(name, "")
-
-        return clean_name
+#     def __remove_tracker_name(self, file_name):
+#         """
+#         __remove_tracker_names(self, file_name)
+#             Removes tracker name from file name.
+#
+#         Arguments:
+#             -- file_name
+#         """
+#
+#         clean_name = file_name
+#
+#         for name in TRACKER_NAMES:
+#             if name in file_name:
+#                 clean_name = file_name.replace(name, "")
+#
+#         return clean_name
 
     def __wrap_year(self):
         """

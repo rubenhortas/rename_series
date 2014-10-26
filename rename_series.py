@@ -47,16 +47,16 @@ def __get_files(directory):
     return list_videos, list_subtitles
 
 
-def __is_subtitle(file):
-    ext = os.path.splitext(file)[1]
+def __is_subtitle(current_file):
+    ext = os.path.splitext(current_file)[1]
     if ext == '.srt':
         return True
     else:
         return False
 
 
-def __is_video(file):
-    ext = os.path.splitext(file)[1]
+def __is_video(current_file):
+    ext = os.path.splitext(current_file)[1]
     video_formats = ['.mp4', '.avi', '.mkv']
     if ext in video_formats:
         return True

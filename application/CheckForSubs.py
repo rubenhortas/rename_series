@@ -20,6 +20,7 @@ def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
     subtitles_found = False
 
     Messages.info_msg("Checking for subs in {0}".format(current_path))
+    print()
 
     for video in l_videos:
         if debugging:
@@ -79,4 +80,5 @@ def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
 
     if not subtitles_found:
         print("Subtitles not found")
-        print()
+
+    print()
