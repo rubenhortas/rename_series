@@ -82,16 +82,3 @@ def Append(msg, l):
     if msg not in l:
         l.append(msg)
 
-
-def Header(current_path, debugging, testing):
-    """
-    Header()
-        Print a couple of introduction lines
-    """
-
-    if debugging or testing:
-        print("Renaming files in " + Color.bold + Color.red + current_path +
-              " [TEST]" + Color.end + "\n")
-    else:
-        print("Renaming files in " + Color.bold + Color.red + current_path +
-              Color.end + "\n")
