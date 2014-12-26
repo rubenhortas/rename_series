@@ -9,18 +9,19 @@
 @file:    MessagesSeries.py
 """
 
-from Color import Color
+from .Color import Color
+from .Tag import Tag
 
 
-def Header(current_path, debugging, testing):
+def Header(current_disk, debugging, testing):
     """
     Header()
         Print a couple of introduction lines
     """
 
     if debugging or testing:
-        print("Renaming files in " + Color.bold + Color.red + current_path +
+        print(Tag.info + "Renaming files in " + Color.bold_red + current_disk +
               " [TEST]" + Color.end + "\n")
     else:
-        print("Renaming files in " + Color.bold + Color.red + current_path +
+        print(Tag.info + "Renaming files in " + Color.bold_red + current_disk +
               Color.end + "\n")

@@ -17,7 +17,7 @@ def error_msg(msg):
     """
     error_msg(msg)
         Prints an error message.
-    Args:
+    Arguments:
         - msg: (string) Error message.
     """
 
@@ -28,7 +28,7 @@ def warning_msg(msg):
     """
     warning_msg(msg)
         Prints a warning message.
-    Args:
+    Arguments:
         - msg: (string) Warning message.
     """
 
@@ -39,7 +39,7 @@ def info_msg(msg):
     """
     info_msg(msg)
         Prints an information message.
-    Args:
+    Arguments:
         - msg: (string) Information message.
     """
 
@@ -50,11 +50,35 @@ def debug_msg(msg):
     """
     debug_msg(msg)
         Prints a debug message.
-    Args:
+    Arguments:
         - msg: (string) Debug message.
     """
 
     print(Tag.debug + str(msg))
+
+
+def exception_msg(msg):
+    """
+    exception_msg(msg)
+        Prints an exception message.
+    Arguments:
+        - msg: (string) System exception message.
+    """
+
+    print(Tag.ex + str(msg))
+
+
+def Append(msg, l):
+    """
+    Append(msg, l)
+        Appends a message to a list if it not exists.
+    Arguments:
+        - msg: (msg) Message.
+        - l: (list) List of messages.
+    """
+
+    if msg not in l:
+        l.append(msg)
 
 
 def mv_msg(orig, dest):
@@ -62,7 +86,7 @@ def mv_msg(orig, dest):
     mv_msg(msg)
         Prints a message indicating the original file path (or name)
         and its destiny path (or name).
-    Args:
+    Arguments:
         - orig: (string) Original file path/name.
         - dest: (string) Destiny file path/name.
     """
@@ -71,14 +95,12 @@ def mv_msg(orig, dest):
     print(mv_msg)
 
 
-def Append(msg, l):
+def rm_msg(f):
     """
-    Append(msg, l)
-        Appends a message to a list if it not exists.
-    Args:
-        - msg: (msg) Message.
-        - l: (list) List of messages.
+    rm_msg(f)
+        Prints a message indicating a file to remove.
+    Arguments:
+        - f: (string) File to remove.
     """
-    if msg not in l:
-        l.append(msg)
 
+    rm_msg = "Deleting " + Color.bold_red + f + Color.end

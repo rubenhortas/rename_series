@@ -13,14 +13,12 @@ import os
 import re
 
 from presentation import Messages
+import utils.FilesHandler as FilesHandler
 
 
 def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
 
     subtitles_found = False
-
-    Messages.info_msg("Checking for subs in {0}".format(current_path))
-    print()
 
     for video in l_videos:
         if debugging:
@@ -52,8 +50,7 @@ def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
                 subtitle_match = name_pattern.search(subtitle_name)
 
                 if subtitle_match:
-                    subtitle_name_clean = subtitle_match.group(0)
-                    subtitle_name_clean = subtitle_name_clean.strip()
+                    subtitle_name_clean = subtitle_match.group(0).strip()
 
                     if debugging:
                         Messages.debug_msg("\t\tvideo: {0} vs sub: {1}".format(video_name_clean, subtitle_name_clean))
@@ -65,20 +62,26 @@ def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
                         l_subtitles.remove(subtitle)
 
                         Messages.mv_msg(video, new_video_name)
+#
+#                         if not testing and not debugging:
+#                             try:
+#                                 current_video_path = os.path.join(current_path,
+#                                                                   video)
+#                                 new_video_path = os.path.join(current_path,
+#                                                               new_video_name)
+#                                 os.rename(current_video_path, new_video_path)
+#                             except IOError as ex:
+#                                 Messages.error_msg(ex)
+#                                 print()
 
-                        if (not testing and not debugging):
-                            try:
-                                current_video_path = os.path.join(current_path,
-                                                                  video)
-                                new_video_path = os.path.join(current_path,
-                                                              new_video_name)
-                                os.rename(current_video_path, new_video_path)
-                            except IOError as ex:
-                                Messages.error_msg(ex)
-                                print()
+                        current_video_path = os.path.join(current_path, video)
+                        new_video_path = os.path.join(current_path,
+                                                      new_video_name)
+                        FilesHandler.mv(current_video_path, new_video_path,
+                                        debugging, testing)
                         break
 
     if not subtitles_found:
-        print("Subtitles not found")
+        Messages.info_msg("No subtitles found.")
 
     print()

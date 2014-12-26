@@ -10,7 +10,13 @@
 """
 
 import os
+import re
+
 from presentation import Messages
+import utils.FilesHandler as FilesHandler
+
+
+IS_WELL_FORMATED_COMPILED_PATTERN = re.compile("^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
 
 TRANSLATED_NAMES = {
     "Family Guy":   "Padre de familia",
@@ -45,9 +51,21 @@ class File:
         self.files_path = files_path
         self.file_name = file_name
         self.f_abs_original_path = os.path.join(files_path, self.file_name)
-        self.__remove_quality()
         self.testing = testing
         self.debugging = debugging
+
+    def is_well_formated(self):
+        """
+        __is_well_formated(self)
+            Returns if the file is well formated
+            Well formated = show_name SExEP [ ...].extension =
+            = show_name 0x00 [episode name].avi
+        """
+
+        if IS_WELL_FORMATED_COMPILED_PATTERN.match(self.file_name):
+            return True
+        else:
+            return False
 
     def __rename(self):
         """
@@ -55,12 +73,14 @@ class File:
             Renames a file with a new name.
         """
 
-        if (not self.testing) and (not self.debugging):
-            try:
-                self.f_abs_new_path = os.path.join(self.files_path, self.file_name_new)
-                os.rename(self.f_abs_original_path, self.f_abs_new_path)
-            except IOError as e:
-                Messages.error_msg(e)
+#         if not self.testing and not self.debugging:
+#             try:
+#                 self.f_abs_new_path = os.path.join(self.files_path, self.file_name_new)
+#                 os.rename(self.f_abs_original_path, self.f_abs_new_path)
+#             except IOError as e:
+#                 Messages.error_msg(e)
+
+        self.f_abs_new_path = os.path.join(self.files_path, self.file_name_new)
 
         if self.debugging:
             Messages.debug_msg("_Rename info:")
@@ -75,6 +95,9 @@ class File:
 
         if self.testing:
             self.__print_move()
+
+        FilesHandler.mv(self.f_abs_original_path, self.f_abs_new_path,
+                        self.debugging, self.testing)
 
     def __print_move(self):
         """
@@ -95,19 +118,5 @@ class File:
 
         if name in TRANSLATED_NAMES:
             translated_name = TRANSLATED_NAMES.get(name)
-            self.file_name_new = self.file_name_new.replace(name, translated_name)
-
-    def __remove_quality(self):
-        """
-        __remove_quality(self)
-            Removes video quality from file
-        """
-
-        if "720p" in self.file_name:
-            self.file_name = self.file_name.replace("720p", "")
-        elif "1080p" in self.file_name:
-            self.file_name = self.file_name.replace("1080p", "")
-
-        self.file_name = self.file_name.replace("..", ".")
-        self.file_name = self.file_name.strip()
-
+            self.file_name_new = self.file_name_new.replace(name,
+                                                            translated_name)

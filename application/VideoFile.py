@@ -72,12 +72,7 @@ EXPANDED_NAMES = {
     "TrDetective":   "True detective",
 }
 
-# TRACKER_NAMES = [
-#     "[www.newpct.com]"
-#     ]
-
 EPISODE_TITLE_PATTERN = re.compile("[\w ]*", re.UNICODE)
-IS_WELL_FORMATED_COMPILED_PATTERN = re.compile("^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
 YEAR_PATTERN = re.compile(" \d{4}")
 
 
@@ -103,7 +98,8 @@ class VideoFile(File):
             Messages.debug_msg("\tself.file_name: {0}".format(self.file_name))
             Messages.debug_msg("\tis well formated: {0}".format(self.__is_well_formated()))
 
-        if not self.__is_well_formated():
+        if not self.is_well_formated():
+            self.__remove_quality()
             self.__get_episode()
             if self.__is_serie():
                 self.__set_ov()
@@ -116,19 +112,6 @@ class VideoFile(File):
                 self.f_abs_new_path = os.path.join(self.files_path,
                                                    self.file_name_new)
                 self._File__rename()
-
-    def __is_well_formated(self):
-        """
-        __is_well_formated(self)
-            Returns if the file is well formated
-            Well formated = show_name SExEP [ ...].extension =
-            = show_name 0x00 [episode name].avi
-        """
-
-        if IS_WELL_FORMATED_COMPILED_PATTERN.match(self.file_name):
-            return True
-        else:
-            return False
 
     def __get_episode(self):
         """
@@ -164,7 +147,7 @@ class VideoFile(File):
     def __get_show_name(self):
             """
             __get_show_name(self)
-                Gets the show name and if it"s in original version.
+                Gets the show name and if it's in original version.
             """
 
             self.extension = os.path.splitext(self.file_name)[1]
@@ -200,6 +183,7 @@ class VideoFile(File):
                 Messages.debug_msg("{0} will be not expanded".format(self.show_name))
 
     def __get_episode_title(self):
+        # TODO: Comment this
 
             file_name = os.path.splitext(self.file_name)[0]
 
@@ -230,23 +214,6 @@ class VideoFile(File):
         # Get and set if the file is in original version
         if "newpct" not in self.file_name:
             self.ov = True
-
-#     def __remove_tracker_name(self, file_name):
-#         """
-#         __remove_tracker_names(self, file_name)
-#             Removes tracker name from file name.
-#
-#         Arguments:
-#             -- file_name
-#         """
-#
-#         clean_name = file_name
-#
-#         for name in TRACKER_NAMES:
-#             if name in file_name:
-#                 clean_name = file_name.replace(name, "")
-#
-#         return clean_name
 
     def __wrap_year(self):
         """
@@ -282,3 +249,17 @@ class VideoFile(File):
 
         else:
             self.file_name_new = self.file_name
+
+    def __remove_quality(self):
+        """
+        __remove_quality(self)
+            Removes video quality from file
+        """
+
+        if "720p" in self.file_name:
+            self.file_name = self.file_name.replace("720p", "")
+        elif "1080p" in self.file_name:
+            self.file_name = self.file_name.replace("1080p", "")
+
+        self.file_name = self.file_name.replace("..", ".")
+        self.file_name = self.file_name.strip()
