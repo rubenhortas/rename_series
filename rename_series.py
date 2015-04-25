@@ -18,7 +18,7 @@ from application.VideoFile import VideoFile
 from presentation import Messages
 from presentation import MessagesRenameSeries
 from utils.ClearScreen import clear_screen
-from utils.FilesHandler import get_files_separated
+from utils.FileHandler import get_files_separated
 
 
 def __start_renaming(list_subtitles, list_videos, current_path):
@@ -56,7 +56,8 @@ def __start_renaming(list_subtitles, list_videos, current_path):
 if __name__ == '__main__':
 
     # Absolute paths containing tv shows
-    shows_paths = ['/home/ruben/peliculas', '/home/ruben/peliculas/temp']
+    # shows_paths = ['/home/ruben/peliculas', '/home/ruben/peliculas/temp']
+    shows_paths = ['/home/ruben/lab/fakedDisks/peliculas']
 
     list_videos = []
     list_subtitles = []

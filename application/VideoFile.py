@@ -23,6 +23,9 @@ EXPANDED_NAMES = {
     "AHS":            "American Horror Story",
     "AmericanStory":  "American Horror Story",
 
+    # Arrow
+    "Arr": "Arrow",
+
     # Bates Motel
     "BMotel":        "Bates Motel",
     "BaMotel":       "Bates Motel",
@@ -36,6 +39,9 @@ EXPANDED_NAMES = {
     # Bob"s Burgers
     "Bobs Burgers":  "Bob\"s Burgers",
 
+    # Castle
+    "Cas": "Castle",
+
     # Doctor Who
     "DoctorWho":     "Doctor Who",
 
@@ -47,6 +53,12 @@ EXPANDED_NAMES = {
     "EMentalista":   "El mentalista",
     "Mentalista":    "El mentalista",
 
+    # Elementary
+    "Ele":      "Elementary",
+    "Elem":     "Elementary",
+    "Eleme":    "Elementary",
+    "Elmntry":  "Elementary",
+
     # Marvel"s Agents of SHIELD
     "Marvel\"s Agents of S H I E L D":   "Marvel\"s Agents of S.H.I.E.L.D.",
     "Marvels Agents":                    "Marvel\"s Agents of S.H.I.E.L.D.",
@@ -56,6 +68,7 @@ EXPANDED_NAMES = {
     "RDonovan": "Ray Donovan",
 
     # South Park
+    "SP":        "South Park",
     "SPark":     "South Park",
     "SouthPark": "South Park",
 

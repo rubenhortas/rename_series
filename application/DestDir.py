@@ -49,18 +49,18 @@ class DestDir():
 
             file_final_name = "{0}.{1}".format(final_name_tmp, self.extension)
 
-            if self.__exists_in(dest):
+            if self.__path_exists(dest):
                 self.dir_season = "{0} {1}".format(DIR_SEASON_NAME,
                                                    self.season)
-                if not self.__exists_season_dir(dest):
+                if not self.__season_exists(dest):
                     self.__create_season_dir(dest, debugging, testing)
 
                 self.final_dest = os.path.join(self.show_name, self.dir_season,
                                                file_final_name)
 
-    def __exists_in(self, dir_dest):
+    def __path_exists(self, dir_dest):
         """
-        __exists_in(self, dir_dest)
+        __path_exists(self, dir_dest)
             Checks if already exists the directory for the show in the destiny
             directory.
         Arguments:
@@ -70,9 +70,9 @@ class DestDir():
         dest = os.path.join(dir_dest, self.show_name)
         return os.path.isdir(dest)
 
-    def __exists_season_dir(self, dir_dest):
+    def __season_exists(self, dir_dest):
         """
-        __exists_season_dir(self, dir_dest)
+        __season_exists(self, dir_dest)
             Checks if already exists the directory for the season in the
             destiny directory.
         Arguments:

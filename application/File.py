@@ -13,7 +13,7 @@ import os
 import re
 
 from presentation import Messages
-import utils.FilesHandler as FilesHandler
+import utils.FileHandler as FilesHandler
 
 
 IS_WELL_FORMATED_COMPILED_PATTERN = re.compile("^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)

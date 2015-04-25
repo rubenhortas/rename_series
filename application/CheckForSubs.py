@@ -13,7 +13,7 @@ import os
 import re
 
 from presentation import Messages
-import utils.FilesHandler as FilesHandler
+import utils.FileHandler as FilesHandler
 
 
 def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
