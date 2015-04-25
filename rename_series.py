@@ -56,8 +56,7 @@ def __start_renaming(list_subtitles, list_videos, current_path):
 if __name__ == '__main__':
 
     # Absolute paths containing tv shows
-    # shows_paths = ['/home/ruben/peliculas', '/home/ruben/peliculas/temp']
-    shows_paths = ['/home/ruben/lab/fakedDisks/peliculas']
+    shows_paths = ['/home/ruben/peliculas', '/home/ruben/peliculas/temp']
 
     list_videos = []
     list_subtitles = []
