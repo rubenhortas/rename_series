@@ -19,3 +19,17 @@ def print_list(l):
     """
     for element in l:
         print(element)
+
+
+def append(obj, l):
+    """
+    append(object, list)
+        Appends an object to a list, if not already included.
+    Args:
+        - obj : (object) Object to append.
+        - l : (list) List to append the object.
+    """
+    if obj not in l:
+        l.append(obj)
+
+    return l

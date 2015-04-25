@@ -12,7 +12,7 @@
 import os
 
 from presentation import Messages
-from .ListsHandlers import print_list
+from utils.ListHandler import print_list
 
 
 def __is_subtitle(current_file):
