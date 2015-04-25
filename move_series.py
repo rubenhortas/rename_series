@@ -17,29 +17,16 @@ from application.DestDir import DestDir
 from application.File import File
 from presentation import Messages
 from presentation.MessagesMoveSeries import Header
+from utils import ListHandler
 from utils.ClearScreen import clear_screen
-from utils.FilesHandler import get_files, mv
-from utils.ListsHandlers import print_list
+from utils.FileHandler import get_files, mv
+from utils.ListHandler import print_list
 from utils.TimeHandler import print_time
+
 
 path_movies_local = "/home/ruben/peliculas"
 buffer_disks = ["/media/ruben/3tb/series"]
 final_disks = []
-
-
-# def check_for_shows_dir(disk):
-#     """
-#     check_for_shows_dir(disk)
-#         Checks if exists the directory for store the tv shows.
-#     Arguments:
-#         - disk: (string) Current disk.
-#     """
-#
-#     series_dir = os.path.join(disk, "series")
-#     if(os.path.isdir(series_dir)):
-#         return True
-#     else:
-#         return False
 
 
 def __move_to_known_disks(disks_list, is_buffer, debugging, testing):
@@ -76,6 +63,8 @@ def __start_moving(dest, is_buffer, debugging, testing):
         - testing: (boolean) Indicates if the program is in testing mode.
     """
 
+    nonexistent_paths = []
+
     Header(dest, debugging, testing)
 
     list_files = sorted(get_files(path_movies_local, debugging))
@@ -88,8 +77,9 @@ def __start_moving(dest, is_buffer, debugging, testing):
         this_file = File(path_movies_local, f, testing, debugging)
         if(this_file.is_well_formated()
            and ('(English)' not in f)):
+
             if(is_buffer):
-                # Si es un buffer mover a bulto
+                # If is a buffer disk: Bulk move
                 final_dest = os.path.join(dest, this_file.file_name)
                 mv(this_file.file_name, final_dest, debugging, testing)
 
@@ -99,23 +89,15 @@ def __start_moving(dest, is_buffer, debugging, testing):
                 if(file_dest.final_dest is not None):
                     mv(this_file.file_name, file_dest.final_dest, debugging,
                        testing)
+                else:
+                    nonexistent_dest = os.path.join(dest, file_dest.show_name)
+                    nonexistent_paths = ListHandler.append(nonexistent_dest,
+                                                           nonexistent_paths)
+
+    for path in nonexistent_paths:
+        Messages.error_msg("{0} does not exist.".format(path))
 
     print()
-
-
-def __get_files(dir_orig):
-    """
-    __get_files(dir_orig)
-        Gets the files in a directory.
-    Arguments:
-        - dir_orig: (string) Directory where the files will be gotten.
-    """
-
-    l_files = []
-    for f in os.listdir(dir_orig):
-        l_files.append(f)
-
-    return l_files
 
 
 if __name__ == "__main__":
