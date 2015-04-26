@@ -47,6 +47,6 @@ CONTACT
 
 WEB SITE
 
-    Visit the pdfMetadata github site for the lastest news and downloads:
+    Visit the rename_series github site for the lastest news and downloads:
 
     https://github.com/rubenhortas/rename_series
