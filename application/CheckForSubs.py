@@ -62,17 +62,6 @@ def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
                         l_subtitles.remove(subtitle)
 
                         Messages.mv_msg(video, new_video_name)
-#
-#                         if not testing and not debugging:
-#                             try:
-#                                 current_video_path = os.path.join(current_path,
-#                                                                   video)
-#                                 new_video_path = os.path.join(current_path,
-#                                                               new_video_name)
-#                                 os.rename(current_video_path, new_video_path)
-#                             except IOError as ex:
-#                                 Messages.error_msg(ex)
-#                                 print()
 
                         current_video_path = os.path.join(current_path, video)
                         new_video_path = os.path.join(current_path,
