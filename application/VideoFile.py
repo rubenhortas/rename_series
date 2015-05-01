@@ -152,6 +152,7 @@ class VideoFile(File):
         __is_serie(self)
             Returns if the video file is a serie.
         """
+
         if self.episode_in_name:
             return True
         else:
@@ -196,7 +197,6 @@ class VideoFile(File):
                 Messages.debug_msg("{0} will be not expanded".format(self.show_name))
 
     def __get_episode_title(self):
-        # TODO: Comment this
 
             file_name = os.path.splitext(self.file_name)[0]
 
