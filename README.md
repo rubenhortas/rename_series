@@ -9,7 +9,7 @@ rename_series
 		* I have series in spanish and english. 
 	
 	First renames the chapters to a nice format:
-		<show name> <season>x<episode> [<episode title>][ (VO)].<extension> 
+		<show name> <season>x<episode> [<episode title>] [(VO)].<extension> 
 		
 		* The only series taken as spanish are the downloaded from 
 			spanishtracker (newpct). You can configure this.
@@ -47,6 +47,6 @@ CONTACT
 
 WEB SITE
 
-    Visit the pdfMetadata github site for the lastest news and downloads:
+    Visit the rename_series github site for the lastest news and downloads:
 
     https://github.com/rubenhortas/rename_series
