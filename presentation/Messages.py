@@ -93,14 +93,3 @@ def mv_msg(orig, dest):
 
     mv_msg = orig + " -> " + Color.bold_green + dest + Color.end
     print(mv_msg)
-
-
-def rm_msg(f):
-    """
-    rm_msg(f)
-        Prints a message indicating a file to remove.
-    Arguments:
-        - f: (string) File to remove.
-    """
-
-    rm_msg = "Deleting " + Color.bold_red + f + Color.end
