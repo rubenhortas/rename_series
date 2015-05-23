@@ -14,7 +14,7 @@ import os
 import re
 
 from presentation.Messages import exception_msg
-from presentation.MessagesCheckForDuplicated import header, bestFile_msg, rm_msg, repeatedFile_msg
+from presentation.MessagesSearchForDuplicated import header, bestFile_msg, rm_msg, repeatedFile_msg
 from utils.ClearScreen import clear_screen
 
 
