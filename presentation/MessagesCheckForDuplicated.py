@@ -15,7 +15,7 @@ from .Tag import Tag
 
 def header(path, debugging, testing):
     """
-    Header()
+    header()
         Print a couple of introduction lines
     """
 
@@ -43,7 +43,7 @@ def bestFile_msg(f):
 def repeatedFile_msg(f):
     """
     bestFile_msg(f):
-        Prints best file choosen.
+        Prints repeated file found.
     Arguments:
         - f: File choosen.
     """
