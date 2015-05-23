@@ -21,7 +21,7 @@ from presentation.MessagesSearchForDuplicatedInFiles import header, duplicated_m
 from utils.ClearScreen import clear_screen
 
 
-MATCH_THRESHOLD = 0.75
+MATCH_THRESHOLD = 0.90
 
 
 def __get_match_ratio(e1, e2):
@@ -68,7 +68,7 @@ def __get_file_list(file_name):
 
     f.close()
 
-    return l_file
+    return sorted(l_file)
 
 
 def __compare_lists_items(l1, l2, in_file, from_file):
@@ -82,11 +82,14 @@ def __compare_lists_items(l1, l2, in_file, from_file):
     """
 
     for e1 in l1:
+        matches = 0
         for e2 in l2:
             match_ratio = __get_match_ratio(e1, e2)
             if(match_ratio > MATCH_THRESHOLD):
-                duplicated_msg(e1.strip(), e2.strip(), in_file, from_file, (match_ratio * 100))
-                l2.remove(e2)
+                matches = matches + 1
+                if(from_file or (matches > 1)):
+                    duplicated_msg(e1.strip(), e2.strip(), in_file, from_file, round((match_ratio * 100), 2))
+                    l2.remove(e2)
 
 
 def __search_in_files(in_file, from_file):
