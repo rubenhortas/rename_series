@@ -20,9 +20,9 @@ def header(in_file, from_file, debugging, testing):
     """
 
     if(not from_file):
-        header_msg = "{0} Checking for duplicate files in {1} {2} {3}".format(Tag.info, Color.bold_red, in_file, Color.end)
+        header_msg = "{0} Checking for duplicate files in {1} {2} {3}".format(Tag.info, Color.bold_green, in_file, Color.end)
     else:
-        header_msg = "{0} Checking for duplicate files from {1} {2} {3} in {4} {5} {6}".format(Tag.info, Color.bold_red, from_file, Color.end, Color.bold_red, in_file, Color.end)
+        header_msg = "{0} Checking for duplicate files from {1} {2} {3} in {4} {5} {6}".format(Tag.info, Color.bold_green, from_file, Color.end, Color.bold_green, in_file, Color.end)
 
     if not debugging and not testing:
         print(header_msg)
@@ -38,7 +38,11 @@ def duplicated_msg(in_item, from_item, in_file, from_file, match_ratio):
     """
 
     if(not from_file):
-        print("* \"{0}{1}{2}\" duplicated".format(Color.bold_yellow, in_item, Color.end))
+        if(match_ratio == 100):  # Full coincidence
+            print("* \"{0}{1}{2}\" found (\"{4}{5}{6}\" {8}{9}% match{10})".format(Color.bold_yellow, in_item, Color.end, in_file, Color.bold_green, from_item, Color.end, from_file, Color.bold_red, match_ratio, Color.end))
+        else:
+            print("* \"{0}{1}{2}\" possible match (\"{4}{5}{6}\" {8}{9}%{10} similar)".format(Color.bold_yellow, in_item, Color.end, in_file, Color.bold_green, from_item, Color.end, from_file, Color.bold_yellow, match_ratio, Color.end))
+
     else:
         if(match_ratio == 100):  # Full coincidence
             print("* \"{0}{1}{2}\" in {3} found in {7} (\"{4}{5}{6}\" {8}{9}% match{10})".format(Color.bold_yellow, in_item, Color.end, in_file, Color.bold_green, from_item, Color.end, from_file, Color.bold_red, match_ratio, Color.end))
