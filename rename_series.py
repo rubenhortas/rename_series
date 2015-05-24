@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
     if(user_dir):
         valid_dirs = True
-        MessagesRenameSeries.Header(user_dir, debugging, testing)
+        MessagesRenameSeries.header(user_dir, debugging, testing)
 
         list_videos, list_subtitles = get_files_separated(user_dir, debugging)
         __start_renaming(list_subtitles, list_videos, user_dir)
@@ -96,7 +96,7 @@ if __name__ == '__main__':
             else:
                 valid_dirs = True
 
-                MessagesRenameSeries.Header(current_path, debugging, testing)
+                MessagesRenameSeries.header(current_path, debugging, testing)
 
                 list_videos, list_subtitles = get_files_separated(current_path,
                                                                   debugging)
