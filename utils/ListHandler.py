@@ -17,6 +17,7 @@ def print_list(l):
     Args:
         - l : (string list) List to print.
     """
+
     for element in l:
         print(element)
 
@@ -29,6 +30,7 @@ def append(obj, l):
         - obj : (object) Object to append.
         - l : (list) List to append the object.
     """
+
     if obj not in l:
         l.append(obj)
 
