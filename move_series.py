@@ -16,7 +16,7 @@ import time
 from application.DestDir import DestDir
 from application.File import File
 from presentation import Messages
-from presentation.MessagesMoveSeries import Header
+from presentation.MessagesMoveSeries import header
 from utils import ListHandler
 from utils.ClearScreen import clear_screen
 from utils.FileHandler import get_files, mv
@@ -65,7 +65,7 @@ def __start_moving(dest, is_buffer, debugging, testing):
 
     nonexistent_paths = []
 
-    Header(dest, debugging, testing)
+    header(dest, debugging, testing)
 
     list_files = sorted(get_files(path_movies_local, debugging))
 
