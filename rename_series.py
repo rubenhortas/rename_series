@@ -15,8 +15,8 @@ import os
 from application.CheckForSubs import check_for_subs
 from application.SubtitleFile import SubtitleFile
 from application.VideoFile import VideoFile
-from presentation import Messages
 from presentation import MessagesRenameSeries
+from presentation.Messages import info_msg, error_msg
 from utils.ClearScreen import clear_screen
 from utils.FileHandler import get_files_separated
 
@@ -34,7 +34,7 @@ def __start_renaming(list_subtitles, list_videos, current_path):
             renamed_subtitles = True
 
     if not renamed_subtitles:
-        Messages.info_msg("No subtitles found to rename.")
+        info_msg("No subtitles found to rename.")
 
     print()
 
@@ -48,7 +48,7 @@ def __start_renaming(list_subtitles, list_videos, current_path):
             renamed_videos = True
 
     if not renamed_videos:
-        Messages.info_msg("No videos found to rename.")
+        info_msg("No videos found to rename.")
 
     print()
 
@@ -92,7 +92,8 @@ if __name__ == '__main__':
     else:
         for current_path in shows_paths:
             if not os.path.isdir(current_path):
-                Messages.error_msg('%s is not a directory' % current_path)
+                # Messages.error_msg('%s is not a directory' % current_path)
+                error_msg('{0} is not a directory'.format(current_path))
             else:
                 valid_dirs = True
 
@@ -108,4 +109,4 @@ if __name__ == '__main__':
                                testing)
 
     if not valid_dirs:
-        Messages.error_msg('Has not entered any directory')
+        error_msg('Has not entered any directory')
