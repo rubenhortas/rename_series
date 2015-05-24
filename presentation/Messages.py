@@ -34,7 +34,7 @@ def warning_msg(msg):
     """
 
     # print(Tag.warning + msg)
-    print("{0}{1}".format(Tag.warning, msg))
+    print("{0} {1}".format(Tag.warning, msg))
 
 
 def info_msg(msg):
@@ -46,7 +46,7 @@ def info_msg(msg):
     """
 
     # print(Tag.info + msg)
-    print("{0}{1}", Tag.info, msg)
+    print("{0} {1}", Tag.info, msg)
 
 
 def debug_msg(msg):
@@ -58,7 +58,7 @@ def debug_msg(msg):
     """
 
     # print(Tag.debug + str(msg))
-    print("{0}{1}".format(Tag.debug, msg))
+    print("{0} {1}".format(Tag.debug, msg))
 
 
 def exception_msg(msg):
