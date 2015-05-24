@@ -23,10 +23,6 @@ class Episode():
     episode = None
 
     def __init__(self, file_name):
-        # ##
-        # TODO:
-        # Compile patterns
-        # ##
 
         ep = None
         episode_in_name = None
@@ -90,6 +86,7 @@ class Episode():
         episode_num = episode_orig[-2:]
         season_num = episode_orig[:-2]
 
-        episode = season_num + "x" + episode_num
+        # episode = season_num + "x" + episode_num
+        episode = "{0}x{1}".format(season_num, episode_num)
 
         return episode
