@@ -15,7 +15,7 @@ import time
 
 from application.DestDir import DestDir
 from application.File import File
-from presentation import Messages
+from presentation.Messages import error_msg
 from presentation.MessagesMoveSeries import header
 from utils import ListHandler
 from utils.ClearScreen import clear_screen
@@ -47,7 +47,8 @@ def __move_to_known_disks(disks_list, is_buffer, debugging, testing):
             disks_found = True
             __start_moving(disk, is_buffer, debugging, testing)
         else:
-            Messages.error_msg("%s is not a directory" % disk)
+            # Messages.error_msg("%s is not a directory" % disk)
+            error_msg("{0} is not a directory".format(disk))
 
     return disks_found
 
@@ -70,7 +71,8 @@ def __start_moving(dest, is_buffer, debugging, testing):
     list_files = sorted(get_files(path_movies_local, debugging))
 
     if(debugging):
-        print("Files in %s", dest)
+        # print("Files in %s", dest)
+        print("Files in {0}".format(dest))
         print_list(list_files)
 
     for f in list_files:
@@ -95,7 +97,7 @@ def __start_moving(dest, is_buffer, debugging, testing):
                                                            nonexistent_paths)
 
     for path in nonexistent_paths:
-        Messages.error_msg("{0} does not exist.".format(path))
+        error_msg("{0} does not exist.".format(path))
 
     print()
 
@@ -136,7 +138,8 @@ if __name__ == "__main__":
                 total_time = time_fin - time_ini
                 print_time(total_time)
             else:
-                Messages.error_msg("%s is not a directory." % input_dest)
+                # Messages.error_msg("%s is not a directory." % input_dest)
+                error_msg("{0} is not a directory.".format(input_dest))
 
     # If the user did not specify a directory, search for known mounted disks
     else:
@@ -148,7 +151,7 @@ if __name__ == "__main__":
         time_fin = time.clock()
 
         if not buffer_disks_found and not final_disks_found:
-            Messages.error_msg("No disks found.")
+            error_msg("No disks found.")
         else:
             total_time = time_fin - time_ini
             print_time(total_time)
