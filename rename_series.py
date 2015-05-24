@@ -15,8 +15,8 @@ import os
 from application.CheckForSubs import check_for_subs
 from application.SubtitleFile import SubtitleFile
 from application.VideoFile import VideoFile
-from presentation import MessagesRenameSeries
 from presentation.Messages import info_msg, error_msg
+from presentation.MessagesRenameSeries import header
 from utils.ClearScreen import clear_screen
 from utils.FileHandler import get_files_separated
 
@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
     if(user_dir):
         valid_dirs = True
-        MessagesRenameSeries.header(user_dir, debugging, testing)
+        header(user_dir, debugging, testing)
 
         list_videos, list_subtitles = get_files_separated(user_dir, debugging)
         __start_renaming(list_subtitles, list_videos, user_dir)
@@ -97,7 +97,7 @@ if __name__ == '__main__':
             else:
                 valid_dirs = True
 
-                MessagesRenameSeries.header(current_path, debugging, testing)
+                header(current_path, debugging, testing)
 
                 list_videos, list_subtitles = get_files_separated(current_path,
                                                                   debugging)
