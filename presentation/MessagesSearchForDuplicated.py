@@ -19,14 +19,18 @@ def header(path, debugging, testing):
         Print a couple of introduction lines
     """
 
-    header_msg = Tag.info + "Checking for duplicate files in " + \
-        Color.bold_red + path
+#     header_msg = Tag.info + "Checking for duplicate files in " + \
+#         Color.bold_red + path
+#
+#     if not debugging and not testing:
+#         print(header_msg)
+#     else:
+#         header_msg_testing = header_msg + " [TEST]" + Color.end + "\n"
+#         print(header_msg_testing)
+    header_msg = "{0}Checking for duplicate files in {1}{2}{3}".format(Tag.info, Color.bold_red, path, Color.end)
 
-    if not debugging and not testing:
-        print(header_msg)
-    else:
-        header_msg_testing = header_msg + " [TEST]" + Color.end + "\n"
-        print(header_msg_testing)
+    if(debugging or testing):
+        header_msg = "{0} {1}[TEST]{2}".format(header_msg, Color.bold_red, Color.end)
 
 
 def bestFile_msg(f):
@@ -37,7 +41,8 @@ def bestFile_msg(f):
         - f: File choosen.
     """
 
-    print("\tBest file: " + Color.bold_green + f + Color.end)
+    # print("\tBest file: " + Color.bold_green + f + Color.end)
+    print("\tBest file: {0}{1}{2}".format(Color.bold_green, f, Color.end))
 
 
 def repeatedFile_msg(f):
@@ -48,7 +53,8 @@ def repeatedFile_msg(f):
         - f: File choosen.
     """
 
-    print(Color.bold_yellow + f + Color.end + " duplicated")
+    # print(Color.bold_yellow + f + Color.end + " duplicated")
+    print("{0}{1}{2} duplicated".format(Color.bold_yellow, f, Color.end))
 
 
 def rm_msg(f):
@@ -59,4 +65,6 @@ def rm_msg(f):
         - f: (string) File to remove.
     """
 
-    rm_msg = "Deleting " + Color.bold_red + f + Color.end
+    # rm_msg = "Deleting " + Color.bold_red + f + Color.end
+    msg = "Deleting {0}{1}{2}".format(Color.bold_red, f, Color.end)
+    print(msg)
