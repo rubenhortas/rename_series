@@ -238,7 +238,8 @@ class VideoFile(File):
 
         if year_match:
             year_in_show_name = year_match.group(0).lstrip()
-            new_year = "(" + year_in_show_name + ")"
+            # new_year = "(" + year_in_show_name + ")"
+            new_year = "({0})".format(year_in_show_name)
             self.show_name = self.show_name.replace(year_in_show_name, new_year)
 
     def __set_show_name(self):
@@ -250,15 +251,19 @@ class VideoFile(File):
         # Do not change if the year is in the title
         if self.episode_in_name not in self.show_name:
 
-            new_file_name = self.show_name + " " + self.episode
+            # new_file_name = self.show_name + " " + self.episode
+            new_file_name = "{0} {1}".format(self.show_name, self.episode)
 
             if self.episode_title:
-                new_file_name = new_file_name + " - " + self.episode_title
+                # new_file_name = new_file_name + " - " + self.episode_title
+                new_file_name = "{0} - {1}".format(new_file_name, self.episode_title)
 
             if self.ov:
-                new_file_name = new_file_name + " (VO)"
+                # new_file_name = new_file_name + " (VO)"
+                new_file_name = "{0} (VO)".format(new_file_name)
 
-            self.file_name_new = new_file_name + self.extension
+            # self.file_name_new = new_file_name + self.extension
+            self.file_name_new = "{0}{1}".format(new_file_name, self.extension)
 
         else:
             self.file_name_new = self.file_name
