@@ -86,7 +86,6 @@ class Episode():
         episode_num = episode_orig[-2:]
         season_num = episode_orig[:-2]
 
-        # episode = season_num + "x" + episode_num
         episode = "{0}x{1}".format(season_num, episode_num)
 
         return episode

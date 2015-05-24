@@ -73,13 +73,6 @@ class File:
             Renames a file with a new name.
         """
 
-#         if not self.testing and not self.debugging:
-#             try:
-#                 self.f_abs_new_path = os.path.join(self.files_path, self.file_name_new)
-#                 os.rename(self.f_abs_original_path, self.f_abs_new_path)
-#             except IOError as e:
-#                 Messages.error_msg(e)
-
         self.f_abs_new_path = os.path.join(self.files_path, self.file_name_new)
 
         if self.debugging:

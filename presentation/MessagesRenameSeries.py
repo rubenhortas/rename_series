@@ -19,13 +19,6 @@ def header(current_disk, debugging, testing):
         Print a couple of introduction lines
     """
 
-#     if debugging or testing:
-#         print(Tag.info + "Renaming files in " + Color.bold_red + current_disk +
-#               " [TEST]" + Color.end + "\n")
-#     else:
-#         print(Tag.info + "Renaming files in " + Color.bold_red + current_disk +
-#               Color.end + "\n")
-
     header_msg = "{0} Renaming files in {1}{2}{3}".format(Tag.info, Color.bold_red, current_disk, Color.end)
 
     if(debugging or testing):

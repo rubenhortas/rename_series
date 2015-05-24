@@ -33,7 +33,6 @@ def warning_msg(msg):
         - msg: (string) Warning message.
     """
 
-    # print(Tag.warning + msg)
     print("{0} {1}".format(Tag.warning, msg))
 
 
@@ -45,8 +44,7 @@ def info_msg(msg):
         - msg: (string) Information message.
     """
 
-    # print(Tag.info + msg)
-    print("{0} {1}", Tag.info, msg)
+    print("{0} {1}".format(Tag.info, msg))
 
 
 def debug_msg(msg):
@@ -57,7 +55,6 @@ def debug_msg(msg):
         - msg: (string) Debug message.
     """
 
-    # print(Tag.debug + str(msg))
     print("{0} {1}".format(Tag.debug, msg))
 
 
@@ -69,7 +66,6 @@ def exception_msg(msg):
         - msg: (string) System exception message.
     """
 
-    # print(Tag.ex + str(msg))
     print("{0}{1}".format(Tag.ex, msg))
 
 
@@ -96,6 +92,5 @@ def mv_msg(orig, dest):
         - dest: (string) Destiny file path/name.
     """
 
-    # mv_msg = orig + " -> " + Color.bold_green + dest + Color.end
     mv_msg = "{0} -> {1}{2}{3}".format(orig, Color.bold_green, dest, Color.end)
     print(mv_msg)

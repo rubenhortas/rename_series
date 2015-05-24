@@ -92,7 +92,6 @@ if __name__ == '__main__':
     else:
         for current_path in shows_paths:
             if not os.path.isdir(current_path):
-                # Messages.error_msg('%s is not a directory' % current_path)
                 error_msg('{0} is not a directory'.format(current_path))
             else:
                 valid_dirs = True

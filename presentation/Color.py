@@ -22,9 +22,6 @@ class Color:
     red = "\033[31m"
     yellow = "\033[33m"
 
-#     bold_green = bold + green
-#     bold_red = bold + red
-#     bold_yellow = bold + yellow
     bold_green = "{0}{1}".format(bold, green)
     bold_red = "{0}{1}".format(bold, red)
     bold_yellow = "{0}{1}".format(bold, yellow)

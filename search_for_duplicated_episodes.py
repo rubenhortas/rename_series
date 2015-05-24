@@ -92,7 +92,7 @@ def __start_scan(episodes_path):
 
     for root, dirs, files in os.walk(path, topdown=True, onerror=None,
                                      followlinks=False):
-        # Sort the dirs
+        # Sort dirs
         if len(dirs) > 0:
             dirs = dirs.sort()
 

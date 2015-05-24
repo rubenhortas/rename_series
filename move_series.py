@@ -47,7 +47,6 @@ def __move_to_known_disks(disks_list, is_buffer, debugging, testing):
             disks_found = True
             __start_moving(disk, is_buffer, debugging, testing)
         else:
-            # Messages.error_msg("%s is not a directory" % disk)
             error_msg("{0} is not a directory".format(disk))
 
     return disks_found
@@ -71,7 +70,6 @@ def __start_moving(dest, is_buffer, debugging, testing):
     list_files = sorted(get_files(path_movies_local, debugging))
 
     if(debugging):
-        # print("Files in %s", dest)
         print("Files in {0}".format(dest))
         print_list(list_files)
 
@@ -138,7 +136,6 @@ if __name__ == "__main__":
                 total_time = time_fin - time_ini
                 print_time(total_time)
             else:
-                # Messages.error_msg("%s is not a directory." % input_dest)
                 error_msg("{0} is not a directory.".format(input_dest))
 
     # If the user did not specify a directory, search for known mounted disks
