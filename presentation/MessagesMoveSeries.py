@@ -19,10 +19,16 @@ def Header(current_disk, debugging, testing):
         Print a couple of introduction lines
     """
 
-    header_msg = Tag.info + "Moving files to " + Color.bold_red + current_disk
+    # header_msg = Tag.info + "Moving files to " + Color.bold_red + current_disk
+    header_msg = "{0} Moving files to {1}{2}{3}".format(Tag.info, Color.bold_red, current_disk, Color.end)
 
-    if not debugging and not testing:
-        print(header_msg)
-    else:
-        header_msg_testing = header_msg + " [TEST]" + Color.end + "\n"
-        print(header_msg_testing)
+#     if not debugging and not testing:
+#         print(header_msg)
+#     else:
+#         header_msg_testing = header_msg + " [TEST]" + Color.end + "\n"
+#         print(header_msg_testing)
+
+    if(debugging or testing):
+        header_msg = "{0} {1}[TEST]{1}".format(header_msg, Color.bold_red, Color.end)
+    print(header_msg)
+
