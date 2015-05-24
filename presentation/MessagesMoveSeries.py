@@ -13,9 +13,9 @@ from .Color import Color
 from .Tag import Tag
 
 
-def Header(current_disk, debugging, testing):
+def header(current_disk, debugging, testing):
     """
-    Header()
+    header()
         Print a couple of introduction lines
     """
 
@@ -31,4 +31,3 @@ def Header(current_disk, debugging, testing):
     if(debugging or testing):
         header_msg = "{0} {1}[TEST]{1}".format(header_msg, Color.bold_red, Color.end)
     print(header_msg)
-
