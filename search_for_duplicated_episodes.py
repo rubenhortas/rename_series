@@ -16,6 +16,7 @@ import re
 from presentation.Messages import exception_msg
 from presentation.MessagesSearchForDuplicated import header, bestFile_msg, rm_msg, repeatedFile_msg
 from utils.ClearScreen import clear_screen
+from utils.FileHandler import is_video
 
 
 EPISODE_PATTERN = re.compile("[0-9]{1,2}x[0-9]{1,2}")
@@ -68,7 +69,8 @@ def __get_best_file(episode, path_files):
 
     for f in path_files:
         if episode in f:
-            repeated_files.append(f)
+            if(is_video(f)):
+                repeated_files.append(f)
 
     for f in repeated_files:
         # Compare size and OV
@@ -102,16 +104,17 @@ def __start_scan(episodes_path):
             if len(dirs) == 0:
                 episodes = []
                 for f in files:
-                    episode_match = EPISODE_PATTERN.search(f)
-                    if episode_match:
-                        current_episode = episode_match.group(0)
-                        if current_episode not in episodes:
-                            episodes.append(current_episode)
-                        else:
-                            if(current_episode not in repeated_episodes):
-                                repeated_episodes.append(current_episode)
-                                relative_episode_path = root.replace(episodes_path, "")
-                                repeatedFile_msg(os.path.join(relative_episode_path, current_episode))
+                    if(is_video(f)):
+                        episode_match = EPISODE_PATTERN.search(f)
+                        if episode_match:
+                            current_episode = episode_match.group(0)
+                            if current_episode not in episodes:
+                                episodes.append(current_episode)
+                            else:
+                                if(current_episode not in repeated_episodes):
+                                    repeated_episodes.append(current_episode)
+                                    relative_episode_path = root.replace(episodes_path, "")
+                                    repeatedFile_msg(os.path.join(relative_episode_path, current_episode))
         if repeated_episodes != []:
             __get_best_quality(root, repeated_episodes)
 

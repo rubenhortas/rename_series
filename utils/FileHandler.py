@@ -23,7 +23,7 @@ def __is_subtitle(current_file):
         return False
 
 
-def __is_video(current_file):
+def is_video(current_file):
     ext = os.path.splitext(current_file)[1]
     video_formats = [".mp4", ".avi", ".mkv"]
     if ext in video_formats:
@@ -45,7 +45,7 @@ def get_files(directory, debugging):
     for f in files_in_d:
         if os.path.isfile(os.path.join(directory, f)):  # Skip directories
             # Exclude another types than videos or subtitles
-            if __is_video(f) or __is_subtitle(f):
+            if is_video(f) or __is_subtitle(f):
                 list_files.append(f)
 
     if debugging:
@@ -69,7 +69,7 @@ def get_files_separated(directory, debugging):
     for f in files_in_d:
         if os.path.isfile(os.path.join(directory, f)):  # Skip directories
             # Exclude another types than videos or subtitles
-            if __is_video(f):
+            if is_video(f):
                 list_videos.append(f)
             elif __is_subtitle(f):
                 list_subtitles.append(f)
