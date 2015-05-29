@@ -135,11 +135,11 @@ if __name__ == '__main__':
                         help="in file")
     parser.add_argument("-t", "--test", dest="test",
                         action="store_true",
-                        help="Runs a single test showing the output.")
+                        help="runs a single test showing the expected output")
 
     parser.add_argument("-d", "--debug", dest="debug",
                         action="store_true",
-                        help="Shows debug info")
+                        help="show debug info")
 
     args = parser.parse_args()
 

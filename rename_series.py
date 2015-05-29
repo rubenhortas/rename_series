@@ -64,13 +64,13 @@ if __name__ == '__main__':
     valid_dirs = False
 
     # Parse console arguments
-    parser = argparse.ArgumentParser(description='Rename some series.')
+    parser = argparse.ArgumentParser(description='Renames some series.')
     parser.add_argument('-t', '--test', dest='testing', action='store_true',
-                        help='Runs a single test showing the output.')
+                        help='run a single test showing the expected output')
     parser.add_argument('-d', '--debug', dest='debugging', action='store_true',
-                        help='Shows debug info')
+                        help='show debug info')
     parser.add_argument('-D', '--dir', dest='user_dir',
-                        help='Uses only the specified directory/path.')
+                        help='use only the specified directory/path')
 
     args = parser.parse_args()
 

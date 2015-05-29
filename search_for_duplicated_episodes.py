@@ -128,11 +128,11 @@ if __name__ == '__main__':
                         help="path where the files are being sought")
     parser.add_argument("-t", "--test", dest="testing",
                         action="store_true",
-                        help="Runs a single test showing the output.")
+                        help="run a single test showing the expected output")
 
     parser.add_argument("-d", "--debug", dest="debugging",
                         action="store_true",
-                        help="Shows debug info")
+                        help="show debug info")
 
     args = parser.parse_args()
 
