@@ -31,12 +31,51 @@ LICENSE
     http://creativecommons.org/licenses/by-nc-sa/3.0/
 
 USAGE
+	$ python3 <script>
 
-	$ python3 rename_series
+	or (if you hace python3 as your default version):
+
+	$ ./<script>
+
+	RENAME SERIES
+
+		usage: rename_series.py [-h] [-t] [-d] [-D USER_DIR]
+
+		Renames some series.
+
+		Optional arguments:
+  		-h, --help            			show this help message and exit
+  		-t, --test            			run a single test showing the expected output
+  		-d, --debug           			show debug info
+  		-D USER_DIR, --dir USER_DIR	use only the specified directory/path
 	
-	or (if you have python3 as your default version):
-	
-	$ ./rename_series
+	SEARCH FOR DUPLICATED EPISODES
+		
+		usage: search_for_duplicated_episodes.py [-h] [-t] [-d] path
+
+		Look for repeated chapters
+
+		positional arguments:
+  		path         path where the files are being sought
+
+		optional arguments:
+  		-h, --help   show this help message and exit
+  		-t, --test   run a single test showing the expected output
+  		-d, --debug  show debug info
+
+	SEARCH FOR DUPLICATED IN FILES
+
+		usage: search_for_duplicated_in_files.py [-h] [-from FROM_FILE] [-in IN_FILE]
+   		                                      [-t] [-d]
+
+		Look for repeated strings in file[s]
+
+		optional arguments:
+  		-h, --help       show this help message and exit
+  		-from FROM_FILE  from file
+  		-in IN_FILE      in file
+  		-t, --test       runs a single test showing the expected output
+  		-d, --debug      show debug info
 
 CONTACT
 
