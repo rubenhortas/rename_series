@@ -31,6 +31,7 @@ LICENSE
     http://creativecommons.org/licenses/by-nc-sa/3.0/
 
 USAGE
+
 	$ python3 <script>
 
 	or (if you hace python3 as your default version):
