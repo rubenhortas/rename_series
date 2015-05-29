@@ -22,7 +22,7 @@ from utils.FileHandler import is_video
 EPISODE_PATTERN = re.compile("[0-9]{1,2}x[0-9]{1,2}")
 
 
-def __get_best_quality(path, repeated_episodes):
+def __get_best_quality(path, repeated_episodes, debugging, testing):
     """
     __get_best_quality(path, episodes)
         Looking videos with best quality among the repeated videos.
@@ -90,7 +90,7 @@ def __get_best_file(episode, path_files):
     return best_file, discarted_files
 
 
-def __start_scan(episodes_path):
+def __start_scan(path, debugging, testing):
 
     for root, dirs, files in os.walk(path, topdown=True, onerror=None,
                                      followlinks=False):
@@ -113,10 +113,12 @@ def __start_scan(episodes_path):
                             else:
                                 if(current_episode not in repeated_episodes):
                                     repeated_episodes.append(current_episode)
-                                    relative_episode_path = root.replace(episodes_path, "")
+                                    relative_episode_path = root.replace(path, "")
                                     repeatedFile_msg(os.path.join(relative_episode_path, current_episode))
         if repeated_episodes != []:
             __get_best_quality(root, repeated_episodes)
+        else:
+            print("No repeated episodes found.")
 
 
 if __name__ == '__main__':
@@ -124,22 +126,18 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Look for repeated chapters')
     parser.add_argument('path', metavar='path',
                         help="path where the files are being sought")
-    parser.add_argument("-t", "--test", dest="test",
+    parser.add_argument("-t", "--test", dest="testing",
                         action="store_true",
                         help="Runs a single test showing the output.")
 
-    parser.add_argument("-d", "--debug", dest="debug",
+    parser.add_argument("-d", "--debug", dest="debugging",
                         action="store_true",
                         help="Shows debug info")
 
     args = parser.parse_args()
 
-    path = args.path
-    testing = args.test
-    debugging = args.debug
-
     clear_screen()
 
-    header(path, debugging, testing)
+    header(args.path, args.debugging, args.testing)
 
-    __start_scan(path)
+    __start_scan(args.path, args.debugging, args.testing)

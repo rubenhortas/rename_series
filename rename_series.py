@@ -21,7 +21,8 @@ from utils.ClearScreen import clear_screen
 from utils.FileHandler import get_files_separated
 
 
-def __start_renaming(list_subtitles, list_videos, current_path):
+def __start_renaming(list_subtitles, list_videos, current_path, debugging,
+                     testing):
 
     renamed_subtitles = False
     renamed_videos = False
@@ -29,7 +30,7 @@ def __start_renaming(list_subtitles, list_videos, current_path):
     # Rename subtitles
     for subtitle in sorted(list_subtitles):
         this_sub = SubtitleFile(current_path, subtitle, testing,
-                                debugging)
+                                args.debugging)
         if this_sub.file_name != this_sub.file_name_new:
             renamed_subtitles = True
 
@@ -64,30 +65,29 @@ if __name__ == '__main__':
 
     # Parse console arguments
     parser = argparse.ArgumentParser(description='Rename some series.')
-    parser.add_argument('-t', '--test', dest='test', action='store_true',
+    parser.add_argument('-t', '--test', dest='testing', action='store_true',
                         help='Runs a single test showing the output.')
-    parser.add_argument('-d', '--debug', dest='debug', action='store_true',
+    parser.add_argument('-d', '--debug', dest='debugging', action='store_true',
                         help='Shows debug info')
     parser.add_argument('-D', '--dir', dest='user_dir',
                         help='Uses only the specified directory/path.')
 
     args = parser.parse_args()
-    testing = args.test
-    debugging = args.debug
-    user_dir = args.user_dir
 
     clear_screen()
 
-    if(user_dir):
+    if(args.user_dir):
         valid_dirs = True
-        header(user_dir, debugging, testing)
+        header(args.user_dir, args.debugging, args.testing)
 
-        list_videos, list_subtitles = get_files_separated(user_dir, debugging)
-        __start_renaming(list_subtitles, list_videos, user_dir)
+        list_videos, list_subtitles = get_files_separated(args.user_dir,
+                                                          args.debugging)
+        __start_renaming(list_subtitles, list_videos, args.user_dir)
 
         # Check for subs
-        l_videos, l_subs = get_files_separated(user_dir, debugging)
-        check_for_subs(l_videos, l_subs, user_dir, debugging, testing)
+        l_videos, l_subs = get_files_separated(args.user_dir, args.debugging)
+        check_for_subs(l_videos, l_subs, args.user_dir, args.debugging,
+                       args.testing)
 
     else:
         for current_path in shows_paths:
@@ -96,16 +96,18 @@ if __name__ == '__main__':
             else:
                 valid_dirs = True
 
-                header(current_path, debugging, testing)
+                header(current_path, args.debugging, args.testing)
 
                 list_videos, list_subtitles = get_files_separated(current_path,
-                                                                  debugging)
-                __start_renaming(list_subtitles, list_videos, current_path)
+                                                                  args.debugging)
+                __start_renaming(list_subtitles, list_videos, current_path,
+                                 args.debugging, args.testing)
 
                 # Check for subtitles
-                l_videos, l_subs = get_files_separated(current_path, debugging)
-                check_for_subs(l_videos, l_subs, current_path, debugging,
-                               testing)
+                l_videos, l_subs = get_files_separated(current_path,
+                                                       args.debugging)
+                check_for_subs(l_videos, l_subs, current_path, args.debugging,
+                               args.testing)
 
     if not valid_dirs:
         error_msg('Has not entered any directory')

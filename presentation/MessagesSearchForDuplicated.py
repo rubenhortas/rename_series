@@ -21,7 +21,9 @@ def header(path, debugging, testing):
 
     header_msg = "{0}Checking for duplicate files in {1}{2}{3}".format(Tag.info, Color.bold_red, path, Color.end)
 
-    if(debugging or testing):
+    if(not debugging and not testing):
+        print(header_msg)
+    else:
         header_msg = "{0} {1}[TEST]{2}".format(header_msg, Color.bold_red, Color.end)
 
 
