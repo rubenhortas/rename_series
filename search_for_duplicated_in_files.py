@@ -24,18 +24,18 @@ from utils.ClearScreen import clear_screen
 MATCH_THRESHOLD = 0.90
 
 
-def __get_match_ratio(e1, e2):
+def __get_match_ratio(i1, i2):
     """
     __get_match_ratio(str1, str2)
         Compares two lines.
     Arguments:
-        - e1: (line) element one.
-        - e2: (line) element two.
+        - i1: (line) item one.
+        - i2: (line) item two.
     """
 
-    # Normalizartion
-    str1 = e1.lower().strip()
-    str2 = e2.lower().strip()
+    # Normalization
+    str1 = i1.lower().strip()
+    str2 = i2.lower().strip()
 
     for p in string.punctuation:
         str1.replace(p, '')
@@ -81,15 +81,15 @@ def __compare_lists_items(l1, l2, in_file, from_file):
         - from_file: (string) File wich contains l2 items.
     """
 
-    for e1 in l1:
+    for i1 in l1:
         matches = 0
-        for e2 in l2:
-            match_ratio = __get_match_ratio(e1, e2)
+        for i2 in l2:
+            match_ratio = __get_match_ratio(i1, i2)
             if(match_ratio > MATCH_THRESHOLD):
                 matches = matches + 1
                 if(from_file or (matches > 1)):
-                    duplicated_msg(e1.strip(), e2.strip(), in_file, from_file, round((match_ratio * 100), 2))
-                    l2.remove(e2)
+                    duplicated_msg(i1.strip(), i2.strip(), in_file, from_file, round((match_ratio * 100), 2))
+                    l2.remove(i2)
 
 
 def __search_in_files(in_file, from_file):
