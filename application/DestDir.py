@@ -13,7 +13,7 @@ import os
 import re
 
 DIR_SEASON_NAME = "Temporada"
-FILE_WELL_FORMATED_PATTERN = re.compile("(?P<show_name>[\w \(\)]*)(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>[\w \-\(\)]*)?\.(?P<extension>[\w]{3})", re.UNICODE)
+FILE_WELL_FORMATED_PATTERN = re.compile("(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>[\w \-\(\)])?\.(?P<extension>[\w]{3})", re.UNICODE)
 
 
 class DestDir():
@@ -35,11 +35,11 @@ class DestDir():
         match = FILE_WELL_FORMATED_PATTERN.search(file_name)
 
         if match:
-            self.show_name = match.group("show_name").strip()
             self.season = match.group("season")
             self.episode = match.group("episode")
             self.episode_title = match.group("episode_title")
             self.extension = match.group("extension")
+            self.show_name = file_name.split(self.season)[0].strip()
 
             final_name_tmp = "{0}x{1}".format(self.season, self.episode)
 
