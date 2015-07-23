@@ -24,9 +24,9 @@ from utils.ListHandler import print_list
 from utils.TimeHandler import print_time
 
 
-path_movies_local = "/home/ruben/peliculas"
-buffer_disks = ["/media/ruben/3tb/series"]
-final_disks = []
+path_movies_local = "/home/ruben/Lab/fakedVideos"
+buffer_disks = ["/home/ruben/Lab/fakedDestBuffer"]
+final_disks = ["/home/ruben/Lab/fakedDest"]
 
 
 def __move_to_known_disks(disks_list, is_buffer, debugging, testing):
