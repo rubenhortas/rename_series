@@ -100,3 +100,5 @@ def mv(orig, dest, debugging, testing):
             os.rename(orig, dest)
         except IOError as ex:
             Messages.error_msg(ex)
+        except OSError as ex:
+            Messages.error_msg(ex)
