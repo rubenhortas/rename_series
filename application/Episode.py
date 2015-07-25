@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# _*_ coding:utf-8 _*
+# _*_ coding:utf-8 _*_
 
 """
 @author:  Rubén Hortas Astariz <http://rubenhortas.blogspot.com>
