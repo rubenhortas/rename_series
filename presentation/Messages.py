@@ -21,8 +21,7 @@ def error_msg(msg):
         - msg: (string) Error message.
     """
 
-    # print(Tag.error + msg)
-    print("{0}{1}".format(Tag.error, msg))
+    print("{0 {1}".format(Tag.error, msg))
 
 
 def warning_msg(msg):
@@ -66,7 +65,7 @@ def exception_msg(msg):
         - msg: (string) System exception message.
     """
 
-    print("{0}{1}".format(Tag.ex, msg))
+    print("{0} {1}".format(Tag.ex, msg))
 
 
 def Append(msg, l):

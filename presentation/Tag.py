@@ -20,7 +20,7 @@ class Tag:
     """
 
     error = "[" + Color.bold_red + "ERROR" + Color.end + "]"
-    info = "[" + Color.green + "*" + Color.end + "] "
+    info = "[" + Color.green + "*" + Color.end + "]"
     warning = "[" + Color.bold_yellow + "WARNING" + Color.end + "]"
     move = Color.bold_yellow + "->" + Color.end
     debug = ">>"
