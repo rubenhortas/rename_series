@@ -21,7 +21,7 @@ def error_msg(msg):
         - msg: (string) Error message.
     """
 
-    print("{0 {1}".format(Tag.error, msg))
+    print("{0} {1}".format(Tag.error, msg))
 
 
 def warning_msg(msg):
