@@ -57,7 +57,7 @@ def __start_renaming(list_subtitles, list_videos, current_path, debugging,
 if __name__ == '__main__':
 
     # Absolute paths containing tv shows
-    shows_paths = ['/home/ruben/peliculas', '/home/ruben/peliculas/temp']
+    shows_paths = ['/home/ruben/Vídeos', '/home/ruben/Vídeos/temp']
 
     list_videos = []
     list_subtitles = []
@@ -82,7 +82,8 @@ if __name__ == '__main__':
 
         list_videos, list_subtitles = get_files_separated(args.user_dir,
                                                           args.debugging)
-        __start_renaming(list_subtitles, list_videos, args.user_dir)
+        __start_renaming(list_subtitles, list_videos, args.user_dir,
+                         args.debugging, args.testing)
 
         # Check for subs
         l_videos, l_subs = get_files_separated(args.user_dir, args.debugging)
