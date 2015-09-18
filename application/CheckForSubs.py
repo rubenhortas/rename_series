@@ -12,8 +12,8 @@
 import os
 import re
 
-from presentation import Messages
-import utils.FileHandler as FilesHandler
+import domain.utils.FileHandler as FileHandler
+from crosscutting import Messages
 
 
 def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
@@ -66,7 +66,7 @@ def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
                         current_video_path = os.path.join(current_path, video)
                         new_video_path = os.path.join(current_path,
                                                       new_video_name)
-                        FilesHandler.mv(current_video_path, new_video_path,
+                        FileHandler.mv(current_video_path, new_video_path,
                                         debugging, testing)
                         break
 

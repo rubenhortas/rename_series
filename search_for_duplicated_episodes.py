@@ -13,10 +13,10 @@ import argparse
 import os
 import re
 
-from presentation.Messages import exception_msg
+from crosscutting.Messages import exception_msg
+from domain.utils.FileHandler import is_video
 from presentation.MessagesSearchForDuplicated import header, bestFile_msg, rm_msg, repeatedFile_msg
-from utils.ClearScreen import clear_screen
-from utils.FileHandler import is_video
+from presentation.utils.ClearScreen import clear_screen
 
 
 EPISODE_PATTERN = re.compile("[0-9]{1,2}x[0-9]{1,2}")

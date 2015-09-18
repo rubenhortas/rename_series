@@ -13,15 +13,15 @@ import argparse
 import os
 import time
 
-from application.DestDir import DestDir
-from application.File import File
-from presentation.Messages import error_msg
+from application.utils import ListHandler
+from application.utils.ListHandler import print_list
+from application.utils.TimeHandler import print_time
+from crosscutting.Messages import error_msg
+from domain.DestDir import DestDir
+from domain.File import File
+from domain.utils.FileHandler import get_files, mv
 from presentation.MessagesMoveSeries import header
-from utils import ListHandler
-from utils.ClearScreen import clear_screen
-from utils.FileHandler import get_files, mv
-from utils.ListHandler import print_list
-from utils.TimeHandler import print_time
+from presentation.utils.ClearScreen import clear_screen
 
 
 path_movies_local = "/home/ruben/Lab/fakedVideos"

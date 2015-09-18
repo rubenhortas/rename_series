@@ -12,8 +12,8 @@
 import os
 import re
 
-from presentation import Messages
-import utils.FileHandler as FilesHandler
+from crosscutting import Messages
+import domain.utils.FileHandler as FileHandler
 
 
 IS_WELL_FORMATED_COMPILED_PATTERN = re.compile("^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
@@ -89,7 +89,7 @@ class File:
         if self.testing:
             self.__print_move()
 
-        FilesHandler.mv(self.f_abs_original_path, self.f_abs_new_path,
+        FileHandler.mv(self.f_abs_original_path, self.f_abs_new_path,
                         self.debugging, self.testing)
 
     def __print_move(self):

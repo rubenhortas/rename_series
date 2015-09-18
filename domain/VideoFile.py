@@ -12,10 +12,11 @@
 import os
 import re
 
-from presentation import Messages
+from crosscutting import Messages
 
 from .Episode import Episode
 from .File import File
+
 
 EXPANDED_NAMES = {
     # American Horror Story

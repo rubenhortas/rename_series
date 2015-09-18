@@ -16,9 +16,9 @@ import re
 import string
 import sys
 
-from presentation.Messages import error_msg
+from crosscutting.Messages import error_msg
 from presentation.MessagesSearchForDuplicatedInFiles import header, duplicated_msg
-from utils.ClearScreen import clear_screen
+from presentation.utils.ClearScreen import clear_screen
 
 
 MATCH_THRESHOLD = 0.90

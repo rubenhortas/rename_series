@@ -12,6 +12,7 @@
 import os
 import re
 
+
 DIR_SEASON_NAME = "Temporada"
 FILE_WELL_FORMATED_PATTERN = re.compile("(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>[\w \-\(\)])?\.(?P<extension>[\w]{3})", re.UNICODE)
 

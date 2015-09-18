@@ -11,6 +11,7 @@
 
 import re
 
+
 PAT1 = re.compile("[0-9]{1,2}x[0-9]{1,2}")
 PAT2 = re.compile("S[0-9]{1,2}E[0-9]{1,2}")
 PAT3 = re.compile("\[Cap.[0-9]*\]")

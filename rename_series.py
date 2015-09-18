@@ -9,16 +9,17 @@
 @file:    rename_series.py
 """
 
+
 import argparse
 import os
 
 from application.CheckForSubs import check_for_subs
-from application.SubtitleFile import SubtitleFile
-from application.VideoFile import VideoFile
-from presentation.Messages import info_msg, error_msg
+from crosscutting.Messages import info_msg, error_msg
+from domain.SubtitleFile import SubtitleFile
+from domain.VideoFile import VideoFile
+from domain.utils.FileHandler import get_files_separated
 from presentation.MessagesRenameSeries import header
-from utils.ClearScreen import clear_screen
-from utils.FileHandler import get_files_separated
+from presentation.utils.ClearScreen import clear_screen
 
 
 def __start_renaming(list_subtitles, list_videos, current_path, debugging,
