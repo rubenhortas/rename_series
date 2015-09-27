@@ -66,30 +66,3 @@ def exception_msg(msg):
     """
 
     print("{0} {1}".format(Tag.ex, msg))
-
-
-def Append(msg, l):
-    """
-    Append(msg, l)
-        Appends a message to a list if it not exists.
-    Arguments:
-        - msg: (msg) Message.
-        - l: (list) List of messages.
-    """
-
-    if msg not in l:
-        l.append(msg)
-
-
-def mv_msg(orig, dest):
-    """
-    mv_msg(msg)
-        Prints a message indicating the original file path (or name)
-        and its destiny path (or name).
-    Arguments:
-        - orig: (string) Original file path/name.
-        - dest: (string) Destiny file path/name.
-    """
-
-    mv_msg = "{0} -> {1}{2}{3}".format(orig, Color.bold_green, dest, Color.end)
-    print(mv_msg)

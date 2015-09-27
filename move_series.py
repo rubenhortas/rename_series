@@ -81,7 +81,6 @@ def __start_moving(dest, is_buffer, debugging, testing):
             if(is_buffer):
                 # If is a buffer disk: Bulk move
                 final_dest = os.path.join(dest, this_file.file_name)
-                #mv(this_file.file_name, final_dest, debugging, testing)
                 mv(this_file.f_abs_original_path, final_dest, debugging,
                    testing)
 
@@ -89,9 +88,7 @@ def __start_moving(dest, is_buffer, debugging, testing):
                 file_dest = DestDir(f, dest, debugging, testing)
 
                 if(file_dest.final_dest is not None):
-                    #mv(this_file.file_name, file_dest.final_dest, debugging,
-                    #   testing)
-                    mv(this_file.f_abs_original_path, file_dest.final_dest, 
+                    mv(this_file.f_abs_original_path, file_dest.final_dest,
                        debugging, testing)
                 else:
                     nonexistent_dest = os.path.join(dest, file_dest.show_name)

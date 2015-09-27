@@ -12,7 +12,7 @@
 import os
 import re
 
-from crosscutting import Messages
+from crosscutting import Messages, MessagesRenameSeries
 import domain.utils.FileHandler as FileHandler
 
 

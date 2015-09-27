@@ -11,8 +11,8 @@
 
 import os
 
-from crosscutting import Messages
 from application.utils.ListHandler import print_list
+from crosscutting import Messages
 
 
 def __is_subtitle(current_file):

@@ -12,8 +12,8 @@
 import os
 import re
 
+from crosscutting import Messages, MessagesRenameSeries
 import domain.utils.FileHandler as FileHandler
-from crosscutting import Messages
 
 
 def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):

@@ -56,7 +56,7 @@ class DestDir():
                 if not self.__season_exists(dest):
                     self.__create_season_dir(dest, debugging, testing)
 
-                self.final_dest = os.path.join(dest, self.show_name, 
+                self.final_dest = os.path.join(dest, self.show_name,
                                                self.dir_season, file_final_name)
 
     def __path_exists(self, dir_dest):

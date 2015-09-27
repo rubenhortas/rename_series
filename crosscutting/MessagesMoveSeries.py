@@ -24,3 +24,16 @@ def header(current_disk, debugging, testing):
     if(debugging or testing):
         header_msg = "{0} {1}[TEST]{2}".format(header_msg, Color.bold_red, Color.end)
     print(header_msg)
+
+def mv_msg(orig, dest):
+    """
+    mv_msg(msg)
+        Prints a message indicating the original file path (or name)
+        and its destiny path (or name).
+    Arguments:
+        - orig: (string) Original file path/name.
+        - dest: (string) Destiny file path/name.
+    """
+
+    mv_msg = "{0} -> {1}{2}{3}".format(orig, Color.bold_green, dest, Color.end)
+    print(mv_msg)
