@@ -17,7 +17,7 @@ import string
 import sys
 
 from crosscutting.Messages import error_msg
-from presentation.MessagesSearchForDuplicatedInFiles import header, duplicated_msg
+from crosscutting.MessagesSearchForDuplicatedInFiles import header, duplicated_msg
 from presentation.utils.ClearScreen import clear_screen
 
 

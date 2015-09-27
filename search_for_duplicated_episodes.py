@@ -14,8 +14,8 @@ import os
 import re
 
 from crosscutting.Messages import exception_msg
+from crosscutting.MessagesSearchForDuplicated import header, bestFile_msg, rm_msg, repeatedFile_msg
 from domain.utils.FileHandler import is_video
-from presentation.MessagesSearchForDuplicated import header, bestFile_msg, rm_msg, repeatedFile_msg
 from presentation.utils.ClearScreen import clear_screen
 
 
