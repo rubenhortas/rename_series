@@ -15,10 +15,10 @@ import os
 
 from application.CheckForSubs import check_for_subs
 from crosscutting.Messages import info_msg, error_msg
+from crosscutting.MessagesRenameSeries import header
 from domain.SubtitleFile import SubtitleFile
 from domain.VideoFile import VideoFile
 from domain.utils.FileHandler import get_files_separated
-from presentation.MessagesRenameSeries import header
 from presentation.utils.ClearScreen import clear_screen
 
 

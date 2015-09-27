@@ -12,7 +12,7 @@
 import os
 
 from application.utils.ListHandler import print_list
-from crosscutting import Messages
+from crosscutting import Messages, MessagesMoveSeries
 
 
 def __is_subtitle(current_file):
@@ -93,7 +93,7 @@ def mv(orig, dest, debugging, testing):
         - testing: (boolean) Indicates if the program is in testing mode.s
     """
 
-    Messages.mv_msg(orig, dest)
+    MessagesMoveSeries.mv_msg(orig, dest)
 
     if not testing and not debugging:
         try:

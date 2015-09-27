@@ -9,8 +9,8 @@
 @file:    MessagesSearchForDuplicated
 """
 
-from .Color import Color
-from .Tag import Tag
+from presentation.Color import Color
+from presentation.Tag import Tag
 
 
 def header(path, debugging, testing):

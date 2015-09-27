@@ -9,8 +9,8 @@
 @file:      /home/ruben/workspace/git/rename_series/presentation/MessagesCheckForDuplicatedInFiles.py
 """
 
-from .Color import Color
-from .Tag import Tag
+from presentation.Color import Color
+from presentation.Tag import Tag
 
 
 def header(in_file, from_file, debugging, testing):
