@@ -61,7 +61,7 @@ def __get_file_list(file_name):
 
     l_file = []
 
-    f = open(file_name)
+    f = open(file_name, encoding="utf-8", errors="ignore")
 
     for line in f:
         l_file.append(line)
