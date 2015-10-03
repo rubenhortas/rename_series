@@ -69,9 +69,6 @@ if __name__ == '__main__':
     # Absolute paths containing tv shows
     shows_paths = ['/home/ruben/Vídeos', '/home/ruben/Vídeos/temp']
 
-    while(True):
-        print "stucked"
-
     list_videos = []
     list_subtitles = []
     valid_dirs = False
