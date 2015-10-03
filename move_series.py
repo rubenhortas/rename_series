@@ -11,16 +11,19 @@
 
 import argparse
 import os
+import signal
 import time
 
 from application.utils import ListHandler
 from application.utils.ListHandler import print_list
+from application.utils.PythonUtils import check_python_version
+from application.utils.PythonUtils import exit_signal_handler
 from application.utils.TimeHandler import print_time
 from crosscutting.Messages import error_msg
+from crosscutting.MessagesMoveSeries import header
 from domain.DestDir import DestDir
 from domain.File import File
 from domain.utils.FileHandler import get_files, mv
-from presentation.MessagesMoveSeries import header
 from presentation.utils.ClearScreen import clear_screen
 
 
@@ -107,7 +110,7 @@ if __name__ == "__main__":
 
     check_python_version(python_required_version)
 
-    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGINT, exit_signal_handler)
 
     buffer_disks_found = False
     final_disks_found = False
