@@ -12,8 +12,11 @@
 
 import argparse
 import os
+import signal
 
 from application.CheckForSubs import check_for_subs
+from application.utils.PythonUtils import check_python_version
+from application.utils.PythonUtils import signal_handler
 from crosscutting.Messages import info_msg, error_msg
 from crosscutting.MessagesRenameSeries import header
 from domain.SubtitleFile import SubtitleFile
@@ -57,8 +60,17 @@ def __start_renaming(list_subtitles, list_videos, current_path, debugging,
 
 if __name__ == '__main__':
 
+    required_python_version = 2
+
+    check_python_version(required_python_version)
+
+    signal.signal(signal.SIGINT, signal_handler)
+
     # Absolute paths containing tv shows
     shows_paths = ['/home/ruben/Vídeos', '/home/ruben/Vídeos/temp']
+
+    while(True):
+        print "stucked"
 
     list_videos = []
     list_subtitles = []
