@@ -16,7 +16,7 @@ import signal
 
 from application.CheckForSubs import check_for_subs
 from application.utils.PythonUtils import check_python_version
-from application.utils.PythonUtils import signal_handler
+from application.utils.PythonUtils import exit_signal_handler
 from crosscutting.Messages import info_msg, error_msg
 from crosscutting.MessagesRenameSeries import header
 from domain.SubtitleFile import SubtitleFile
@@ -64,7 +64,7 @@ if __name__ == '__main__':
 
     check_python_version(python_required_version)
 
-    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGINT, exit_signal_handler)
 
     # Absolute paths containing tv shows
     shows_paths = ['/home/ruben/Vídeos', '/home/ruben/Vídeos/temp']
