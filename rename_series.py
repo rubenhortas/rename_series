@@ -60,9 +60,9 @@ def __start_renaming(list_subtitles, list_videos, current_path, debugging,
 
 if __name__ == '__main__':
 
-    required_python_version = 2
+    python_required_version = 2
 
-    check_python_version(required_python_version)
+    check_python_version(python_required_version)
 
     signal.signal(signal.SIGINT, signal_handler)
 
