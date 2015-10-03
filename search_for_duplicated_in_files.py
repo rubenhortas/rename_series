@@ -125,6 +125,12 @@ def __search_in_file(in_file):
 
 if __name__ == '__main__':
 
+    python_required_version = 2
+
+    check_python_version(python_required_version)
+
+    signal.signal(signal.SIGINT, signal_handler)
+
     in_file = ""
     from_file = ""
 

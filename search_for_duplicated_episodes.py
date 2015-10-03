@@ -123,6 +123,12 @@ def __start_scan(path, debugging, testing):
 
 if __name__ == '__main__':
 
+    python_required_version = 2
+
+    check_python_version(python_required_version)
+
+    signal.signal(signal.SIGINT, signal_handler)
+
     parser = argparse.ArgumentParser(description='Look for repeated chapters')
     parser.add_argument('path', metavar='path',
                         help="path where the files are being sought")

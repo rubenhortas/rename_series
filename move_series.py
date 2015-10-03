@@ -102,6 +102,13 @@ def __start_moving(dest, is_buffer, debugging, testing):
 
 
 if __name__ == "__main__":
+
+    python_required_version = 2
+
+    check_python_version(python_required_version)
+
+    signal.signal(signal.SIGINT, signal_handler)
+
     buffer_disks_found = False
     final_disks_found = False
     input_dest = None
