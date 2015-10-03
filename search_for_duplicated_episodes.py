@@ -12,7 +12,10 @@
 import argparse
 import os
 import re
+import signal
 
+from application.utils.PythonUtils import check_python_version
+from application.utils.PythonUtils import exit_signal_handler
 from crosscutting.Messages import exception_msg
 from crosscutting.MessagesSearchForDuplicated import header, bestFile_msg, rm_msg, repeatedFile_msg
 from domain.utils.FileHandler import is_video
@@ -127,7 +130,7 @@ if __name__ == '__main__':
 
     check_python_version(python_required_version)
 
-    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGINT, exit_signal_handler)
 
     parser = argparse.ArgumentParser(description='Look for repeated chapters')
     parser.add_argument('path', metavar='path',

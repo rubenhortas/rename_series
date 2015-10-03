@@ -13,9 +13,12 @@ import argparse
 import difflib
 import os
 import re
+import signal
 import string
 import sys
 
+from application.utils.PythonUtils import check_python_version
+from application.utils.PythonUtils import exit_signal_handler
 from crosscutting.Messages import error_msg
 from crosscutting.MessagesSearchForDuplicatedInFiles import header, duplicated_msg
 from presentation.utils.ClearScreen import clear_screen
@@ -129,7 +132,7 @@ if __name__ == '__main__':
 
     check_python_version(python_required_version)
 
-    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGINT, exit_signal_handler)
 
     in_file = ""
     from_file = ""
