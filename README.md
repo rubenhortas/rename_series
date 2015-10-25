@@ -32,11 +32,11 @@ LICENSE
 
 USAGE
 
-	$ python3 <script>
+	$ python3 <script> <arguments>
 
-	or (if you hace python3 as your default version):
+	or (if you have python3 as your default version):
 
-	$ ./<script>
+	$ ./<script> <arguments>
 
 	RENAME SERIES
 
