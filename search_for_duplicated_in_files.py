@@ -91,7 +91,8 @@ def __compare_lists_items(l1, l2, in_file, from_file):
             if(match_ratio > MATCH_THRESHOLD):
                 matches = matches + 1
                 if(from_file or (matches > 1)):
-                    duplicated_msg(i1.strip(), i2.strip(), in_file, from_file, round((match_ratio * 100), 2))
+                    duplicated_msg(
+                        i1.strip(), i2.strip(), in_file, from_file, round((match_ratio * 100), 2))
                     l2.remove(i2)
 
 
@@ -128,7 +129,7 @@ def __search_in_file(in_file):
 
 if __name__ == '__main__':
 
-    python_required_version = 2
+    python_required_version = 3
 
     check_python_version(python_required_version)
 
@@ -137,7 +138,8 @@ if __name__ == '__main__':
     in_file = ""
     from_file = ""
 
-    parser = argparse.ArgumentParser(description='Look for repeated strings in file[s]')
+    parser = argparse.ArgumentParser(
+        description='Look for repeated strings in file[s]')
     parser.add_argument('-from', dest='from_file',
                         help="from file")
     parser.add_argument('-in', dest='in_file',

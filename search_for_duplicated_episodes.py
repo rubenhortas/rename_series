@@ -116,8 +116,10 @@ def __start_scan(path, debugging, testing):
                             else:
                                 if(current_episode not in repeated_episodes):
                                     repeated_episodes.append(current_episode)
-                                    relative_episode_path = root.replace(path, "")
-                                    repeatedFile_msg(os.path.join(relative_episode_path, current_episode))
+                                    relative_episode_path = root.replace(
+                                        path, "")
+                                    repeatedFile_msg(
+                                        os.path.join(relative_episode_path, current_episode))
         if repeated_episodes != []:
             __get_best_quality(root, repeated_episodes)
         else:
@@ -126,7 +128,7 @@ def __start_scan(path, debugging, testing):
 
 if __name__ == '__main__':
 
-    python_required_version = 2
+    python_required_version = 3
 
     check_python_version(python_required_version)
 

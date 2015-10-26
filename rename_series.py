@@ -60,7 +60,7 @@ def __start_renaming(list_subtitles, list_videos, current_path, debugging,
 
 if __name__ == '__main__':
 
-    python_required_version = 2
+    python_required_version = 3
 
     check_python_version(python_required_version)
 
