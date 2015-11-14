@@ -98,7 +98,5 @@ def mv(orig, dest, debugging, testing):
     if not testing and not debugging:
         try:
             os.rename(orig, dest)
-        except IOError as ex:
-            Messages.error_msg(ex)
-        except OSError as ex:
+        except Exception as ex:
             Messages.error_msg(ex)
