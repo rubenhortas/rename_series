@@ -164,7 +164,7 @@ if __name__ == '__main__':
 
             header(in_file, args.from_file, args.debug, args.test)
 
-            if(args.from_file):  # from_file especified
+            if(args.from_file):  # from_file specified
 
                 if(os.path.isfile(args.from_file)):
                     from_file = args.from_file
@@ -176,7 +176,7 @@ if __name__ == '__main__':
                     error_msg("{0} is not a file.".format(args.from_file))
                     sys.exit(-1)
 
-            else:  # from_file not especified
+            else:  # from_file not specified
                 __search_in_file(in_file)
 
         else:  # in_file is not a file
