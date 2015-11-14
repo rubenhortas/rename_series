@@ -24,7 +24,8 @@ def check_python_version(python_required_version):
 
     major, minor, micro, releaselevel, serial = version_info
     if major != python_required_version:
-        Messages.error_msg("Requires Python {0}".format(python_required_version))
+        Messages.error_msg(
+            "Requires Python {0}".format(python_required_version))
         exit(0)
 
 
@@ -41,6 +42,4 @@ def exit_signal_handler(signal, frame):
     in the application main file.
     """
 
-    print
-    Messages.info_msg("Stopped")
     exit(0)
