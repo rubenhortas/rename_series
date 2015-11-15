@@ -54,7 +54,7 @@ def get_files(directory, debugging):
             print_list(list_files)
 
     except Exception as ex:
-        Messages.exception(ex)
+        Messages.exception_msg(ex)
 
     return list_files
 
