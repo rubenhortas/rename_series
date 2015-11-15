@@ -12,11 +12,12 @@
 import os
 import re
 
-from crosscutting import Messages, MessagesRenameSeries
+from crosscutting import Messages, MessagesRenameSeries, MessagesMoveSeries
 import domain.utils.FileHandler as FileHandler
 
 
-IS_WELL_FORMATED_COMPILED_PATTERN = re.compile("^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
+IS_WELL_FORMATED_COMPILED_PATTERN = re.compile(
+    "^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
 
 TRANSLATED_NAMES = {
     "Family Guy":   "Padre de familia",
@@ -77,10 +78,13 @@ class File:
 
         if self.debugging:
             Messages.debug_msg("_Rename info:")
-            Messages.debug_msg("\tself.f_abs_original_path: {0}".format(self.f_abs_original_path))
-            Messages.debug_msg("\tself.f_abs_new_path: {0}".format(self.f_abs_new_path))
+            Messages.debug_msg(
+                "\tself.f_abs_original_path: {0}".format(self.f_abs_original_path))
+            Messages.debug_msg(
+                "\tself.f_abs_new_path: {0}".format(self.f_abs_new_path))
             Messages.debug_msg("\tself.file_name: {0}".format(self.file_name))
-            Messages.debug_msg("\tself.file_name_new: {0}".format(self.file_name_new))
+            Messages.debug_msg(
+                "\tself.file_name_new: {0}".format(self.file_name_new))
             Messages.debug_msg("\tself.extension: {0}".format(self.extension))
             Messages.debug_msg("\tself.show_name {0}".format(self.show_name))
             Messages.debug_msg("\tself.episode: {0}".format(self.episode))
@@ -90,7 +94,7 @@ class File:
             self.__print_move()
 
         FileHandler.mv(self.f_abs_original_path, self.f_abs_new_path,
-                        self.debugging, self.testing)
+                       self.debugging, self.testing)
 
     def __print_move(self):
         """
@@ -99,7 +103,7 @@ class File:
         """
 
         if self.file_name != self.file_name_new:
-            Messages.mv_msg(self.file_name, self.file_name_new)
+            MessagesMoveSeries.mv_msg(self.file_name, self.file_name_new)
 
     def __translate(self):
         """
