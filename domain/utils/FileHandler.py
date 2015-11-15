@@ -40,17 +40,21 @@ def get_files(directory, debugging):
 
     list_files = []
 
-    files_in_d = os.listdir(directory)
+    try:
+        files_in_d = os.listdir(directory)
 
-    for f in files_in_d:
-        if os.path.isfile(os.path.join(directory, f)):  # Skip directories
-            # Exclude another types than videos or subtitles
-            if is_video(f) or __is_subtitle(f):
-                list_files.append(f)
+        for f in files_in_d:
+            if os.path.isfile(os.path.join(directory, f)):  # Skip directories
+                # Exclude another types than videos or subtitles
+                if is_video(f) or __is_subtitle(f):
+                    list_files.append(f)
 
-    if debugging:
-        print("+ get_files()")
-        print_list(list_files)
+        if debugging:
+            print("+ get_files()")
+            print_list(list_files)
+
+    except Exception as ex:
+        Messages.exception(ex)
 
     return list_files
 
