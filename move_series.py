@@ -27,9 +27,9 @@ from domain.utils.FileHandler import get_files, mv
 from presentation.utils.ClearScreen import clear_screen
 
 
-path_movies_local = "/home/ruben/Lab/fakedVideos"
+path_movies_local = "/home/ruben/Vídeos"
 buffer_disks = ["/home/ruben/Lab/fakedDestBuffer"]
-final_disks = ["/home/ruben/Lab/fakedDest"]
+final_disks = ["/media/ruben/3tb"]
 
 
 def __move_to_known_disks(disks_list, is_buffer, debugging, testing):
@@ -140,14 +140,14 @@ if __name__ == "__main__":
 
     # If user specifies a directory to move the files
     if input_dest:
-            if(os.path.isdir(input_dest)):
-                time_ini = time.clock()
-                __start_moving(input_dest, False, debugging, testing)
-                time_fin = time.clock()
-                total_time = time_fin - time_ini
-                print_time(total_time)
-            else:
-                error_msg("{0} is not a directory.".format(input_dest))
+        if(os.path.isdir(input_dest)):
+            time_ini = time.clock()
+            __start_moving(input_dest, False, debugging, testing)
+            time_fin = time.clock()
+            total_time = time_fin - time_ini
+            print_time(total_time)
+        else:
+            error_msg("{0} is not a directory.".format(input_dest))
 
     # If the user did not specify a directory, search for known mounted disks
     else:

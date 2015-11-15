@@ -24,4 +24,4 @@ class Tag:
     warning = "[" + Color.bold_yellow + "WARNING" + Color.end + "]"
     move = Color.bold_yellow + "->" + Color.end
     debug = ">>"
-    ex = "[" + Color.bold_red + "EXCEPTION!¡" + color.end + "]:"
+    ex = "[" + Color.bold_red + "EXCEPTION!¡" + Color.end + "]:"
