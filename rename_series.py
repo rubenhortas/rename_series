@@ -14,6 +14,8 @@ import argparse
 import os
 import signal
 
+from application.rename_series import rename_subtitles
+from application.rename_series import rename_videos
 from application.utils.python_utils import exit_signal_handler
 from application.utils.python_utils import get_interpreter_version
 from crosscutting.condition_messages import print_error
@@ -40,16 +42,14 @@ if __name__ == '__main__':
         parser = argparse.ArgumentParser(description='Renames some series.')
         parser.add_argument('-t', '--test', dest='testing', action='store_true',
                             help='run a single test showing the expected output')
-        parser.add_argument('-d', '--debug', dest='debugging', action='store_true',
-                            help='show debug info')
-        parser.add_argument('-D', '--dir', dest='user_dir',
+        parser.add_argument('-p', '--path', dest='user_path',
                             help='use only the specified directory/path')
 
         args = parser.parse_args()
 
         clear_screen()
 
-        if(args.user_dir):
+        if(args.user_path):
             shows_paths = shows_paths.append(args.user_dir)
         else:
             shows_paths = SHOWS_PATHS
@@ -60,13 +60,13 @@ if __name__ == '__main__':
             else:
                 directories_found = True
 
-                print_header(current_path, args.debugging, args.testing)
+                print_header(current_path, args.testing)
 
                 subtitles = get_subtitles(current_path)
                 videos = get_videos(current_path)
 
-                rename_subtitles(subtitles, path, args.debugging, args.testing)
-                rename_videos(subtitles, path, args.debugging, args.testing)
+                rename_subtitles(subtitles, path, args.testing)
+                rename_videos(subtitles, path, args.testing)
 
 #                 # Check for subtitles
 #                 l_videos, l_subs = get_files_separated(current_path,
