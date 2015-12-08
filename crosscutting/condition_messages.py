@@ -13,9 +13,9 @@ from presentation.Color import Color
 from presentation.Tag import Tag
 
 
-def error_msg(msg):
+def print_error(msg):
     """
-    error_msg(msg)
+    print_error(msg)
         Prints an error message.
     Arguments:
         - msg: (string) Error message.
@@ -24,9 +24,9 @@ def error_msg(msg):
     print("{0} {1}".format(Tag.error, msg))
 
 
-def warning_msg(msg):
+def print_warning(msg):
     """
-    warning_msg(msg)
+    print_warning(msg)
         Prints a warning message.
     Arguments:
         - msg: (string) Warning message.
@@ -35,9 +35,9 @@ def warning_msg(msg):
     print("{0} {1}".format(Tag.warning, msg))
 
 
-def info_msg(msg):
+def print_info(msg):
     """
-    info_msg(msg)
+    print_info(msg)
         Prints an information message.
     Arguments:
         - msg: (string) Information message.
@@ -46,9 +46,9 @@ def info_msg(msg):
     print("{0} {1}".format(Tag.info, msg))
 
 
-def debug_msg(msg):
+def print_debug(msg):
     """
-    debug_msg(msg)
+    print_debug(msg)
         Prints a debug message.
     Arguments:
         - msg: (string) Debug message.
@@ -57,9 +57,9 @@ def debug_msg(msg):
     print("{0} {1}".format(Tag.debug, msg))
 
 
-def exception_msg(msg):
+def print_exception(msg):
     """
-    exception_msg(msg)
+    print_exception(msg)
         Prints an exception message.
     Arguments:
         - msg: (string) System exception message.

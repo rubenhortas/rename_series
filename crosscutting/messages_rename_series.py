@@ -13,9 +13,9 @@ from presentation.Color import Color
 from presentation.Tag import Tag
 
 
-def header(current_disk, debugging, testing):
+def print_header(current_disk, debugging, testing):
     """
-    header()
+    print_header()
         Print a couple of introduction lines
     """
 
