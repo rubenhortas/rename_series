@@ -14,8 +14,8 @@ import argparse
 import os
 import signal
 
-from application.utils.PythonUtils import exit_signal_handler
-from application.utils.PythonUtils import get_interpreter_version
+from application.utils.python_utils import exit_signal_handler
+from application.utils.python_utils import get_interpreter_version
 from crosscutting.condition_messages import print_error
 from crosscutting.constants import REQUIRED_PYTHON_VERSION
 from crosscutting.constants import SHOWS_PATHS
@@ -76,5 +76,5 @@ if __name__ == '__main__':
             print_error('Has not entered any directory')
 
     else:
-        print_error("Requires Python {0}".format(PYTHON_REQUIRED_VERSION))
+        print_error("Requires Python {0}".format(REQUIRED_PYTHON_VERSION))
         exit(0)

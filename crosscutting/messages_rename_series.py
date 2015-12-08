@@ -9,8 +9,8 @@
 @file:    MessagesRenameSeries.py
 """
 
-from presentation.Color import Color
-from presentation.Tag import Tag
+from presentation.color import Color
+from presentation.tag import Tag
 
 
 def print_header(current_disk, debugging, testing):
@@ -19,7 +19,8 @@ def print_header(current_disk, debugging, testing):
         Print a couple of introduction lines
     """
 
-    header_msg = "{0} Renaming files in {1}{2}{3}".format(Tag.info, Color.bold_red, current_disk, Color.end)
+    header_msg = "{0} Renaming files in {1}{2}{3}".format(
+        Tag.info, Color.bold_red, current_disk, Color.end)
 
     if(debugging or testing):
         header_msg = "{0} {1}[TEST]{2}".format(header_msg, Color.bold_red,
