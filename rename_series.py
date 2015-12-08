@@ -20,8 +20,8 @@ from crosscutting.condition_messages import print_error
 from crosscutting.constants import REQUIRED_PYTHON_VERSION
 from crosscutting.constants import SHOWS_PATHS
 from crosscutting.messages_rename_series import print_header
-from domain.utils import get_videos
-form domain.utils import get_subtitles
+from domain.utils.file_handler import get_subtitles
+from domain.utils.file_handler import get_videos
 
 
 if __name__ == '__main__':
@@ -48,9 +48,9 @@ if __name__ == '__main__':
         clear_screen()
 
         if(args.user_dir):
-            shows_pahts = shows_pahts.append(args.user_dir)
+            shows_paths = shows_paths.append(args.user_dir)
         else:
-            shows_pahts = SHOWS_PATHS
+            shows_paths = SHOWS_PATHS
 
         for current_path in shows_paths:
             if not os.path.isdir(current_path):
@@ -60,9 +60,9 @@ if __name__ == '__main__':
 
                 print_header(current_path, args.debugging, args.testing)
 
-                subtitles = get_subtitles(current_path, args.debugging)
-                videos = get_videos(current_path, args.debugging)
-                
+                subtitles = get_subtitles(current_path)
+                videos = get_videos(current_path)
+
                 rename_subtitles(subtitles, path, args.debugging, args.testing)
                 rename_videos(subtitles, path, args.debugging, args.testing)
 

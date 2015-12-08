@@ -57,7 +57,7 @@ def get_files(directory, debugging):
     return list_files
 
 
-def get_videos(path, debugging):
+def get_videos(path):
     """
     get_videos(path)
         Gets video files from a directory.
@@ -77,7 +77,7 @@ def get_videos(path, debugging):
     return videos
 
 
-def get_subtitles(path, debugging):
+def get_subtitles(path):
     """
     get_subtitles(path)
         Gets subtitle files from a directory.
