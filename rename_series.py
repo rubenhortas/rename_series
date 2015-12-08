@@ -28,7 +28,9 @@ if __name__ == '__main__':
 
     signal.signal(signal.SIGINT, exit_signal_handler)
 
-    if get_interpreter_version == REQUIRED_PYTHON_VERSION:
+    interpreter = get_interpreter_version()
+
+    if interpreter == REQUIRED_PYTHON_VERSION:
 
         shows_paths = []
         videos = []
