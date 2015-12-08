@@ -20,6 +20,8 @@ from crosscutting.condition_messages import print_error
 from crosscutting.constants import REQUIRED_PYTHON_VERSION
 from crosscutting.constants import SHOWS_PATHS
 from crosscutting.messages_rename_series import print_header
+from domain.utils import get_videos
+form domain.utils import get_subtitles
 
 
 if __name__ == '__main__':
@@ -28,9 +30,10 @@ if __name__ == '__main__':
 
     if get_interpreter_version == REQUIRED_PYTHON_VERSION:
 
-        list_videos = []
-        list_subtitles = []
-        valid_dirs = False
+        shows_paths = []
+        videos = []
+        subtitles = []
+        directories_found = False
 
         parser = argparse.ArgumentParser(description='Renames some series.')
         parser.add_argument('-t', '--test', dest='testing', action='store_true',
@@ -45,41 +48,31 @@ if __name__ == '__main__':
         clear_screen()
 
         if(args.user_dir):
-            valid_dirs = True
-            print_header(args.user_dir, args.debugging, args.testing)
-
-            list_videos, list_subtitles = get_files_separated(args.user_dir,
-                                                              args.debugging)
-            __start_renaming(list_subtitles, list_videos, args.user_dir,
-                             args.debugging, args.testing)
-
-            # Check for subs
-            l_videos, l_subs = get_files_separated(
-                args.user_dir, args.debugging)
-            check_for_subs(l_videos, l_subs, args.user_dir, args.debugging,
-                           args.testing)
-
+            shows_pahts = shows_pahts.append(args.user_dir)
         else:
-            for current_path in shows_paths:
-                if not os.path.isdir(current_path):
-                    error_msg('{0} is not a directory'.format(current_path))
-                else:
-                    valid_dirs = True
+            shows_pahts = SHOWS_PATHS
 
-                    print_header(current_path, args.debugging, args.testing)
+        for current_path in shows_paths:
+            if not os.path.isdir(current_path):
+                print_error('{0} is not a directory'.format(current_path))
+            else:
+                directories_found = True
 
-                    list_videos, list_subtitles = get_files_separated(current_path,
-                                                                      args.debugging)
-                    __start_renaming(list_subtitles, list_videos, current_path,
-                                     args.debugging, args.testing)
+                print_header(current_path, args.debugging, args.testing)
 
-                    # Check for subtitles
-                    l_videos, l_subs = get_files_separated(current_path,
-                                                           args.debugging)
-                    check_for_subs(l_videos, l_subs, current_path, args.debugging,
-                                   args.testing)
+                subtitles = get_subtitles(current_path, args.debugging)
+                videos = get_videos(current_path, args.debugging)
+                
+                rename_subtitles(subtitles, path, args.debugging, args.testing)
+                rename_videos(subtitles, path, args.debugging, args.testing)
 
-        if not valid_dirs:
+#                 # Check for subtitles
+#                 l_videos, l_subs = get_files_separated(current_path,
+#                                                        args.debugging)
+#                 check_for_subs(l_videos, l_subs, current_path, args.debugging,
+#                                args.testing)
+
+        if not directories_found:
             print_error('Has not entered any directory')
 
     else:

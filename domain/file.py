@@ -40,7 +40,7 @@ class File:
     f_abs_original_path = ""  # Absolute orignal file path
     f_abs_new_path = ""
     file_name = ""
-    file_name_new = ""
+    new_file_name = ""
     show_name = ""
     extension = ""
     episode = ""  # episode of the file well formated -> 1x07

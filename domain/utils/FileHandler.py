@@ -11,22 +11,20 @@
 
 import os
 
-from application.utils.ListHandler import print_list
-from crosscutting import Messages, MessagesMoveSeries
+from crosscutting.constants import VIDEO_EXTENSIONS
 
 
-def __is_subtitle(current_file):
-    ext = os.path.splitext(current_file)[1]
-    if ext == ".srt":
+def is_video(file):
+    file_extension = os.path.splitext(file)[1]
+    if file_extension in VIDEO_EXTENSIONS:
         return True
     else:
         return False
 
 
-def is_video(current_file):
-    ext = os.path.splitext(current_file)[1]
-    video_formats = [".mp4", ".avi", ".mkv"]
-    if ext in video_formats:
+def is_subtitle(file):
+    file_extension = os.path.splittext(file)[1]
+    if file_extension == ".srt":
         return True
     else:
         return False
@@ -59,31 +57,44 @@ def get_files(directory, debugging):
     return list_files
 
 
-def get_files_separated(directory, debugging):
+def get_videos(path, debugging):
     """
-    __get_files_separated(directory)
-        Gets files from a directory and separates them in videos or subtitles.
+    get_videos(path)
+        Gets video files from a directory.
+    Arguments:
+        - path: (string) Path.
     """
 
-    list_videos = []
-    list_subtitles = []
+    videos = []
 
-    files_in_d = os.listdir(directory)
+    files = os.listdir(path)
 
-    for f in files_in_d:
-        if os.path.isfile(os.path.join(directory, f)):  # Skip directories
-            # Exclude another types than videos or subtitles
+    for f in files:
+        if os.path.isfile(os.path.join(path, f)):
             if is_video(f):
-                list_videos.append(f)
-            elif __is_subtitle(f):
-                list_subtitles.append(f)
+                videos.append(f)
 
-    if debugging:
-        print("+ get_files_separated()")
-        print_list(list_videos)
-        print_list(list_subtitles)
+    return videos
 
-    return list_videos, list_subtitles
+
+def get_subtitles(path, debugging):
+    """
+    get_subtitles(path)
+        Gets subtitle files from a directory.
+    Arguments:
+        - path: (string) Path.
+    """
+
+    subtitles = []
+
+    files = os.listdir(path)
+
+    for f in files:
+        if os.path.isfile(os.path.join(path, f)):
+            if is_subtitle(f):
+                subtitles.append(f)
+
+    return subtitles
 
 
 def mv(orig, dest, debugging, testing):

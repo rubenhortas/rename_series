@@ -10,8 +10,9 @@
 @interpreter: python3
 """
 
-REQUIRED_PYTHON_VERSION = 3
-SHOWS_PATHS = ['/home/ruben/Vídeos', '/home/ruben/Vídeos/temp']
 DIR_SEASON_NAME = "Temporada"
 FILE_WELL_FORMATED_PATTERN = re.compile(
     "(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>[\w \-\(\)])?\.(?P<extension>[\w]{3})", re.UNICODE)
+REQUIRED_PYTHON_VERSION = 3
+SHOWS_PATHS = ['/home/ruben/Vídeos', '/home/ruben/Vídeos/temp']
+VIDEO_EXTENSIONS = [".mp4", ".avi", ".mkv"]
