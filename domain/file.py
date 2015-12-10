@@ -12,9 +12,9 @@
 import os
 import re
 
-# from crosscutting import condition_messages
-# from crosscutting import messages_move_series
-import domain.utils.file_handler
+from crosscutting import condition_messages
+from crosscutting import messages_move_series
+from domain.utils import file_handler
 
 
 IS_WELL_FORMATED_COMPILED_PATTERN = re.compile(
@@ -31,7 +31,7 @@ class File:
     episode = None
     extension = None
     file_name = None
-    file_new_name = None
+    new_file_name = None
     new_path = None
     original_path = None
     path = None
@@ -64,23 +64,22 @@ class File:
             Renames a file with a new name.
         """
 
-        self.new_path = os.path.join(self.path, self.file_name_new)
+        try:
+            self.new_path = os.path.join(self.path, self.new_file_name)
 
-        if self.testing:
-            self.__print_move()
-
-        file_handler.mv(self.original_path, self.new_path,
-                        self.debugging, self.testing)
+            file_handler.mv(self.original_path, self.new_path, self.testing)
+        except Exception as ex:
+            condition_messages.print_exception(ex)
 
 #     def _print_move(self):
 #         """
-#         __print_move(self)
+#         _print_move(self)
 #         Displays the original file name and the new file name.
 #         """
 #
-#         if self.file_name != self.file_name_new:
-#             messages_move_series.mv_msg(self.file_name, self.file_name_new)
-#
+#         if self.file_name != self.new_file_name:
+#             messages_move_series.mv_msg(self.file_name, self.new_file_name)
+
 #     def _translate(self):
 #         """
 #          __translate(self)

@@ -11,13 +11,14 @@
 
 import os
 
-from crosscutting.constants import SUBTITLE_EXTENSIONS
-from crosscutting.constants import VIDEO_EXTENSIONS
+from crosscutting import condition_messages
+from crosscutting import constants
+from crosscutting import messages_move_series
 
 
 def is_video(file):
     file_extension = os.path.splitext(file)[1]
-    if file_extension in VIDEO_EXTENSIONS:
+    if file_extension in constants.VIDEO_EXTENSIONS:
         return True
     else:
         return False
@@ -25,7 +26,7 @@ def is_video(file):
 
 def is_subtitle(file):
     file_extension = os.path.splitext(file)[1]
-    if file_extension in SUBTITLE_EXTENSIONS:
+    if file_extension in constants.SUBTITLE_EXTENSIONS:
         return True
     else:
         return False
@@ -94,21 +95,21 @@ def get_subtitles(path):
     return subtitles
 
 
-# def mv(orig, dest, debugging, testing):
-#     """
-#     mv(orig, dest, debugging, testing)
-#         Moves all the files to the same directory.
-#     Arguments:
-#         - orig: (string) Directory where the files will be gotten.
-#         - dest: (string) Directory where the files will be moved.
-#         - debugging: (boolean) Indicates if the program is in debug mode.
-#         - testing: (boolean) Indicates if the program is in testing mode.s
-#     """
-#
-#     MessagesMoveSeries.mv_msg(orig, dest)
-#
-#     if not testing and not debugging:
-#         try:
-#             os.rename(orig, dest)
-#         except Exception as ex:
-#             Messages.error_msg(ex)
+def mv(orig, dest, testing):
+    """
+    mv(orig, dest, debugging, testing)
+        Moves all the files to the same directory.
+    Arguments:
+        - orig: (string) Directory where the files will be gotten.
+        - dest: (string) Directory where the files will be moved.
+        - debugging: (boolean) Indicates if the program is in debug mode.
+        - testing: (boolean) Indicates if the program is in testing mode.s
+    """
+
+    messages_move_series.mv_msg(orig, dest)
+
+    if not testing:
+        try:
+            os.rename(orig, dest)
+        except Exception as ex:
+            condition_messages.print_error(ex)
