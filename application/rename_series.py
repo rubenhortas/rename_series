@@ -11,14 +11,15 @@
 """
 
 from crosscutting.condition_messages import print_info
-from domain import subtitle
+from domain.subtitle import Subtitle
+from domain.video import Video
 
 
 def rename_subtitles(subtitles, path, testing, debugging):
     renamed_subtitles = False
 
     for subtitle in sorted(subtitles):
-        current_subtitle = subtitle(path, subtitle, testing, debugging)
+        current_subtitle = Subtitle(path, subtitle, testing, debugging)
 
         if current_subtitle.file_name != current_subtitle.new_file_name:
             renamed_subtitles = True
@@ -31,7 +32,7 @@ def rename_videos(videos, path, testing, debugging):
     renamed_videos = False
 
     for video in sorted(videos):
-        current_video = video(path, current_video, testing, debugging)
+        current_video = Video(path, current_video, testing, debugging)
 
         if ((this_video.file_name_new != '')
                 and (this_video.file_name != this_video.file_name_new)):

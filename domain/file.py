@@ -12,21 +12,13 @@
 import os
 import re
 
-from crosscutting import Messages, MessagesRenameSeries, MessagesMoveSeries
-import domain.utils.FileHandler as FileHandler
+# from crosscutting import condition_messages
+# from crosscutting import messages_move_series
+import domain.utils.file_handler
 
 
 IS_WELL_FORMATED_COMPILED_PATTERN = re.compile(
     "^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
-
-TRANSLATED_NAMES = {
-    "Family Guy":   "Padre de familia",
-    "Marvels Agents of S H I E L D": "Marvel\"s Agents Of S.H.I.E.L.D.",
-    "Supernatural": "Sobrenatural",
-    "The Simpsons": "Los Simpson",
-    "Warehouse 13": "Almacén 13",
-    "Warehouse13": "Almacén 13"
-}
 
 
 class File:
@@ -36,26 +28,24 @@ class File:
             to child classes videofile and subtitlefile.
     """
 
-    files_path = ""
-    f_abs_original_path = ""  # Absolute orignal file path
-    f_abs_new_path = ""
-    file_name = ""
-    new_file_name = ""
-    show_name = ""
-    extension = ""
-    episode = ""  # episode of the file well formated -> 1x07
-
-    debugging = False
+    episode = None
+    extension = None
+    file_name = None
+    file_new_name = None
+    new_path = None
+    original_path = None
+    path = None
+    season = None
+    show_name = None
     testing = False
 
-    def __init__(self, files_path, file_name, testing, debugging):
-        self.files_path = files_path
+    def __init__(self, path, file_name, testing):
+        self.path = path
         self.file_name = file_name
-        self.f_abs_original_path = os.path.join(files_path, self.file_name)
+        self.original_path = os.path.join(path, self.file_name)
         self.testing = testing
-        self.debugging = debugging
 
-    def is_well_formated(self):
+    def is_well_formatted(self):
         """
         __is_well_formated(self)
             Returns if the file is well formated
@@ -68,52 +58,38 @@ class File:
         else:
             return False
 
-    def __rename(self):
+    def _rename(self):
         """
-        __rename(self)
+        _rename(self)
             Renames a file with a new name.
         """
 
-        self.f_abs_new_path = os.path.join(self.files_path, self.file_name_new)
-
-        if self.debugging:
-            Messages.debug_msg("_Rename info:")
-            Messages.debug_msg(
-                "\tself.f_abs_original_path: {0}".format(self.f_abs_original_path))
-            Messages.debug_msg(
-                "\tself.f_abs_new_path: {0}".format(self.f_abs_new_path))
-            Messages.debug_msg("\tself.file_name: {0}".format(self.file_name))
-            Messages.debug_msg(
-                "\tself.file_name_new: {0}".format(self.file_name_new))
-            Messages.debug_msg("\tself.extension: {0}".format(self.extension))
-            Messages.debug_msg("\tself.show_name {0}".format(self.show_name))
-            Messages.debug_msg("\tself.episode: {0}".format(self.episode))
-            Messages.debug_msg("\tself.ov: {0}".format(self.ov))
+        self.new_path = os.path.join(self.path, self.file_name_new)
 
         if self.testing:
             self.__print_move()
 
-        FileHandler.mv(self.f_abs_original_path, self.f_abs_new_path,
-                       self.debugging, self.testing)
+        file_handler.mv(self.original_path, self.new_path,
+                        self.debugging, self.testing)
 
-    def __print_move(self):
-        """
-        __print_move(self)
-        Displays the original file name and the new file name.
-        """
-
-        if self.file_name != self.file_name_new:
-            MessagesMoveSeries.mv_msg(self.file_name, self.file_name_new)
-
-    def __translate(self):
-        """
-         __translate(self)
-            Translates some series names.
-        """
-
-        name = self.show_name
-
-        if name in TRANSLATED_NAMES:
-            translated_name = TRANSLATED_NAMES.get(name)
-            self.file_name_new = self.file_name_new.replace(name,
-                                                            translated_name)
+#     def _print_move(self):
+#         """
+#         __print_move(self)
+#         Displays the original file name and the new file name.
+#         """
+#
+#         if self.file_name != self.file_name_new:
+#             messages_move_series.mv_msg(self.file_name, self.file_name_new)
+#
+#     def _translate(self):
+#         """
+#          __translate(self)
+#             Translates some series names.
+#         """
+#
+#         name = self.show_name
+#
+#         if name in TRANSLATED_NAMES:
+#             translated_name = TRANSLATED_NAMES.get(name)
+#             self.file_name_new = self.file_name_new.replace(name,
+#                                                             translated_name)

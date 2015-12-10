@@ -21,5 +21,15 @@ SHOWS_PATHS = ['/home/ruben/Vídeos', '/home/ruben/Vídeos/temp']
 
 
 # File extensions
+DEFAULT_SUBTITLE_EXTENSION = ".srt"
 SUBTITLE_EXTENSIONS = [".srt"]
 VIDEO_EXTENSIONS = [".mp4", ".avi", ".mkv"]
+
+TRANSLATED_NAMES = {
+    "Family Guy":   "Padre de familia",
+    "Marvels Agents of S H I E L D": "Marvel\"s Agents Of S.H.I.E.L.D.",
+    "Supernatural": "Sobrenatural",
+    "The Simpsons": "Los Simpson",
+    "Warehouse 13": "Almacén 13",
+    "Warehouse13": "Almacén 13"
+}
