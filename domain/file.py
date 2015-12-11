@@ -20,13 +20,17 @@ from domain.utils import file_handler
 IS_WELL_FORMATED_COMPILED_PATTERN = re.compile(
     "^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
 
+TRANSLATED_NAMES = {
+    "Family Guy":   "Padre de familia",
+    "Marvels Agents of S H I E L D": "Marvel\"s Agents Of S.H.I.E.L.D.",
+    "Supernatural": "Sobrenatural",
+    "The Simpsons": "Los Simpson",
+    "Warehouse 13": "Almacén 13",
+    "Warehouse13": "Almacén 13"
+}
+
 
 class File:
-    """
-    Class File
-            Superclass that stores data and operations common
-            to child classes videofile and subtitlefile.
-    """
 
     episode = None
     extension = None
@@ -47,10 +51,9 @@ class File:
 
     def is_well_formatted(self):
         """
-        __is_well_formated(self)
+        is_well_formatted(self)
             Returns if the file is well formated
-            Well formated = show_name SExEP [ ...].extension =
-            = show_name 0x00 [episode name].avi
+            Well formatted = show_name 0x00 [episode name].avi
         """
 
         if IS_WELL_FORMATED_COMPILED_PATTERN.match(self.file_name):
@@ -80,15 +83,15 @@ class File:
 #         if self.file_name != self.new_file_name:
 #             messages_move_series.mv_msg(self.file_name, self.new_file_name)
 
-#     def _translate(self):
-#         """
-#          __translate(self)
-#             Translates some series names.
-#         """
-#
-#         name = self.show_name
-#
-#         if name in TRANSLATED_NAMES:
-#             translated_name = TRANSLATED_NAMES.get(name)
-#             self.file_name_new = self.file_name_new.replace(name,
-#                                                             translated_name)
+    def _translate(self):
+        """
+         _translate(self)
+            Translates some series names.
+        """
+
+        show_name = self.show_name
+
+        if show_name in TRANSLATED_NAMES:
+            translated_name = TRANSLATED_NAMES.get(show_name)
+            self.new_file_name = show_name.replace(show_name,
+                                                   translated_name)
