@@ -20,15 +20,6 @@ from domain.utils import file_handler
 IS_WELL_FORMATED_COMPILED_PATTERN = re.compile(
     "^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
 
-TRANSLATED_NAMES = {
-    "Family Guy":   "Padre de familia",
-    "Marvels Agents of S H I E L D": "Marvel\"s Agents Of S.H.I.E.L.D.",
-    "Supernatural": "Sobrenatural",
-    "The Simpsons": "Los Simpson",
-    "Warehouse 13": "Almacén 13",
-    "Warehouse13": "Almacén 13"
-}
-
 
 class File:
 
@@ -61,19 +52,6 @@ class File:
         else:
             return False
 
-    def _rename(self):
-        """
-        _rename(self)
-            Renames a file with a new name.
-        """
-
-        try:
-            self.new_path = os.path.join(self.path, self.new_file_name)
-
-            file_handler.mv(self.original_path, self.new_path, self.testing)
-        except Exception as ex:
-            condition_messages.print_exception(ex)
-
 #     def _print_move(self):
 #         """
 #         _print_move(self)
@@ -90,4 +68,20 @@ class File:
         """
 
         if self.show_name in TRANSLATED_NAMES:
-            self.new_file_name = TRANSLATED_NAMES.get(self.show_name)
+            translated_show_name = TRANSLATED_NAMES.get(
+                self.show_name)
+            self.new_file_name = self.new_file_name.replace(
+                self.show_name, translated_show_name)
+
+    def _rename(self):
+        """
+        _rename(self)
+            Renames a file with a new name.
+        """
+
+        try:
+            self.new_path = os.path.join(self.path, self.new_file_name)
+
+            file_handler.mv(self.original_path, self.new_path, self.testing)
+        except Exception as ex:
+            condition_messages.print_exception(ex)
