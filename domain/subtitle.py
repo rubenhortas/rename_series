@@ -13,13 +13,6 @@ from crosscutting import constants
 
 from .file import File
 
-LANG_ES = "Español"
-COUNTRY_ES = "España"
-COUNTRY_ES_STR = "(Español (España))"
-CONTRY_LAT = "Latinoamérica"
-COUNTRY_LAT_STR = "(Español (Latinoamérica))"
-VOS_ES = "VOSE"
-
 
 class Subtitle(File):
 
@@ -37,17 +30,11 @@ class Subtitle(File):
     def __set_new_name(self):
         """
         __set_new_name(self)
-            Sets the new file name.
+            Sets new file name.
         """
 
-        if LANG_ES in self.file_name:
-
-            self.new_file_name = self.file_name
-
-            if COUNTRY_ES in self.file_name:
+        for language in constants.VOS:
+            if language in self.file_name:
+                self.new_file_name = self.file_name
                 self.new_file_name = self.new_file_name.replace(
-                    COUNTRY_ES_STR, VOS_ES)
-
-            elif COUNTRY_LAT_STR in self.new_file_name:
-                self.new_file_name = self.new_file_name.replace(COUNTRY_LAT_STR,
-                                                                VOS_ES)
+                    language, constants.VOS.get(language))
