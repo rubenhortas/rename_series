@@ -13,6 +13,7 @@ import os
 import re
 
 from crosscutting import condition_messages
+from crosscutting import constants
 from crosscutting import messages_move_series
 from domain.utils import file_handler
 
@@ -67,8 +68,8 @@ class File:
             Translates some series names.
         """
 
-        if self.show_name in TRANSLATED_NAMES:
-            translated_show_name = TRANSLATED_NAMES.get(
+        if self.show_name in constants.TRANSLATED_NAMES:
+            translated_show_name = constants.TRANSLATED_NAMES.get(
                 self.show_name)
             self.new_file_name = self.new_file_name.replace(
                 self.show_name, translated_show_name)
