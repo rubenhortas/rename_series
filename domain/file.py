@@ -89,9 +89,5 @@ class File:
             Translates some series names.
         """
 
-        show_name = self.show_name
-
-        if show_name in TRANSLATED_NAMES:
-            translated_name = TRANSLATED_NAMES.get(show_name)
-            self.new_file_name = show_name.replace(show_name,
-                                                   translated_name)
+        if self.show_name in TRANSLATED_NAMES:
+            self.new_file_name = TRANSLATED_NAMES.get(self.show_name)

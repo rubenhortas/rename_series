@@ -9,17 +9,21 @@
 @file:    SubtitleFile.py
 """
 
+from pathlib import Path
+
 from crosscutting.constants import DEFAULT_SUBTITLE_EXTENSION
 from file import File
 
 
 class SubtitleFile(File):
 
-    def __init__(self, files_path, file_name, testing):
-        super(SubtitleFile, self).__init__(files_path, file_name, testing)
+    def __init__(self, path, file_name, testing):
+        self.path = path
+        self.file_name = file_name
+        self.testing = testing
         self.ext = DEFAULT_SUBTITLE_EXTENSION
         self.__set_new_name()
-        if self.file_name != self.file_name_new:
+        if self.file_name != self.new_file_name:  # Es none?
             self._translate()
             self._rename()
 
@@ -29,12 +33,12 @@ class SubtitleFile(File):
             Sets the new file name.
         """
 
-        self.file_name_new = self.file_name
+        self.new_file_name = self.file_name
 
-        if 'Español' in self.file_name_new:
+        if 'Español' in self.new_file_name:
             if 'España' in self.file_name:
-                self.file_name_new = self.file_name_new.replace(
+                self.new_file_name = self.new_file_name.replace(
                     '(Español (España))', 'VOSE')
-            elif 'Latinoamérica' in self.file_name_new:
-                self.file_name_new = self.file_name_new.replace('(Español (Latinoamérica))',
+            elif 'Latinoamérica' in self.new_file_name:
+                self.new_file_name = self.new_file_name.replace('(Español (Latinoamérica))',
                                                                 'VOSE')
