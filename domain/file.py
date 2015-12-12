@@ -92,6 +92,8 @@ class File:
         """
         _wrap_year(self)
             Wraps the year (if exists) into parentheses.
+        Arguments:
+            - attribute: (string) Attribute where the year will be formatted.
         """
 
         year_match = YEAR_PATTERN.search(attribute)
