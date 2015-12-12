@@ -25,6 +25,9 @@ DEFAULT_SUBTITLE_EXTENSION = ".srt"
 SUBTITLE_EXTENSIONS = [".srt"]
 VIDEO_EXTENSIONS = [".mp4", ".avi", ".mkv"]
 
+# Video qualities
+QUALITIES = ["720p", "1080p"]
+
 # Translations
 TRANSLATED_NAMES = {
     "Family Guy": "Padre de familia",
@@ -39,4 +42,76 @@ TRANSLATED_NAMES = {
 VOS = {
     "(Español (España))": "VOSE",
     "(Español (Latinoamérica))": "VOSE"
+}
+
+# Video Expanded Names
+EXPANDED_NAMES = {
+    # American Horror Story
+    "americanhstory": "American Horror Story",
+    "ahs":            "American Horror Story",
+    "americanstory":  "American Horror Story",
+
+    # Arrow
+    "arr": "Arrow",
+
+    # Bates Motel
+    "bmotel":        "Bates Motel",
+    "bamotel":       "Bates Motel",
+    "batesmotel":    "Bates Motel",
+
+    # Boardwalk Empire
+    "booardempire":      "Boardwalk Empire",
+    "boardwalkempire":   "Boardwalk Empire",
+    "boarempire":        "Boardwalk Empire",
+
+    # Bob"s Burgers
+    "bobs burgers":  "Bob\"s Burgers",
+
+    # Castle
+    "cas": "Castle",
+
+    # Doctor Who
+    "doctorwho":     "Doctor Who",
+
+    # Érase una vez
+    "erasevez":      "Érase una vez (Once upon a time)",
+    "erase una vez": "Érase una vez (Once upon a time)",
+
+    # El mentalista
+    "ementalista":   "El mentalista",
+    "mentalista":    "El mentalista",
+
+    # Elementary
+    "ele":      "Elementary",
+    "elem":     "Elementary",
+    "eleme":    "Elementary",
+    "elmntry":  "Elementary",
+
+    # Marvel"s Agents of SHIELD
+    "marvel\"s agents of s h i e l d":   "Marvel\"s Agents of S.H.I.E.L.D.",
+    "marvels agents":                    "Marvel\"s Agents of S.H.I.E.L.D.",
+
+    # Ray Donovan
+    "rdonovan": "Ray Donovan",
+
+    # South Park
+    "sp":        "South Park",
+    "spark":     "South Park",
+    "southpark": "South Park",
+
+    # The Big Bang Theory
+    "tbbtheory":     "The Big Bang Theory",
+    "tbibatheory":   "The Big Bang Theory",
+
+    # The Middle
+    "tmidd":        "The Middle",
+    "tmid":         "The Middle",
+
+    # The Walking Dead
+    "twalkdead":     "The Walking Dead",
+    "twalkingdead":  "The Walking Dead",
+
+    # True Detective
+    "tdetective":    "True detective",
+    "trdetective":   "True detective",
 }

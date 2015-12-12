@@ -12,94 +12,17 @@
 import os
 import re
 
-from crosscutting import Messages
+from crosscutting import constants
 
-from .Episode import Episode
-from .File import File
+from .episode import Episode
+from .file import File
 
-
-EXPANDED_NAMES = {
-    # American Horror Story
-    "americanhstory": "American Horror Story",
-    "ahs":            "American Horror Story",
-    "americanstory":  "American Horror Story",
-
-    # Arrow
-    "arr": "Arrow",
-
-    # Bates Motel
-    "bmotel":        "Bates Motel",
-    "bamotel":       "Bates Motel",
-    "batesmotel":    "Bates Motel",
-
-    # Boardwalk Empire
-    "booardempire":       "Boardwalk Empire",
-    "boardwalkempire":   "Boardwalk Empire",
-    "boarempire":        "Boardwalk Empire",
-
-    # Bob"s Burgers
-    "bobs burgers":  "Bob\"s Burgers",
-
-    # Castle
-    "cas": "Castle",
-
-    # Doctor Who
-    "doctorwho":     "Doctor Who",
-
-    # Érase una vez
-    "erasevez":      "Érase una vez (Once upon a time)",
-    "erase una vez": "Érase una vez (Once upon a time)",
-
-    # El mentalista
-    "ementalista":   "El mentalista",
-    "mentalista":    "El mentalista",
-
-    # Elementary
-    "ele":      "Elementary",
-    "elem":     "Elementary",
-    "eleme":    "Elementary",
-    "elmntry":  "Elementary",
-
-    # Marvel"s Agents of SHIELD
-    "marvel\"s agents of s h i e l d":   "Marvel\"s Agents of S.H.I.E.L.D.",
-    "marvels agents":                    "Marvel\"s Agents of S.H.I.E.L.D.",
-
-
-    # Ray Donovan
-    "rdonovan": "Ray Donovan",
-
-    # South Park
-    "sp":        "South Park",
-    "spark":     "South Park",
-    "southpark": "South Park",
-
-    # The Big Bang Theory
-    "tbbtheory":     "The Big Bang Theory",
-    "tbibatheory":   "The Big Bang Theory",
-
-    # The Middle
-    "tmidd":        "The Middle",
-    "tmid":         "The Middle",
-    # The Walking Dead
-    "twalkdead":     "The Walking Dead",
-    "twalkingdead":  "The Walking Dead",
-
-    # True Detective
-    "tdetective":    "True detective",
-    "trdetective":   "True detective",
-}
 
 EPISODE_TITLE_PATTERN = re.compile("[\w ]*", re.UNICODE)
 YEAR_PATTERN = re.compile(" \d{4}")
-QUALITIES = ["720p", "1080p"]
 
 
 class Video(File):
-    """
-    Class Video
-        Stores the data and operations relatives to the video files.
-        Child class of cFile.
-    """
 
     episode_in_name = None
     episode_title = None
@@ -108,7 +31,7 @@ class Video(File):
     def __init__(self, files_path, file_name, testing):
         super(Video, self).__init__(files_path, file_name, testing)
 
-        if not self.is_well_formated():
+        if not self.is_well_formatted():
             self.__remove_quality()
 #             self.__get_episode()
 #             if self.__is_serie():
@@ -129,28 +52,29 @@ class Video(File):
             Removes video quality from file name.
         """
 
-        for quality in QUALITIES:
+        for quality in constants.QUALITIES:
             if quality in self.file_name:
                 self.file_name = self.file_name.replace(quality, "")
 
-        self.file_name = self.file_name.replace("..", ".")
+        if ".." in self.file_name:
+            self.file_name = self.file_name.replace("..", ".")
+
         self.file_name = self.file_name.strip()
 
-#     def __get_episode(self):
-#         """
-#         __get_episode(self)
-#             Retrieves and stores the data relative to the season and
-#             episode.
-#         """
-#         this_episode = Episode(self.file_name)
-#
-#         # If is a serie (movies doesn"t have episodes)
-#         if this_episode.episode_in_name:
-#             self.episode_in_name = this_episode.episode_in_name
-#             self.episode = this_episode.episode
-#             self.new_file_name = self.file_name.replace(self.episode_in_name,
-#                                                         self.episode)
-#
+    def __get_episode(self):
+        """
+        __get_episode(self)
+            Retrieves and stores the data relative to the season and
+            episode.
+        """
+        this_episode = Episode(self.file_name)
+
+        if this_episode.episode_in_name:
+            self.episode_in_name = this_episode.episode_in_name
+            self.episode = this_episode.episode
+            self.new_file_name = self.file_name.replace(self.episode_in_name,
+                                                        self.episode)
+
 #     def __is_serie(self):
 #         """
 #         __is_serie(self)
