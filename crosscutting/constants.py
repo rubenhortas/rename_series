@@ -10,9 +10,6 @@
 @interpreter: python3
 """
 
-# FILE_WELL_FORMATED_PATTERN = re.compile(
-#     "(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>[\w \-\(\)])?\.(?P<extension>[\w]{3})", re.UNICODE)
-
 REQUIRED_PYTHON_VERSION = 3
 
 # rename_series configuration

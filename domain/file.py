@@ -96,16 +96,15 @@ class File:
             - attribute: (string) Attribute where the year will be formatted.
         """
 
+        formatted_attribute = attribute
         year_match = YEAR_PATTERN.search(attribute)
 
         if year_match:
-            formatted_attribute = attribute
             year_in_show_name = year_match.group(0).strip()
 
             if "(" not in year_in_show_name or ")" not in year_in_show_name:
                 new_year = "({0})".format(year_in_show_name)
                 formatted_attribute = formatted_attribute.replace(
                     year_in_show_name, new_year)
-                return formatted_attribute
-            else:
-                return attribute
+
+        return formatted_attribute

@@ -36,9 +36,9 @@ class Video(File):
                 self.__set_ov()
                 self.__get_show_name()
                 self.show_name = self._wrap_year(self.show_name)
-#                 self.__expand_show_name()
-#                 self.__get_episode_title()
-#                 self.__set_show_name()
+                self.__expand_show_name()
+                self.__get_episode_title()
+                self.__get_new_file_name()
 #                 self._File__translate()
 #                 self.f_abs_new_path = os.path.join(self.files_path,
 #                                                    self.file_name_new)
@@ -113,53 +113,45 @@ class Video(File):
 
         self.show_name = show_name
 
-#     def __expand_show_name(self):
-#         """
-#         __expand_show_name(self)
-#             Expands some serie titles.
-#         """
-#
-#         show_name_lower = self.show_name.lower()
-#
-#         if show_name.lower() in constants.EXPANDED_NAMES:
-#             self.show_name = constants.EXPANDED_NAMES.get(show_name.lower())
+    def __expand_show_name(self):
+        """
+        __expand_show_name(self)
+            Expands some serie titles.
+        """
 
-#     def __get_episode_title(self):
-#
-#         file_name = os.path.splitext(self.file_name)[0]
-#
-#         list_file_name = file_name.split(self.episode_in_file_name)
-#
-#         show_name = list_file_name[1]
-#
-#         if show_name:
-#             title_match = EPISODE_TITLE_PATTERN.search(show_name)
-#
-#             if title_match:
-#                 episode_title = title_match.group(0).strip()
-#
-#                 if episode_title != "":
-#                     self.episode_title = episode_title
-#
-#     def __set_show_name(self):
-#         """
-#         __set_show_name(self)
-#             Sets the output title.
-#         """
-#
-#         # Do not change if the year is in the title
-#         if self.episode_in_file_name not in self.show_name:
-#
-#             new_file_name = "{0} {1}".format(self.show_name, self.episode)
-#
-#             if self.episode_title:
-#                 new_file_name = "{0} - {1}".format(
-#                     new_file_name, self.episode_title)
-#
-#             if self.original_version:
-#                 new_file_name = "{0} (VO)".format(new_file_name)
-#
-#             self.file_name_new = "{0}{1}".format(new_file_name, self.extension)
-#
-#         else:
-#             self.file_name_new = self.file_name
+        show_name_lower = self.show_name.lower()
+
+        if show_name_lower in constants.EXPANDED_NAMES:
+            self.show_name = constants.EXPANDED_NAMES.get(show_name_lower)
+
+    def __get_episode_title(self):
+
+        file_name = os.path.splitext(self.file_name)[0]
+
+        file_name_splitted = file_name.split(self.episode_in_file_name)
+
+        if file_name_splitted[1]:
+            match = EPISODE_TITLE_PATTERN.search(file_name_splitted[1])
+
+            if match:
+                episode_title = match.group(0).strip()
+
+                if episode_title != "":
+                    self.episode_title = episode_title
+
+    def __get_new_file_name(self):
+        """
+        __set_show_name(self)
+            Sets the output title.
+        """
+
+        new_file_name = "{0} {1}".format(self.show_name, self.episode)
+
+        if self.episode_title:
+            new_file_name = "{0} {1}".format(new_file_name, self.episode_title)
+
+        if self.original_version:
+            new_file_name = "{0} {1}".format(
+                new_file_name, self.original_version)
+
+        self.new_file_name = "{0}{1}".format(new_file_name, self.extension)
