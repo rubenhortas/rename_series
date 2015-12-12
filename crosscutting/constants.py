@@ -28,6 +28,9 @@ VIDEO_EXTENSIONS = [".mp4", ".avi", ".mkv"]
 # Video qualities
 QUALITIES = ["720p", "1080p"]
 
+# Original Vesion name trackers
+OV_TRACKERS = ["kat.cr"]
+
 # Translations
 TRANSLATED_NAMES = {
     "Family Guy": "Padre de familia",

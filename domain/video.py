@@ -19,12 +19,11 @@ from .file import File
 
 
 EPISODE_TITLE_PATTERN = re.compile("[\w ]*", re.UNICODE)
-YEAR_PATTERN = re.compile(" \d{4}")
 
 
 class Video(File):
 
-    episode_in_name = None
+    episode_in_file_name = None
     episode_title = None
     original_version = False
 
@@ -33,11 +32,11 @@ class Video(File):
 
         if not self.is_well_formatted():
             self.__remove_quality()
-#             self.__get_episode()
-#             if self.__is_serie():
-#                 self.__set_ov()
-#                 self.__get_show_name()
-#                 self.__wrap_year()
+            self.__get_episode()
+            if self.__is_serie():
+                self.__set_ov()
+                self.__get_show_name()
+                self._wrap_year()
 #                 self.__expand_show_name()
 #                 self.__get_episode_title()
 #                 self.__set_show_name()
@@ -67,42 +66,54 @@ class Video(File):
             Retrieves and stores the data relative to the season and
             episode.
         """
-        this_episode = Episode(self.file_name)
 
-        if this_episode.episode_in_name:
-            self.episode_in_name = this_episode.episode_in_name
-            self.episode = this_episode.episode
-            self.new_file_name = self.file_name.replace(self.episode_in_name,
+        episode = Episode(self.file_name)
+
+        if episode.episode_in_file_name:
+            self.episode_in_file_name = episode.episode_in_file_name
+            self.episode = episode.episode_formatted
+            self.new_file_name = self.file_name.replace(self.episode_in_file_name,
                                                         self.episode)
 
-#     def __is_serie(self):
-#         """
-#         __is_serie(self)
-#             Returns if the video file is a serie.
-#         """
-#
-#         if self.episode_in_name:
-#             return True
-#         else:
-#             return False
-#
-#     def __get_show_name(self):
-#         """
-#         __get_show_name(self)
-#             Gets the show name and if it's in original version.
-#         """
-#
-#         self.extension = os.path.splitext(self.file_name)[1]
-#         file_name = os.path.splitext(self.file_name)[0]
-#
-#         list_file_name = file_name.split(self.episode_in_name)
-#
-#         show_name = list_file_name[0]
-#         show_name = show_name.replace(".", " ")
-#         show_name = show_name.strip()
-#
-#         self.show_name = show_name
-#
+    def __is_serie(self):
+        """
+        __is_serie(self)
+            Returns if the video file is a serie.
+        """
+
+        if self.episode_in_file_name:
+            return True
+        else:
+            return False
+
+    def __set_ov(self):
+        """
+        __set_ov(self)
+            Sets if the file is in Original Version.
+        """
+
+        for tracker_name in constants.OV_TRACKERS:
+            if tracker_name in self.file_name:
+                self.original_version = True
+                break
+
+    def __get_show_name(self):
+        """
+        __get_show_name(self)
+            Gets the show name and if it's in original version.
+        """
+
+        splitted_file_name = os.path.splitext(self.file_name)
+
+        file_name = splitted_file_name[0]
+        self.extension = splitted_file_name[1]
+
+        show_name = file_name.split(self.episode_in_file_name)[0]
+        show_name = show_name.replace(".", " ")
+        show_name = show_name.strip()
+
+        self.show_name = show_name
+
 #     def __expand_show_name(self):
 #         """
 #         __expand_show_name(self)
@@ -116,7 +127,7 @@ class Video(File):
 #
 #         file_name = os.path.splitext(self.file_name)[0]
 #
-#         list_file_name = file_name.split(self.episode_in_name)
+#         list_file_name = file_name.split(self.episode_in_file_name)
 #
 #         show_name = list_file_name[1]
 #
@@ -129,30 +140,6 @@ class Video(File):
 #                 if episode_title != "":
 #                     self.episode_title = episode_title
 #
-#     def __set_ov(self):
-#         """
-#         __set_ov(self)
-#             Sets if the file is in Original Version.
-#         """
-#
-#         # Get and set if the file is in original version
-#         if "newpct" not in self.file_name:
-#             self.original_version = True
-#
-#     def __wrap_year(self):
-#         """
-#         __wrap_year(self)
-#             Wraps the year (if exists) into parentheses.
-#         """
-#
-#         year_match = YEAR_PATTERN.search(self.show_name)
-#
-#         if year_match:
-#             year_in_show_name = year_match.group(0).lstrip()
-#             new_year = "({0})".format(year_in_show_name)
-#             self.show_name = self.show_name.replace(
-#                 year_in_show_name, new_year)
-#
 #     def __set_show_name(self):
 #         """
 #         __set_show_name(self)
@@ -160,7 +147,7 @@ class Video(File):
 #         """
 #
 #         # Do not change if the year is in the title
-#         if self.episode_in_name not in self.show_name:
+#         if self.episode_in_file_name not in self.show_name:
 #
 #             new_file_name = "{0} {1}".format(self.show_name, self.episode)
 #

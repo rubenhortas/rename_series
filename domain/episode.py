@@ -102,15 +102,16 @@ class Episode():
         if match:
             match_group = match.group(0)
 
-            if len(match_group) % 2 == 0:
-                episode_in_file_name = match_group[-4:]
-                episode = episode_in_file_name[-2:]
-                season = episode_in_file_name[-3:-2]
+            if int(match_group[:-2]) < 19:  # Skip years 19xx;20xx
+                if (len(match_group) % 2 == 0):
+                    episode_in_file_name = match_group[-4:]
+                    episode = episode_in_file_name[-2:]
+                    season = episode_in_file_name[-3:-2]
 
-            else:
-                episode_in_file_name = match_group[-3:]
-                episode = episode_in_file_name[-2:]
-                season = episode_in_file_name[-4:-2]
+                else:
+                    episode_in_file_name = match_group[-3:]
+                    episode = episode_in_file_name[-2:]
+                    season = episode_in_file_name[-4:-2]
 
-            self.episode_in_file_name = episode_in_file_name
-            self.episode_formatted = "{0}x{1}".format(season, episode)
+                self.episode_in_file_name = episode_in_file_name
+                self.episode_formatted = "{0}x{1}".format(season, episode)

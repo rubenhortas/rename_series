@@ -20,6 +20,7 @@ from domain.utils import file_handler
 
 IS_WELL_FORMATED_COMPILED_PATTERN = re.compile(
     "^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
+YEAR_PATTERN = re.compile(" \(?\d{4}\)?")
 
 
 class File:
@@ -86,3 +87,18 @@ class File:
             file_handler.mv(self.original_path, self.new_path, self.testing)
         except Exception as ex:
             condition_messages.print_exception(ex)
+
+    def _wrap_year(self, attribute):
+        """
+        _wrap_year(self)
+            Wraps the year (if exists) into parentheses.
+        """
+
+        year_match = YEAR_PATTERN.search(attribute)
+
+        if year_match:
+            year_in_show_name = year_match.group(0).strip()
+
+            if "(" not in year_in_show_name or ")" not in year_in_show_name:
+                new_year = "({0})".format(year_in_show_name)
+                attribute = attribute.replace(year_in_show_name, new_year)
