@@ -13,7 +13,6 @@ import os
 import re
 
 from crosscutting import constants
-
 from .episode import Episode
 from .file import File
 
@@ -36,7 +35,7 @@ class Video(File):
             if self.__is_serie():
                 self.__set_ov()
                 self.__get_show_name()
-                self._wrap_year()
+                self.show_name = self._wrap_year(self.show_name)
 #                 self.__expand_show_name()
 #                 self.__get_episode_title()
 #                 self.__set_show_name()
@@ -120,9 +119,11 @@ class Video(File):
 #             Expands some serie titles.
 #         """
 #
-#         if self.show_name.lower() in EXPANDED_NAMES:
-#             self.show_name = EXPANDED_NAMES.get(self.show_name.lower())
+#         show_name_lower = self.show_name.lower()
 #
+#         if show_name.lower() in constants.EXPANDED_NAMES:
+#             self.show_name = constants.EXPANDED_NAMES.get(show_name.lower())
+
 #     def __get_episode_title(self):
 #
 #         file_name = os.path.splitext(self.file_name)[0]
