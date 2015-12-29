@@ -6,7 +6,7 @@
 @contact: rubenhortas at gmail.com
 @github:  http://github.com/rubenhortas
 @license: CC BY-NC-SA 3.0 <http://creativecommons.org/licenses/by-nc-sa/3.0/>
-@file:    MessagesSearchForDuplicated
+@file:    messages_search_for_duplicated_episodes.py
 """
 
 from presentation.Color import Color
@@ -19,12 +19,14 @@ def header(path, debugging, testing):
         Print a couple of introduction lines
     """
 
-    header_msg = "{0}Checking for duplicate files in {1}{2}{3}".format(Tag.info, Color.bold_red, path, Color.end)
+    header_msg = "{0}Checking for duplicate files in {1}{2}{3}".format(
+        Tag.info, Color.bold_red, path, Color.end)
 
     if(not debugging and not testing):
         print(header_msg)
     else:
-        header_msg = "{0} {1}[TEST]{2}".format(header_msg, Color.bold_red, Color.end)
+        header_msg = "{0} {1}[TEST]{2}".format(
+            header_msg, Color.bold_red, Color.end)
 
 
 def bestFile_msg(f):

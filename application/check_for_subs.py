@@ -12,7 +12,8 @@
 import os
 import re
 
-from crosscutting import Messages, MessagesRenameSeries
+from crosscutting import MessagesRenameSeries
+from crosscutting import Messages
 import domain.utils.FileHandler as FileHandler
 
 
@@ -53,7 +54,8 @@ def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
                     subtitle_name_clean = subtitle_match.group(0).strip()
 
                     if debugging:
-                        Messages.debug_msg("\t\tvideo: {0} vs sub: {1}".format(video_name_clean, subtitle_name_clean))
+                        Messages.debug_msg(
+                            "\t\tvideo: {0} vs sub: {1}".format(video_name_clean, subtitle_name_clean))
 
                     if video_name_clean == subtitle_name_clean:
                         subtitles_found = True
@@ -67,7 +69,7 @@ def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
                         new_video_path = os.path.join(current_path,
                                                       new_video_name)
                         FileHandler.mv(current_video_path, new_video_path,
-                                        debugging, testing)
+                                       debugging, testing)
                         break
 
     if not subtitles_found:
