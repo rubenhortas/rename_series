@@ -32,29 +32,6 @@ def is_subtitle(file):
         return False
 
 
-# def get_files(directory):
-#     """
-#     __get_files(directory)
-#         Gets video and subtitle files from a directory.
-#     """
-#
-#     list_files = []
-#
-#     try:
-#         files_in_d = os.listdir(directory)
-#
-#         for f in files_in_d:
-#             if os.path.isfile(os.path.join(directory, f)):  # Skip directories
-#                 # Exclude another types than videos or subtitles
-#                 if is_video(f) or __is_subtitle(f):
-#                     list_files.append(f)
-#
-#     except Exception as ex:
-#         Messages.exception_msg(ex)
-#
-#     return list_files
-
-
 def get_videos(path):
     """
     get_videos(path)
@@ -106,10 +83,13 @@ def mv(orig, dest, testing):
         - testing: (boolean) Indicates if the program is in testing mode.s
     """
 
-    messages_move_series.mv_msg(orig, dest)
+    try:
+        orig_file_name = os.path.basename(orig)
+        dest_file_name = os.path.basename(dest)
 
-    if not testing:
-        try:
+        messages_move_series.mv_msg(orig_file_name, dest_file_name)
+
+        if not testing:
             os.rename(orig, dest)
-        except Exception as ex:
-            condition_messages.print_error(ex)
+    except Exception as ex:
+        condition_messages.print_error(ex)
