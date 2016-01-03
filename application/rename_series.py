@@ -15,11 +15,11 @@ from domain.subtitle import Subtitle
 from domain.video import Video
 
 
-def rename_subtitles(subtitles, path, testing, debugging):
+def rename_subtitles(subtitles, path, testing):
     renamed_subtitles = False
 
     for subtitle in sorted(subtitles):
-        current_subtitle = Subtitle(path, subtitle, testing, debugging)
+        current_subtitle = Subtitle(path, subtitle, testing)
 
         if current_subtitle.file_name != current_subtitle.new_file_name:
             renamed_subtitles = True
@@ -28,15 +28,13 @@ def rename_subtitles(subtitles, path, testing, debugging):
         print_info("No subtitles renamed")
 
 
-def rename_videos(videos, path, testing, debugging):
+def rename_videos(videos, path, testing):
     renamed_videos = False
 
     for video in sorted(videos):
-        current_video = Video(path, current_video, testing, debugging)
+        current_video = Video(path, video, testing)
 
-        if ((this_video.file_name_new != '')
-                and (this_video.file_name != this_video.file_name_new)):
-            # TODO: Change empty string for a None type
+        if current_video.file_name != current_video.new_file_name:
             renamed_videos = True
 
     if not renamed_videos:

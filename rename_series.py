@@ -24,6 +24,7 @@ from crosscutting.constants import SHOWS_PATHS
 from crosscutting.messages_rename_series import print_header
 from domain.utils.file_handler import get_subtitles
 from domain.utils.file_handler import get_videos
+from presentation.utils.clear_screen import clear_screen
 
 
 if __name__ == '__main__':
@@ -65,8 +66,8 @@ if __name__ == '__main__':
                 subtitles = get_subtitles(current_path)
                 videos = get_videos(current_path)
 
-                rename_subtitles(subtitles, path, args.testing)
-                rename_videos(subtitles, path, args.testing)
+                rename_subtitles(subtitles, current_path, args.testing)
+                rename_videos(videos, current_path, args.testing)
 
 #                 # Check for subtitles
 #                 l_videos, l_subs = get_files_separated(current_path,

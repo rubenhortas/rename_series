@@ -39,10 +39,9 @@ class Video(File):
                 self.__expand_show_name()
                 self.__get_episode_title()
                 self.__get_new_file_name()
-#                 self._File__translate()
-#                 self.f_abs_new_path = os.path.join(self.files_path,
-#                                                    self.file_name_new)
-#                 self._File__rename()
+                self._translate()
+                self.new_path = os.path.join(self.path, self.new_file_name)
+                self._rename(testing)
 
     def __remove_quality(self):
         """
