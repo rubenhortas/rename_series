@@ -35,12 +35,14 @@ if __name__ == '__main__':
 
     if interpreter == REQUIRED_PYTHON_VERSION:
 
-        shows_paths = []
+        paths = []
         videos = []
         subtitles = []
         directories_found = False
 
         parser = argparse.ArgumentParser(description='Renames some series.')
+        parser.add_argument(
+            'paths', metavar='paths', nargs='+', help='paths to rename files')
         parser.add_argument('-t', '--test', dest='testing', action='store_true',
                             help='run a single test showing the expected output')
         parser.add_argument('-p', '--path', dest='user_path',
@@ -51,11 +53,11 @@ if __name__ == '__main__':
         clear_screen()
 
         if(args.user_path):
-            shows_paths = shows_paths.append(args.user_dir)
+            paths = paths.append(args.user_dir)
         else:
-            shows_paths = SHOWS_PATHS
+            paths = SHOWS_PATHS
 
-        for current_path in shows_paths:
+        for current_path in paths:
             if not os.path.isdir(current_path):
                 print_error('{0} is not a directory'.format(current_path))
             else:
