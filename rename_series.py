@@ -35,7 +35,6 @@ if __name__ == '__main__':
 
     if interpreter == REQUIRED_PYTHON_VERSION:
 
-        paths = []
         videos = []
         subtitles = []
         directories_found = False
@@ -45,15 +44,13 @@ if __name__ == '__main__':
             'paths', metavar='paths', nargs='+', help='paths to rename files')
         parser.add_argument('-t', '--test', dest='testing', action='store_true',
                             help='run a single test showing the expected output')
-        parser.add_argument('-p', '--path', dest='user_path',
-                            help='use only the specified directory/path')
 
         args = parser.parse_args()
 
         clear_screen()
 
-        if(args.user_path):
-            paths = paths.append(args.user_dir)
+        if(args.paths):
+            paths = args.paths
         else:
             paths = SHOWS_PATHS
 

@@ -13,7 +13,7 @@ import re
 
 
 PATTERN_1 = re.compile("[0-9]{1,2}x[0-9]{1,2}")  # 1x20
-PATTERN_2 = re.compile("S[0-9]{1,2}E[0-9]{1,2}")  # S1E20 or S01E20
+PATTERN_2 = re.compile("[Ss][0-9]{1,2}[Ee][0-9]{1,2}")  # S1E20 or S01E20
 PATTERN_3 = re.compile("\[Cap.[0-9]*\]")  # [Cap.120]
 PATTERN_4 = re.compile("[0-9]{3,6}")  # 120
 
