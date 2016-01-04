@@ -65,10 +65,19 @@ class Episode():
             if "S0" in episode_in_file_name:
                 episode = episode_in_file_name.replace("S0", "")
 
-            else:  # If only "S" is in episode_formatted
+            elif "s0" in episode_in_file_name:
+                episode = episode_in_file_name.replace("s0", "")
+
+            elif "S" in episode_in_file_name:
                 episode = episode_in_file_name.replace("S", "")
 
-            episode = episode.replace("E", "x")
+            else:  # only "s" is in file name
+                episode = episode_in_file_name.replace("s", "")
+
+            if "E" in episode_in_file_name:
+                episode = episode.replace("E", "x")
+            else:
+                episode = episode.replace("e", "x")
 
             self.episode_in_file_name = episode_in_file_name
             self.episode_formatted = episode

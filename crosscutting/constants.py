@@ -73,7 +73,8 @@ EXPANDED_NAMES = {
     "cas": "Castle",
 
     # Doctor Who
-    "doctorwho":     "Doctor Who",
+    "doctor who (2005)":    "Doctor Who (2005)",
+    "doctorwho":            "Doctor Who (2005)",
 
     # Érase una vez
     "erasevez":      "Érase una vez (Once upon a time)",
