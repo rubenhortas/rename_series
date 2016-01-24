@@ -71,4 +71,4 @@ def rm_msg(f):
         - f: (string) File to remove.
     """
 
-    print("Deleting {0}{1}{2}".format(Color.bold_red, f, Color.end))
+    print("\tDeleting {0}{1}{2}".format(Color.bold_red, f, Color.end))
