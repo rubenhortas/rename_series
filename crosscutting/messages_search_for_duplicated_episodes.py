@@ -13,9 +13,9 @@ from presentation.color import Color
 from presentation.tag import Tag
 
 
-def header(path, testing):
+def print_header(path, testing):
     """
-    header()
+    print_header()
         Print a couple of introduction lines
     """
 
@@ -49,6 +49,18 @@ def repeated_file_msg(f):
     """
 
     print("{0}{1}{2} duplicated".format(Color.bold_yellow, f, Color.end))
+
+
+def no_repeated_found_msg(path):
+    """
+    no_repeated_found_msg(path):
+        Prints repeated file found.
+    Arguments:
+        - path: Path.
+    """
+
+    print("{0}{1}{2} No repeated files found".format(
+        Color.bold_green, path, Color.end))
 
 
 def rm_msg(f):

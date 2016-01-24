@@ -28,7 +28,7 @@ from domain.utils.file_handler import get_videos
 from presentation.utils.clear_screen import clear_screen
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     signal.signal(signal.SIGINT, exit_signal_handler)
 

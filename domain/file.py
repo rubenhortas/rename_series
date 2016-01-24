@@ -12,7 +12,7 @@
 import os
 import re
 
-from crosscutting.condition_mesasges import print_exception
+from crosscutting.condition_messages import print_exception
 from crosscutting.constants import TRANSLATED_NAMES
 from domain.utils.file_handler import mv
 
