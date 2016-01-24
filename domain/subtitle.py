@@ -9,7 +9,8 @@
 @file:    subtitle.py
 """
 
-from crosscutting import constants
+from crosscutting.constants import DEFAULT_SUBTITLE_EXTENSION
+from crosscutting.constants import VOS
 
 from .file import File
 
@@ -21,7 +22,7 @@ class Subtitle(File):
 
     def __init__(self, path, file_name, testing):
         super(Subtitle, self).__init__(path, file_name, testing)
-        self.ext = constants.DEFAULT_SUBTITLE_EXTENSION
+        self.ext = DEFAULT_SUBTITLE_EXTENSION
         self.__set_new_name()
         if self.new_file_name:
             self._translate()
@@ -33,8 +34,8 @@ class Subtitle(File):
             Sets new file name.
         """
 
-        for language in constants.VOS:
+        for language in VOS:
             if language in self.file_name:
                 self.new_file_name = self.file_name
                 self.new_file_name = self.new_file_name.replace(
-                    language, constants.VOS.get(language))
+                    language, VOS.get(language))

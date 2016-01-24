@@ -12,6 +12,9 @@
 import os
 import re
 
+FILE_WELL_FORMATED_PATTERN = re.compile(
+    "(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>[\w \-\(\)])?\.(?P<extension>[\w]{3})", re.UNICODE)
+
 
 class DestDir():
     """
@@ -27,7 +30,7 @@ class DestDir():
     extension = None
     final_dest = None
 
-    def __init__(self, file_name, dest, debugging, testing):
+    def __init__(self, file_name, dest, testing):
 
         match = FILE_WELL_FORMATED_PATTERN.search(file_name)
 
@@ -40,7 +43,7 @@ class DestDir():
 
             final_name_tmp = "{0}x{1}".format(self.season, self.episode)
 
-            if(self.episode_title is not None):
+            if self.episode_title is not None:
                 final_name_tmp = "{0}{1}".format(final_name_tmp,
                                                  self.episode_title)
 
@@ -50,7 +53,7 @@ class DestDir():
                 self.dir_season = "{0} {1}".format(DIR_SEASON_NAME,
                                                    self.season)
                 if not self.__season_exists(dest):
-                    self.__create_season_dir(dest, debugging, testing)
+                    self.__create_season_dir(dest, testing)
 
                 self.final_dest = os.path.join(dest, self.show_name,
                                                self.dir_season, file_final_name)
@@ -89,5 +92,5 @@ class DestDir():
 
         season_dir = os.path.join(dir_dest, self.show_name, self.dir_season)
 
-        if((not debugging) and (not testing)):
+        if not testing:
             os.mkdir(season_dir)

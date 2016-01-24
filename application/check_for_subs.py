@@ -12,67 +12,59 @@
 import os
 import re
 
-from crosscutting import MessagesRenameSeries
-from crosscutting import Messages
-import domain.utils.FileHandler as FileHandler
+from crosscutting.condition_messages import print_info
+from crosscutting.constants import OV_STRING
+from crosscutting.messages_move_series import mv_msg
+from domain.utils.file_handler import mv
 
 
-def check_for_subs(l_videos, l_subtitles, current_path, debugging, testing):
+def check_for_subs(videos, subtitles, path, testing):
 
     subtitles_found = False
 
-    for video in l_videos:
-        if debugging:
-            Messages.debug_msg("check_for_subs:")
-            Messages.debug_msg("\tvideo: {0}".format(video))
-
-        if "(VO)" in video:
+    for video in videos:
+        if OV_STRING in video:
             video_name = os.path.splitext(video)[0]
             video_extension = os.path.splitext(video)[1]
 
             name_pattern = re.compile("^[\w \(\)]*", re.UNICODE)
 
-            video_match = name_pattern.search(video_name)
+            match = name_pattern.search(video_name)
 
-            if video_match:
-                video_name_clean = video_match.group(0)
+            if match:
+                video_name = video_match.group(0)
 
-                if "(VO)" in video_name_clean:
-                    video_name_clean = video_name_clean.replace("(VO)", "")
+                if OV_STRING in video_name:
+                    video_name = video_name.replace(constants.OV_STRING, "")
 
-                video_name_clean = video_name_clean.strip()
+                video_name = video_name.strip()
 
-            for subtitle in l_subtitles:
-                if debugging:
-                    Messages.debug_msg("\tsub: {0}".format(subtitle))
-
+            for subtitle in subtitles:
                 subtitle_name = os.path.splitext(subtitle)[0]
 
-                subtitle_match = name_pattern.search(subtitle_name)
+                match = name_pattern.search(subtitle_name)
 
-                if subtitle_match:
-                    subtitle_name_clean = subtitle_match.group(0).strip()
+                if match:
+                    subtitle_name = subtitle_match.group(0).strip()
 
-                    if debugging:
-                        Messages.debug_msg(
-                            "\t\tvideo: {0} vs sub: {1}".format(video_name_clean, subtitle_name_clean))
-
-                    if video_name_clean == subtitle_name_clean:
+                    if video_name == subtitle_name:
                         subtitles_found = True
 
                         new_video_name = subtitle_name + video_extension
-                        l_subtitles.remove(subtitle)
 
-                        Messages.mv_msg(video, new_video_name)
+                        subtitles.remove(subtitle)
 
-                        current_video_path = os.path.join(current_path, video)
-                        new_video_path = os.path.join(current_path,
+                        mv_msg(video, new_video_name)
+
+                        current_video_path = os.path.join(path, video)
+                        new_video_path = os.path.join(path,
                                                       new_video_name)
-                        FileHandler.mv(current_video_path, new_video_path,
-                                       debugging, testing)
+
+                        mv(current_video_path, new_video_path, testing)
+
                         break
 
     if not subtitles_found:
-        Messages.info_msg("No subtitles found.")
+        print_info("No subtitles found.")
 
     print()

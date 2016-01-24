@@ -14,6 +14,7 @@ import argparse
 import os
 import signal
 
+from application.check_for_subs import check_for_subs
 from application.rename_series import rename_subtitles
 from application.rename_series import rename_videos
 from application.utils.python_utils import exit_signal_handler
@@ -68,11 +69,10 @@ if __name__ == '__main__':
                 rename_subtitles(subtitles, current_path, args.testing)
                 rename_videos(videos, current_path, args.testing)
 
-#                 # Check for subtitles
-#                 l_videos, l_subs = get_files_separated(current_path,
-#                                                        args.debugging)
-#                 check_for_subs(l_videos, l_subs, current_path, args.debugging,
-#                                args.testing)
+                # Check for subtitles
+                subtitles = get_subtitles(current_path)
+                videos = get_videos(current_path)
+                check_for_subs(videos, subtitles, current_path, args.testing)
 
         if not directories_found:
             print_error('Has not entered any directory')

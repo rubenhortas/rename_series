@@ -12,10 +12,9 @@
 import os
 import re
 
-from crosscutting import condition_messages
-from crosscutting import constants
-from crosscutting import messages_move_series
-from domain.utils import file_handler
+from crosscutting.condition_mesasges import print_exception
+from crosscutting.constants import TRANSLATED_NAMES
+from domain.utils.file_handler import mv
 
 
 IS_WELL_FORMATED_COMPILED_PATTERN = re.compile(
@@ -54,23 +53,14 @@ class File:
         else:
             return False
 
-#     def _print_move(self):
-#         """
-#         _print_move(self)
-#         Displays the original file name and the new file name.
-#         """
-#
-#         if self.file_name != self.new_file_name:
-#             messages_move_series.mv_msg(self.file_name, self.new_file_name)
-
     def _translate(self):
         """
          _translate(self)
             Translates some series names.
         """
 
-        if self.show_name in constants.TRANSLATED_NAMES:
-            translated_show_name = constants.TRANSLATED_NAMES.get(
+        if self.show_name in TRANSLATED_NAMES:
+            translated_show_name = TRANSLATED_NAMES.get(
                 self.show_name)
             self.new_file_name = self.new_file_name.replace(
                 self.show_name, translated_show_name)
@@ -84,10 +74,10 @@ class File:
         try:
             self.new_path = os.path.join(self.path, self.new_file_name)
 
-            file_handler.mv(
-                self.original_path, self.new_path, self.testing)
+            mv(self.original_path, self.new_path, self.testing)
+
         except Exception as ex:
-            condition_messages.print_exception(ex)
+            print_exception(ex)
 
     def _wrap_year(self, attribute):
         """

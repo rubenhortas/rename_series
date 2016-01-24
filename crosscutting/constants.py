@@ -12,6 +12,9 @@
 
 REQUIRED_PYTHON_VERSION = 3
 
+# Application configuration
+OV_STRING = "(VO)"
+
 # rename_series configuration
 DIR_SEASON_NAME = "Temporada"
 SHOWS_PATHS = ['/home/ruben/Vídeos', '/home/ruben/Vídeos/temp']

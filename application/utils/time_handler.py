@@ -20,7 +20,6 @@ def print_time(num_secs):
 
     str_time = ""
 
-    # Get hours
     hrs = (num_secs / 3600)
     num_hrs = int(hrs)
 
@@ -28,7 +27,6 @@ def print_time(num_secs):
         num_secs = num_secs - (3600 * hrs)
         str_time = str_time + str(num_hrs) + 'h '
 
-    # Get mins
     mins = (num_secs / 60)
     num_mins = int(mins)
 

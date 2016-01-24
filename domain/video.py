@@ -12,7 +12,10 @@
 import os
 import re
 
-from crosscutting import constants
+from crosscutting.constants import EXPANDED_NAMES
+from crosscutting.constants import OV_TRACKERS
+from crosscutting.constants import QUALITIES
+
 from .episode import Episode
 from .file import File
 
@@ -49,7 +52,7 @@ class Video(File):
             Removes video quality from file name.
         """
 
-        for quality in constants.QUALITIES:
+        for quality in QUALITIES:
             if quality in self.file_name:
                 self.file_name = self.file_name.replace(quality, "")
 
@@ -90,7 +93,7 @@ class Video(File):
             Sets if the file is in Original Version.
         """
 
-        for tracker_name in constants.OV_TRACKERS:
+        for tracker_name in OV_TRACKERS:
             if tracker_name in self.file_name:
                 self.original_version = True
                 break
@@ -120,8 +123,8 @@ class Video(File):
 
         show_name_lower = self.show_name.lower()
 
-        if show_name_lower in constants.EXPANDED_NAMES:
-            self.show_name = constants.EXPANDED_NAMES.get(show_name_lower)
+        if show_name_lower in EXPANDED_NAMES:
+            self.show_name = EXPANDED_NAMES.get(show_name_lower)
 
     def __get_episode_title(self):
 
