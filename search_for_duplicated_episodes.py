@@ -13,6 +13,7 @@ import argparse
 import signal
 
 from application.search_for_duplicated_episodes import search_duplicated_episodes
+from application.utils.python_utils import exit_signal_handler
 from application.utils.python_utils import get_interpreter_version
 from crosscutting.condition_messages import print_error
 from crosscutting.constants import REQUIRED_PYTHON_VERSION
@@ -22,7 +23,7 @@ from presentation.utils.clear_screen import clear_screen
 
 if __name__ == '__main__':
 
-    #signal.signal(signal.SIGINT, exit_signal_handler)
+    signal.signal(signal.SIGINT, exit_signal_handler)
 
     interpreter = get_interpreter_version()
 
