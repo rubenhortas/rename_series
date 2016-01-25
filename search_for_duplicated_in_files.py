@@ -10,175 +10,66 @@
 """
 
 import argparse
-import difflib
 import os
-import re
 import signal
-import string
 import sys
 
-from application.utils.PythonUtils import check_python_version
-from application.utils.PythonUtils import exit_signal_handler
-from crosscutting.Messages import error_msg
-from crosscutting.MessagesSearchForDuplicatedInFiles import header, duplicated_msg
-from presentation.utils.ClearScreen import clear_screen
+from application.search_for_duplicated_in_files import search_in_file
+from application.search_for_duplicated_in_files import search_in_files
+from application.utils.python_utils import exit_signal_handler
+from application.utils.python_utils import get_interpreter_version
+from crosscutting.constants import REQUIRED_PYTHON_VERSION
+from crosscutting.messages_search_for_duplicated_in_files import print_header
+from presentation.utils.clear_screen import clear_screen
 
 
-MATCH_THRESHOLD = 0.90
-
-
-def __get_match_ratio(i1, i2):
-    """
-    __get_match_ratio(str1, str2)
-        Compares two lines.
-    Arguments:
-        - i1: (line) item one.
-        - i2: (line) item two.
-    """
-
-    # Normalization
-    str1 = i1.lower().strip()
-    str2 = i2.lower().strip()
-
-    for p in string.punctuation:
-        str1.replace(p, '')
-        str2.replace(p, '')
-
-    # Replace multiple spaces for one space
-    str1 = re.sub('\s+', str1, ' ')
-    str2 = re.sub('\s+', str2, ' ')
-
-    # Get match ratio
-    match_ratio = difflib.SequenceMatcher(None, str1, str2).ratio()
-
-    return match_ratio
-
-
-def __get_file_list(file_name):
-    """
-    __get_file_list(file_name)
-        Gets file content as list
-    Arguments:
-        - file_name: (string) File [path and] name.
-    """
-
-    l_file = []
-
-    f = open(file_name, encoding="utf-8", errors="ignore")
-
-    for line in f:
-        l_file.append(line)
-
-    f.close()
-
-    return sorted(l_file)
-
-
-def __compare_lists_items(l1, l2, in_file, from_file):
-    """
-    __compare_lists_items(l1, l2, from_file)
-        Searchs if exists every element of l1 in l2
-    Arguments:
-        - l1: (list) List one.
-        - l2: (list) List two.
-        - from_file: (string) File wich contains l2 items.
-    """
-
-    for i1 in l1:
-        matches = 0
-        for i2 in l2:
-            match_ratio = __get_match_ratio(i1, i2)
-            if(match_ratio > MATCH_THRESHOLD):
-                matches = matches + 1
-                if(from_file or (matches > 1)):
-                    duplicated_msg(
-                        i1.strip(), i2.strip(), in_file, from_file, round((match_ratio * 100), 2))
-                    l2.remove(i2)
-
-
-def __search_in_files(in_file, from_file):
-    """
-    __search_in_files(in_file, from_file)
-        Searchs for coincidences between two files.
-        Searchs in file 'in_file' coincidences from file 'from_file'.
-    Arguments:
-        - in_file: (string) File [path and] name.
-        - from_file: (string) File [path and] name.
-    """
-
-    l_in_file = __get_file_list(in_file)
-    l_from_file = __get_file_list(from_file)
-
-    __compare_lists_items(l_in_file, l_from_file, in_file, from_file)
-
-
-def __search_in_file(in_file):
-    """
-    __search_in_file(in_file)
-        Searchs for coincidences inside a file.
-    Arguments:
-        - in_file: (string) File [path and] name.
-    """
-
-    l_in_file = __get_file_list(in_file)
-
-    l_in_file_tmp = l_in_file[:]
-
-    __compare_lists_items(l_in_file, l_in_file_tmp, in_file, None)
-
-
-if __name__ == '__main__':
-
-    python_required_version = 3
-
-    check_python_version(python_required_version)
+if __name__ == "__main__":
 
     signal.signal(signal.SIGINT, exit_signal_handler)
 
-    in_file = ""
-    from_file = ""
+    interpreter = get_interpreter_version()
 
-    parser = argparse.ArgumentParser(
-        description='Look for repeated strings in file[s]')
-    parser.add_argument('-from', dest='from_file',
-                        help="from file")
-    parser.add_argument('-in', dest='in_file',
-                        help="in file")
-    parser.add_argument("-t", "--test", dest="test",
-                        action="store_true",
-                        help="runs a single test showing the expected output")
+    if interpreter == REQUIRED_PYTHON_VERSION:
 
-    parser.add_argument("-d", "--debug", dest="debug",
-                        action="store_true",
-                        help="show debug info")
+        in_file = ""
+        from_file = ""
 
-    args = parser.parse_args()
+        parser = argparse.ArgumentParser(
+            description='Look for repeated strings in file[s]')
+        parser.add_argument('-from', dest='from_file',
+                            help="from file")
+        parser.add_argument('-in', dest='in_file',
+                            help="in file")
+        parser.add_argument("-t", "--test", dest="test",
+                            action="store_true",
+                            help="runs a single test showing the expected output")
 
-    if(args.in_file):
-        if(os.path.isfile(args.in_file)):
-            in_file = args.in_file
+        args = parser.parse_args()
 
-        if(in_file):  # in_file is a file
+        if args.in_file:
+            if os.path.isfile(args.in_file):
+                in_file = args.in_file
 
-            clear_screen()
+                clear_screen()
 
-            header(in_file, args.from_file, args.debug, args.test)
+                print_header(in_file, args.from_file, args.test)
 
-            if(args.from_file):  # from_file specified
+                if args.from_file:
 
-                if(os.path.isfile(args.from_file)):
-                    from_file = args.from_file
+                    if os.path.isfile(args.from_file):
+                        from_file = args.from_file
 
-                if(from_file):  # from_file is a file
-                    __search_in_files(in_file, from_file)
+                        search_in_files(in_file, from_file)
 
-                else:  # from_file is not a file
-                    error_msg("{0} is not a file.".format(args.from_file))
-                    sys.exit(-1)
+                    else:
+                        error_msg("{0} is not a file.".format(args.from_file))
+                        sys.exit(-1)
+                else:
+                    search_in_file(in_file)
 
-            else:  # from_file not specified
-                __search_in_file(in_file)
-
-        else:  # in_file is not a file
-            error_msg("{0} is not a file.".format(args.in_file))
-            sys.exit(-1)
+            else:
+                error_msg("{0} is not a file.".format(args.in_file))
+                sys.exit(-1)
+    else:
+        print_error("Requires Python {0}".format(REQUIRED_PYTHON_VERSION))
+        exit(0)

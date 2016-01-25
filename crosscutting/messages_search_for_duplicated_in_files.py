@@ -13,9 +13,9 @@ from presentation.color import Color
 from presentation.tag import Tag
 
 
-def header(in_file, from_file, testing):
+def print_header(in_file, from_file, testing):
     """
-    header()
+    print_header()
         Print a couple of introduction lines
     """
 
@@ -32,7 +32,7 @@ def header(in_file, from_file, testing):
         print("{0} [TEST] {1}".format(header_msg, Color.end))
 
 
-def duplicated_msg(in_item, from_item, in_file, from_file, match_ratio):
+def print_duplicated_msg(in_item, from_item, in_file, from_file, match_ratio):
     """
     duplicated(in_file, from_file)
         Prints duplicated item found.

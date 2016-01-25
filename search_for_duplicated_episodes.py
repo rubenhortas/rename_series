@@ -21,7 +21,7 @@ from crosscutting.messages_search_for_duplicated_episodes import print_header
 from presentation.utils.clear_screen import clear_screen
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     signal.signal(signal.SIGINT, exit_signal_handler)
 
