@@ -18,7 +18,7 @@ from application.utils.python_utils import get_interpreter_version
 from crosscutting.condition_messages import print_error
 from crosscutting.constants import REQUIRED_PYTHON_VERSION
 from crosscutting.messages_search_for_duplicated_episodes import print_header
-from presentation.utils.clear_screen import clear_screen
+from presentation.utils.screen import clear_screen
 
 
 if __name__ == "__main__":

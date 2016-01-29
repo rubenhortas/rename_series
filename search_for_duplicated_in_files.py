@@ -20,7 +20,7 @@ from application.utils.python_utils import exit_signal_handler
 from application.utils.python_utils import get_interpreter_version
 from crosscutting.constants import REQUIRED_PYTHON_VERSION
 from crosscutting.messages_search_for_duplicated_in_files import print_header
-from presentation.utils.clear_screen import clear_screen
+from presentation.utils.screen import clear_screen
 
 
 if __name__ == "__main__":

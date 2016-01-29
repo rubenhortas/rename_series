@@ -25,7 +25,7 @@ from crosscutting.constants import SHOWS_PATHS
 from crosscutting.messages_rename_series import print_header
 from domain.utils.file_handler import get_subtitles
 from domain.utils.file_handler import get_videos
-from presentation.utils.clear_screen import clear_screen
+from presentation.utils.screen import clear_screen
 
 
 if __name__ == "__main__":
