@@ -44,8 +44,8 @@ class DestDir():
             final_name_tmp = "{0}x{1}".format(self.season, self.episode)
 
             if self.episode_title is not None:
-                final_name_tmp = "{0}{1}".format(final_name_tmp,
-                                                 self.episode_title)
+                final_name_tmp = "{0} - {1}".format(final_name_tmp,
+                                                    self.episode_title)
 
             file_final_name = "{0}.{1}".format(final_name_tmp, self.extension)
 
