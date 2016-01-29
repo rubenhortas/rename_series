@@ -16,7 +16,7 @@ REQUIRED_PYTHON_VERSION = 3
 OV_STRING = "(VO)"
 
 # rename_series configuration
-DIR_SEASON_NAME = "Temporada"
+SEASON_PATH_NAME = "Temporada"
 SHOWS_PATHS = ['/home/ruben/Vídeos', '/home/ruben/Vídeos/temp']
 BUFFER_DISKS = ["/home/ruben/Lab/fakedDestBuffer"]
 FINAL_DISKS = ["/media/ruben/3tb"]
