@@ -73,6 +73,7 @@ if __name__ == "__main__":
                 if not testing:
                     subtitles = get_subtitles(current_path)
                     videos = get_videos(current_path)
+
                     check_for_subs(
                         videos, subtitles, current_path, args.testing)
 
