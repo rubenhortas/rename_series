@@ -30,8 +30,10 @@ VIDEO_EXTENSIONS = [".mp4", ".avi", ".mkv"]
 # Video qualities
 QUALITIES = ["720p", "1080p"]
 
+#ES_TRACKERS = ["[www.DivxTotaL.com]", "www.newpct1.com", "(Elitetorrent.net)"]
+
 # Original Vesion name trackers
-OV_TRACKERS = ["kat.cr"]
+OV_TRACKERS = ["kat.cr", "[ett]"]
 
 # Translations
 TRANSLATED_NAMES = {

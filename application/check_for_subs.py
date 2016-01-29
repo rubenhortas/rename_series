@@ -54,11 +54,11 @@ def check_for_subs(videos, subtitles, path, testing):
 
                         subtitles.remove(subtitle)
 
-                        mv_msg(video, new_video_name)
-
                         current_video_path = os.path.join(path, video)
                         new_video_path = os.path.join(path,
                                                       new_video_name)
+
+                        mv_msg(video, new_video_name)
 
                         mv(current_video_path, new_video_path, testing)
 

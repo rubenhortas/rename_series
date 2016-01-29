@@ -70,9 +70,11 @@ if __name__ == "__main__":
                 rename_videos(videos, current_path, args.testing)
 
                 # Check for subtitles
-                subtitles = get_subtitles(current_path)
-                videos = get_videos(current_path)
-                check_for_subs(videos, subtitles, current_path, args.testing)
+                if not testing:
+                    subtitles = get_subtitles(current_path)
+                    videos = get_videos(current_path)
+                    check_for_subs(
+                        videos, subtitles, current_path, args.testing)
 
         if not directories_found:
             print_error('Has not entered any directory')
