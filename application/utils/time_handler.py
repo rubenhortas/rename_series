@@ -25,16 +25,16 @@ def print_time(num_secs):
 
     if num_hrs > 0:
         num_secs = num_secs - (3600 * hrs)
-        str_time = str_time + str(num_hrs) + 'h '
+        str_time = "{0}h".format(num_hrs)
 
     mins = (num_secs / 60)
     num_mins = int(mins)
 
     if num_mins > 0:
         num_secs = num_secs - (60 * mins)
-        str_time = str_time + str(num_mins) + 'm '
+        str_time = "{0} {1}m".format(str_time, num_mins)
 
     str_sec = '%2.2f' % num_secs
-    str_time = str_time + str_sec + 's'
+    str_time = "{0} {1}s".format(str_time, str_sec)
 
-    print("*Time: %s" % str_time)
+    print("{0}".format(str_time.strip()))
