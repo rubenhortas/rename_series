@@ -11,14 +11,17 @@
 
 import os
 
-from crosscutting import condition_messages
-from crosscutting import constants
-from crosscutting import messages_move_series
+from crosscutting.condition_messages import print_error
+from crosscutting.constants import VIDEO_EXTENSIONS
+from crosscutting.messages_move_series import mv_msg
+
+
+form crosscutting.constants import SUBTITLE_EXTENSIONS
 
 
 def is_video(file):
     file_extension = os.path.splitext(file)[1]
-    if file_extension in constants.VIDEO_EXTENSIONS:
+    if file_extension in VIDEO_EXTENSIONS:
         return True
     else:
         return False
@@ -26,7 +29,7 @@ def is_video(file):
 
 def is_subtitle(file):
     file_extension = os.path.splitext(file)[1]
-    if file_extension in constants.SUBTITLE_EXTENSIONS:
+    if file_extension in SUBTITLE_EXTENSIONS:
         return True
     else:
         return False
@@ -87,9 +90,9 @@ def mv(orig, dest, testing):
         orig_file_name = os.path.basename(orig)
         dest_file_name = os.path.basename(dest)
 
-        messages_move_series.mv_msg(orig_file_name, dest_file_name)
+        mv_msg(orig_file_name, dest_file_name)
 
         if not testing:
             os.rename(orig, dest)
     except Exception as ex:
-        condition_messages.print_error(ex)
+        print_error(ex)

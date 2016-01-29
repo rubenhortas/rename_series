@@ -45,8 +45,8 @@ TRANSLATED_NAMES = {
     "Warehouse13": "Almacén 13"
 }
 
-# Subtitles VOS
-VOS = {
+# Subtitles OV
+OV_SUBTITLES = {
     "(Español (España))": "VOSE",
     "(Español (Latinoamérica))": "VOSE"
 }
