@@ -13,7 +13,10 @@
 import difflib
 import re
 import string
+
+from application.utils.dictionary_utils import increment
 from crosscutting.messages_search_for_duplicated_in_files import print_duplicated_msg
+from domain.duplicated_item import DuplicatedItem
 
 
 MATCH_THRESHOLD = 0.90
@@ -22,8 +25,8 @@ MATCH_THRESHOLD = 0.90
 def search_in_files(in_file, from_file):
     """
     search_in_files(in_file, from_file)
-        Searchs for coincidences between two files.
-        Searchs in file 'in_file' coincidences from file 'from_file'.
+        Searches for coincidences between two files.
+        Searches in file 'in_file' coincidences from file 'from_file'.
     Arguments:
         - in_file: (string) File [path and] name.
         - from_file: (string) File [path and] name.
@@ -33,13 +36,13 @@ def search_in_files(in_file, from_file):
     from_file_content = __get_file_content(from_file)
 
     __compare_lists_items(
-        in_file_content, from_file_content, in_file, from_file)
+        from_file_content, in_file_content, from_file, in_file)
 
 
 def search_in_file(in_file):
     """
     search_in_file(in_file)
-        Searchs for coincidences inside a file.
+        Searches for coincidences inside a file.
     Arguments:
         - in_file: (string) File [path and] name.
     """
@@ -64,7 +67,7 @@ def __get_file_content(file_name):
     f = open(file_name, encoding="UTF-8", errors="ignore")
 
     for line in f:
-        file_content.append(line)
+        file_content.append(line.strip())
 
     f.close()
 
@@ -74,12 +77,13 @@ def __get_file_content(file_name):
 def __compare_lists_items(list1, list2, in_file, from_file):
     """
     __compare_lists_items(list1, list2, from_file)
-        Searchs if exists every element of list1 in list2
+        Searches if exists every element of list1 in list2
     Arguments:
         - list1: (list) List one.
         - list2: (list) List two.
-        - from_file: (string) File wich contains list2 items.
+        - from_file: (string) File containing list2 items.
     """
+    duplicated = {}
 
     for item_list1 in list1:
         matches = 0
@@ -88,11 +92,12 @@ def __compare_lists_items(list1, list2, in_file, from_file):
             if match_ratio > MATCH_THRESHOLD:
                 matches = matches + 1
                 if from_file or (matches > 1):
-                    print_duplicated_msg(
-                        item_list1.strip(), item_list2.strip(
-                        ), in_file, from_file,
-                        round((match_ratio * 100), 2))
-                    list2.remove(item_list2)
+                    duplicated_item = DuplicatedItem(item_list2, match_ratio)
+                    increment(duplicated, duplicated_item)
+                    # list2.remove(item_list2)
+
+    __print_duplicated_items(
+        duplicated, item_list1.strip(), in_file, from_file)
 
 
 def __get_match_ratio(item1, item2):
@@ -115,7 +120,12 @@ def __get_match_ratio(item1, item2):
     str1 = re.sub('\s+', str1, ' ')
     str2 = re.sub('\s+', str2, ' ')
 
-    # Get match ratio
     match_ratio = difflib.SequenceMatcher(None, str1, str2).ratio()
 
     return match_ratio
+
+
+def __print_duplicated_items(duplicated_items, item1, in_file, from_file):
+    for duplicated_item in duplicated_items:
+        print_duplicated_msg(
+            item1, duplicated_item.name, in_file, from_file, duplicated_item.match_ratio, duplicated_items[duplicated_item])

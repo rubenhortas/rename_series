@@ -32,7 +32,7 @@ def print_header(in_file, from_file, testing):
         print("{0} [TEST] {1}".format(header_msg, Color.end))
 
 
-def print_duplicated_msg(in_item, from_item, in_file, from_file, match_ratio):
+def print_duplicated_msg(in_item, from_item, in_file, from_file, match_ratio, times):
     """
     duplicated(in_file, from_file)
         Prints duplicated item found.
@@ -40,16 +40,16 @@ def print_duplicated_msg(in_item, from_item, in_file, from_file, match_ratio):
 
     if not from_file:
         if match_ratio == 100:
-            print("* \"{0}{1}{2}\" found (\"{4}{5}{6}\" {8}{9}% match{10})".format(Color.bold_yellow, in_item, Color.end,
-                                                                                   in_file, Color.bold_green, from_item, Color.end, from_file, Color.bold_red, match_ratio, Color.end))
+            print("* \"{0}{1}{2}\" found (\"{4}{5}{6}\" {8}{9}% match{10}, {11} times)".format(Color.bold_yellow, in_item, Color.end,
+                                                                                               in_file, Color.bold_green, from_item, Color.end, from_file, Color.bold_red, match_ratio, Color.end, times))
         else:
-            print("* \"{0}{1}{2}\" possible match (\"{4}{5}{6}\" {8}{9}%{10} similar)".format(Color.bold_yellow, in_item,
-                                                                                              Color.end, in_file, Color.bold_green, from_item, Color.end, from_file, Color.bold_yellow, match_ratio, Color.end))
+            print("* \"{0}{1}{2}\" possible match (\"{4}{5}{6}\" {8}{9}%{10} match, {11} times)".format(Color.bold_yellow, in_item,
+                                                                                                        Color.end, in_file, Color.bold_green, from_item, Color.end, from_file, Color.bold_yellow, match_ratio, Color.end, times))
 
     else:
         if match_ratio == 100:
-            print("* \"{0}{1}{2}\" in {3} found in {7} (\"{4}{5}{6}\" {8}{9}% match{10})".format(Color.bold_yellow, in_item,
-                                                                                                 Color.end, in_file, Color.bold_green, from_item, Color.end, from_file, Color.bold_red, match_ratio, Color.end))
+            print("* \"{0}{1}{2}\" in {3} found in {7} (\"{4}{5}{6}\" {8}{9}% match{10}, {11} times)".format(Color.bold_yellow, in_item,
+                                                                                                             Color.end, in_file, Color.bold_green, from_item, Color.end, from_file, Color.bold_red, match_ratio, Color.end, times))
         else:
-            print("* \"{0}{1}{2}\" in {3} possible match in {7} (\"{4}{5}{6}\" {8}{9}%{10} similar)".format(Color.bold_yellow, in_item,
-                                                                                                            Color.end, in_file, Color.bold_green, from_item, Color.end, from_file, Color.bold_yellow, match_ratio, Color.end))
+            print("* \"{0}{1}{2}\" in {3} possible match in {7} (\"{4}{5}{6}\" {8}{9}%{10} match {11} times)".format(Color.bold_yellow, in_item,
+                                                                                                                     Color.end, in_file, Color.bold_green, from_item, Color.end, from_file, Color.bold_yellow, match_ratio, Color.end, times))
