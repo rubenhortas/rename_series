@@ -12,11 +12,9 @@
 import os
 
 from crosscutting.condition_messages import print_error
+from crosscutting.constants import SUBTITLE_EXTENSIONS
 from crosscutting.constants import VIDEO_EXTENSIONS
 from crosscutting.messages_move_series import mv_msg
-
-
-form crosscutting.constants import SUBTITLE_EXTENSIONS
 
 
 def is_video(file):

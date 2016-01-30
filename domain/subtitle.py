@@ -10,15 +10,12 @@
 """
 
 from crosscutting.constants import DEFAULT_SUBTITLE_EXTENSION
-from crosscutting.constants import VO_SUBTITLES
+from crosscutting.constants import OV_SUBTITLES
 
 from .file import File
 
 
 class Subtitle(File):
-
-    def __init__(self):
-        pass
 
     def __init__(self, path, file_name, testing):
         super(Subtitle, self).__init__(path, file_name, testing)
@@ -26,7 +23,7 @@ class Subtitle(File):
         self.__set_new_name()
         if self.new_file_name:
             self._translate()
-            self._rename()
+            self._rename(testing)
 
     def __set_new_name(self):
         """
@@ -34,8 +31,8 @@ class Subtitle(File):
             Sets new file name.
         """
 
-        for language in VO_SUBTITLES:
+        for language in OV_SUBTITLES:
             if language in self.file_name:
-                self.new_file_name = self.file_name
-                self.new_file_name = self.new_file_name.replace(
-                    language, VO_SUBTITLES.get(language))
+                file_name = self.file_name
+                self.new_file_name = file_name.replace(
+                    language, OV_SUBTITLES.get(language))

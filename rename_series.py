@@ -48,6 +48,8 @@ if __name__ == "__main__":
 
         args = parser.parse_args()
 
+        testing = args.testing
+
         clear_screen()
 
         if(args.paths):
@@ -61,7 +63,7 @@ if __name__ == "__main__":
             else:
                 directories_found = True
 
-                print_header(current_path, args.testing)
+                print_header(current_path, testing)
 
                 subtitles = get_subtitles(current_path)
                 videos = get_videos(current_path)
@@ -75,7 +77,7 @@ if __name__ == "__main__":
                     videos = get_videos(current_path)
 
                     check_for_subs(
-                        videos, subtitles, current_path, args.testing)
+                        videos, subtitles, current_path, testing)
 
         if not directories_found:
             print_error('Has not entered any directory')

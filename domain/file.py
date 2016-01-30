@@ -59,6 +59,7 @@ class File:
             Translates some series names.
         """
 
+        print(self.show_name)
         if self.show_name in TRANSLATED_NAMES:
             translated_show_name = TRANSLATED_NAMES.get(
                 self.show_name)

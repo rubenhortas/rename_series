@@ -35,7 +35,7 @@ class Video(File):
         if not self.is_well_formatted():
             self.__remove_quality()
             self.__get_episode()
-            if self.__is_serie():
+            if self.__is_show():
                 self.__set_ov()
                 self.__get_show_name()
                 self.show_name = self._wrap_year(self.show_name)
@@ -76,10 +76,10 @@ class Video(File):
             self.new_file_name = self.file_name.replace(self.episode_in_file_name,
                                                         self.episode)
 
-    def __is_serie(self):
+    def __is_show(self):
         """
-        __is_serie(self)
-            Returns if the video file is a serie.
+        __is_show(self)
+            Returns if the video file is a show.
         """
 
         if self.episode_in_file_name:
@@ -104,10 +104,7 @@ class Video(File):
             Gets the show name and if it's in original version.
         """
 
-        splitted_file_name = os.path.splitext(self.file_name)
-
-        file_name = splitted_file_name[0]
-        self.extension = splitted_file_name[1]
+        file_name, self.extension = os.path.splitext(self.file_name)
 
         show_name = file_name.split(self.episode_in_file_name)[0]
         show_name = show_name.replace(".", " ")
@@ -121,9 +118,7 @@ class Video(File):
             Expands some serie titles.
         """
 
-        show_name_lower = self.show_name.lower()
-
-        if show_name_lower in EXPANDED_NAMES:
+        if self.show_name.lower() in EXPANDED_NAMES:
             self.show_name = EXPANDED_NAMES.get(show_name_lower)
 
     def __get_episode_title(self):
