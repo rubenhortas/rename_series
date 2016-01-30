@@ -83,9 +83,10 @@ def __compare_lists_items(list1, list2, in_file, from_file):
         - list2: (list) List two.
         - from_file: (string) File containing list2 items.
     """
-    duplicated = {}
+    duplicated = []
 
     for item_list1 in list1:
+        duplicated_items = {}
         matches = 0
         for item_list2 in list2:
             match_ratio = __get_match_ratio(item_list1, item_list2)
@@ -93,11 +94,13 @@ def __compare_lists_items(list1, list2, in_file, from_file):
                 matches = matches + 1
                 if from_file or (matches > 1):
                     duplicated_item = DuplicatedItem(item_list2, match_ratio)
-                    increment(duplicated, duplicated_item)
+                    increment(duplicated_items, duplicated_item)
                     # list2.remove(item_list2)
 
-    __print_duplicated_items(
-        duplicated, item_list1.strip(), in_file, from_file)
+        if duplicated_items != {}:
+            duplicated.append((item_list1, duplicated_items))
+
+    __print_duplicated_items(duplicated)
 
 
 def __get_match_ratio(item1, item2):
@@ -125,7 +128,16 @@ def __get_match_ratio(item1, item2):
     return match_ratio
 
 
-def __print_duplicated_items(duplicated_items, item1, in_file, from_file):
-    for duplicated_item in duplicated_items:
-        print_duplicated_msg(
-            item1, duplicated_item.name, in_file, from_file, duplicated_item.match_ratio, duplicated_items[duplicated_item])
+def __print_duplicated_items(duplicated):
+
+    for item in duplicated:
+        original_item = item[0]
+        duplicated_items = item[1]
+
+        for duplicated_item in duplicated_items:
+            duplicated_name = duplicated_item.name
+            duplicated_match_ratio = duplicated_item.match_ratio
+            duplicated_times = duplicated_items[duplicated_item]
+
+            print_duplicated_msg(original_item, duplicated_name, "in_file",
+                                 "from_file", duplicated_match_ratio, duplicated_times)
