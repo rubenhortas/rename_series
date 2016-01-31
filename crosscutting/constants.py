@@ -89,10 +89,11 @@ EXPANDED_NAMES = {
     "mentalista":    "El mentalista",
 
     # Elementary
-    "ele":      "Elementary",
-    "elem":     "Elementary",
-    "eleme":    "Elementary",
-    "elmntry":  "Elementary",
+    "ele":          "Elementary",
+    "elem":         "Elementary",
+    "eleme":        "Elementary",
+    "elmntry":      "Elementary",
+    "elementary":   "Elementary",
 
     # Marvel"s Agents of SHIELD
     "marvel\"s agents of s h i e l d":   "Marvel\"s Agents of S.H.I.E.L.D.",
@@ -105,6 +106,9 @@ EXPANDED_NAMES = {
     "sp":        "South Park",
     "spark":     "South Park",
     "southpark": "South Park",
+
+    # Supernatural
+    "supernatural": "Supernatural",
 
     # The Big Bang Theory
     "tbbtheory":     "The Big Bang Theory",
