@@ -13,11 +13,11 @@
 
 class DuplicatedItem():
     name = None
-    match_ratio = 0
+    possible_matches = None
 
-    def __init__(self, name, match_ratio):
+    def __init__(self, name, possible_matches):
         self.name = name
-        self.match_ratio = match_ratio
+        self.possible_matches = possible_matches
 
     def __hash__(self):
         return hash(self.name)

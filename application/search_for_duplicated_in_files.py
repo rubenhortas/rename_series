@@ -17,6 +17,7 @@ import string
 from application.utils.dictionary_utils import increment
 from crosscutting.messages_search_for_duplicated_in_files import print_duplicated_msg
 from domain.duplicated_item import DuplicatedItem
+from domain.match import Match
 
 
 MATCH_THRESHOLD = 0.90
@@ -83,24 +84,24 @@ def __compare_lists_items(list1, list2, in_file, from_file):
         - list2: (list) List two.
         - from_file: (string) File containing list2 items.
     """
-    duplicated = []
+
+    duplicated_items = {}
+    possible_matches = {}
 
     for item_list1 in list1:
-        duplicated_items = {}
-        matches = 0
+        possible_matches = {}
         for item_list2 in list2:
             match_ratio = __get_match_ratio(item_list1, item_list2)
             if match_ratio > MATCH_THRESHOLD:
-                matches = matches + 1
-                if from_file or (matches > 1):
-                    duplicated_item = DuplicatedItem(item_list2, match_ratio)
-                    increment(duplicated_items, duplicated_item)
-                    # list2.remove(item_list2)
+                match = Match(item_list2, match_ratio * 100)
+                increment(possible_matches, match)
+                matches = possible_matches[match]
 
-        if duplicated_items != {}:
-            duplicated.append((item_list1, duplicated_items))
+        if matches > 1:
+            duplicated_item = DuplicatedItem(item_list1, possible_matches)
+            duplicated_items[duplicated_item] = matches
 
-    __print_duplicated_items(duplicated)
+    __print_duplicated_items(duplicated_items, in_file, from_file)
 
 
 def __get_match_ratio(item1, item2):
@@ -128,16 +129,15 @@ def __get_match_ratio(item1, item2):
     return match_ratio
 
 
-def __print_duplicated_items(duplicated):
+def __print_duplicated_items(duplicated_items, in_file, from_file):
 
-    for item in duplicated:
-        original_item = item[0]
-        duplicated_items = item[1]
+    for item in duplicated_items:
+        original_item = item.name
 
-        for duplicated_item in duplicated_items:
-            duplicated_name = duplicated_item.name
-            duplicated_match_ratio = duplicated_item.match_ratio
-            duplicated_times = duplicated_items[duplicated_item]
+        for possible_match in item.possible_matches:
+            duplicated_name = possible_match.name
+            duplicated_match_ratio = possible_match.match_ratio
+            duplicated_times = item.possible_matches[possible_match]
 
-            print_duplicated_msg(original_item, duplicated_name, "in_file",
-                                 "from_file", duplicated_match_ratio, duplicated_times)
+            print_duplicated_msg(original_item, duplicated_name, in_file,
+                                 from_file, duplicated_match_ratio, duplicated_times)
