@@ -41,8 +41,10 @@ if __name__ == "__main__":
         directories_found = False
 
         parser = argparse.ArgumentParser(description='Renames some series.')
+
         parser.add_argument(
             'paths', metavar='paths', nargs='+', help='paths to rename files')
+
         parser.add_argument('-t', '--test', dest='testing', action='store_true',
                             help='run a single test showing the expected output')
 
