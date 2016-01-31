@@ -47,8 +47,6 @@ USAGE
 		Optional arguments:
   		-h, --help            			show this help message and exit
   		-t, --test            			run a single test showing the expected output
-  		-d, --debug           			show debug info
-  		-D USER_DIR, --dir USER_DIR	use only the specified directory/path
 	
 	SEARCH FOR DUPLICATED EPISODES
 		
@@ -71,12 +69,12 @@ USAGE
 
 		Look for repeated strings in file[s]
 
-		optional arguments:
-  		-h, --help       show this help message and exit
-  		-from FROM_FILE  from file
-  		-in IN_FILE      in file
-  		-t, --test       runs a single test showing the expected output
-  		-d, --debug      show debug info
+        optional arguments:
+        -h, --help  show this help message and exit
+        -from file  from file
+        -in file    in file
+        -t, --test  runs a single test showing the expected output
+
 
 CONTACT
 
