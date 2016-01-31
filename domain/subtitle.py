@@ -9,9 +9,8 @@
 @file:    subtitle.py
 """
 
-from crosscutting.constants import DEFAULT_SUBTITLE_EXTENSION
+import os
 from crosscutting.constants import OV_SUBTITLES
-
 from .file import File
 
 
@@ -19,11 +18,25 @@ class Subtitle(File):
 
     def __init__(self, path, file_name, testing):
         super(Subtitle, self).__init__(path, file_name, testing)
-        self.ext = DEFAULT_SUBTITLE_EXTENSION
-        self.__set_new_name()
-        if self.new_file_name:
-            self._translate()
-            self._rename(testing)
+
+        if not self.is_well_formatted():
+            self._remove_quality()
+            self._get_episode()
+            if self._is_show():
+                self._set_ov()
+                self._get_show_name()
+                self.show_name = self._wrap_year(self.show_name)
+                self._expand_show_name()
+                self._get_episode_title()
+                self._get_new_file_name()
+                self._translate()
+                self.new_path = os.path.join(self.path, self.new_file_name)
+                self._rename(testing)
+        else:
+            self.__set_new_name()
+            if self.new_file_name:
+                self._translate()
+                self._rename(testing)
 
     def __set_new_name(self):
         """

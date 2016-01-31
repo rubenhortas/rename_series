@@ -23,7 +23,6 @@ FINAL_DISKS = ["/media/ruben/3tb"]
 
 
 # File extensions
-DEFAULT_SUBTITLE_EXTENSION = ".srt"
 SUBTITLE_EXTENSIONS = [".srt"]
 VIDEO_EXTENSIONS = [".mp4", ".avi", ".mkv"]
 
