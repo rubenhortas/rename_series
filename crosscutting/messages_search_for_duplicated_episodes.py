@@ -29,9 +29,9 @@ def print_header(path, testing):
             header_msg, Color.bold_red, Color.end)
 
 
-def best_file_msg(f):
+def print_best_file(f):
     """
-    best_file_msg(f):
+    print_best_file(f):
         Prints best file choosen.
     Arguments:
         - f: File choosen.
@@ -40,9 +40,9 @@ def best_file_msg(f):
     print("\tBest file: {0}{1}{2}".format(Color.bold_green, f, Color.end))
 
 
-def repeated_file_msg(f):
+def print_repeated_file(f):
     """
-    repeated_file_msg(f):
+    print_repeated_file(f):
         Prints repeated file found.
     Arguments:
         - f: File choosen.
@@ -51,9 +51,9 @@ def repeated_file_msg(f):
     print("{0}{1}{2} duplicated".format(Color.bold_yellow, f, Color.end))
 
 
-def no_repeated_found_msg(path):
+def print_no_repeated_found(path):
     """
-    no_repeated_found_msg(path):
+    print_no_repeated_found(path):
         Prints repeated file found.
     Arguments:
         - path: Path.
@@ -63,9 +63,9 @@ def no_repeated_found_msg(path):
         Color.bold_green, path, Color.end))
 
 
-def rm_msg(f):
+def print_rm(f):
     """
-    rm_msg(f)
+    print_rm(f)
         Prints a message indicating a file to remove.
     Arguments:
         - f: (string) File to remove.

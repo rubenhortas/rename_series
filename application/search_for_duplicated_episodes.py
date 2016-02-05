@@ -13,11 +13,12 @@
 import os
 import re
 
+from crosscutting.condition_messages import print_exception
 from crosscutting.constants import OV_STRING
-from crosscutting.messages_search_for_duplicated_episodes import best_file_msg
-from crosscutting.messages_search_for_duplicated_episodes import no_repeated_found_msg
-from crosscutting.messages_search_for_duplicated_episodes import repeated_file_msg
-from crosscutting.messages_search_for_duplicated_episodes import rm_msg
+from crosscutting.messages_search_for_duplicated_episodes import print_best_file
+from crosscutting.messages_search_for_duplicated_episodes import print_no_repeated_found
+from crosscutting.messages_search_for_duplicated_episodes import print_repeated_file
+from crosscutting.messages_search_for_duplicated_episodes import print_rm
 from domain.utils.file_handler import is_video
 
 
@@ -54,7 +55,7 @@ def search_duplicated_episodes(path, testing):
         else:
             relative_path = root.replace(path, "")
             if relative_path is not "":  # skip root
-                no_repeated_found_msg(relative_path)
+                print_no_repeated_found(relative_path)
 
 
 def __get_best_quality(path, repeated_episodes, testing):
@@ -78,21 +79,21 @@ def __get_best_quality(path, repeated_episodes, testing):
         for episode in repeated_episodes:
 
             relative_path = path.replace(path, "")
-            repeated_file_msg(os.path.join(relative_path, episode))
+            print_repeated_file(os.path.join(relative_path, episode))
 
             best_file, discarted_files = __get_best_file(
                 episode, files_in_path)
 
-            best_file_msg(best_file)
+            print_best_file(best_file)
 
             for f in discarted_files:
-                rm_msg(f)
+                print_rm(f)
 
             if not testing:
                 try:
                     os.remove(f)
                 except Exception as e:
-                    exception_msg(e)
+                    print_exception(e)
 
 
 def __get_best_file(episode, files_in_path):
