@@ -13,7 +13,7 @@ import argparse
 import signal
 import time
 
-from application.move_seris import move
+from application.move_series import move
 from application.utils.python_utils import exit_signal_handler
 from application.utils.python_utils import get_interpreter_version
 from crosscutting.condition_messages import print_error
@@ -38,7 +38,7 @@ if __name__ == "__main__":
         parser = argparse.ArgumentParser(description="Move some series.")
 
         parser.add_argument(
-            'path', metavar='path', nargs='1', help='path to move files')
+            'path', metavar='path', nargs=1, help='path to move files')
 
         parser.add_argument("-t", "--test", dest="test",
                             action="store_true",

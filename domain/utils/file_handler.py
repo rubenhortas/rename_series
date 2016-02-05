@@ -14,7 +14,7 @@ import os
 from crosscutting.condition_messages import print_error
 from crosscutting.constants import SUBTITLE_EXTENSIONS
 from crosscutting.constants import VIDEO_EXTENSIONS
-from crosscutting.messages_move_series import mv_msg
+from crosscutting.messages_move_series import print_mv
 
 
 def is_video(file):
@@ -88,7 +88,7 @@ def mv(orig, dest, testing):
         orig_file_name = os.path.basename(orig)
         dest_file_name = os.path.basename(dest)
 
-        mv_msg(orig_file_name, dest_file_name)
+        print_mv(orig_file_name, dest_file_name)
 
         if not testing:
             os.rename(orig, dest)

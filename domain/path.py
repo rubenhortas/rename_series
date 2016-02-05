@@ -16,9 +16,9 @@ FILE_WELL_FORMATED_PATTERN = re.compile(
     "(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>[\w \-\(\)])?\.(?P<extension>[\w]{3})", re.UNICODE)
 
 
-class DestDir():
+class Path():
     """
-    DestDir
+    Path
         Stores the information relative to a file and its destiny path.
     """
 
