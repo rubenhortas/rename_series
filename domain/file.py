@@ -77,9 +77,9 @@ class File:
 
         self.file_name = self.file_name.strip()
 
-    def _get_episode(self):
+    def _set_episode(self):
         """
-        _get_episode(self)
+        _set_episode(self)
             Retrieves and stores the data relative to the season and
             episode.
         """
@@ -114,9 +114,9 @@ class File:
                 self.original_version = True
                 break
 
-    def _get_show_name(self):
+    def _set_show_name(self):
         """
-        _get_show_name(self)
+        _set_show_name(self)
             Gets the show name and if it's in original version.
         """
 
@@ -158,7 +158,7 @@ class File:
         if self.show_name.lower() in EXPANDED_NAMES:
             self.show_name = EXPANDED_NAMES.get(self.show_name.lower())
 
-    def _get_episode_title(self):
+    def _set_episode_title(self):
 
         file_name = os.path.splitext(self.file_name)[0]
 
@@ -173,7 +173,7 @@ class File:
                 if episode_title != "":
                     self.episode_title = episode_title
 
-    def _get_new_file_name(self):
+    def _set_new_file_name(self):
         """
         __set_show_name(self)
             Sets the output title.
@@ -202,9 +202,9 @@ class File:
             self.new_file_name = self.new_file_name.replace(
                 self.show_name, translated_show_name)
 
-    def _rename(self, testing):
+    def _rename_file(self, testing):
         """
-        _rename(self)
+        _rename_file(self)
             Renames a file with a new name.
         """
 
