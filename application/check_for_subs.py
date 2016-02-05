@@ -14,7 +14,7 @@ import re
 
 from crosscutting.condition_messages import print_info
 from crosscutting.constants import OV_STRING
-from crosscutting.messages_move_series import mv_msg
+from crosscutting.messages_move_series import print_mv
 from domain.utils.file_handler import mv
 
 
@@ -58,7 +58,7 @@ def check_for_subs(videos, subtitles, path, testing):
                         new_video_path = os.path.join(path,
                                                       new_video_name)
 
-                        mv_msg(video, new_video_name)
+                        print_mv(video, new_video_name)
 
                         mv(current_video_path, new_video_path, testing)
 
