@@ -13,24 +13,25 @@ from presentation.color import Color
 from presentation.tag import Tag
 
 
-def header(current_disk, debugging, testing):
+def print_header(current_disk, testing):
     """
-    header()
+    print_header()
         Print a couple of introduction lines
     """
 
-    header_msg = "{0} Moving files to {1}{2}{3}".format(
+    header = "{0} Moving files to {1}{2}{3}".format(
         Tag.info, Color.bold_red, current_disk, Color.end)
 
-    if(debugging or testing):
-        header_msg = "{0} {1}[TEST]{2}".format(
-            header_msg, Color.bold_red, Color.end)
-    print(header_msg)
+    if testing:
+        header = "{0} {1}[TEST]{2}".format(
+            header, Color.bold_red, Color.end)
+
+    print(header)
 
 
-def mv_msg(orig, dest):
+def print_mv(orig, dest):
     """
-    mv_msg(msg)
+    print_mv(msg)
         Prints a message indicating the original file path (or name)
         and its destiny path (or name).
     Arguments:
@@ -38,5 +39,4 @@ def mv_msg(orig, dest):
         - dest: (string) Destiny file path/name.
     """
 
-    mv_msg = "{0} -> {1}{2}{3}".format(orig, Color.bold_green, dest, Color.end)
-    print(mv_msg)
+    print("{0} -> {1}{2}{3}".format(orig, Color.bold_green, dest, Color.end))

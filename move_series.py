@@ -12,23 +12,16 @@
 import argparse
 import signal
 import time
+
+from application.move_seris import move
 from application.utils.python_utils import exit_signal_handler
 from application.utils.python_utils import get_interpreter_version
 from crosscutting.condition_messages import print_error
+from crosscutting.constants import BUFFER_DISKS
+from crosscutting.constants import FINAL_DISKS
 from crosscutting.constants import REQUIRED_PYTHON_VERSION
 from presentation.utils.screen import clear_screen
 
-
-buffer_disks = []
-final_disks = []
-
-
-def __start_moving(dest, is_buffer, testing):
-    print("TODO")
-
-
-def move_to_known_disks(disks_list, is_buffer, testing):
-    print("TODO")
 
 if __name__ == "__main__":
 
@@ -38,53 +31,51 @@ if __name__ == "__main__":
 
     if interpreter == REQUIRED_PYTHON_VERSION:
 
-        buffer_disks_found = False
-        final_disks_found = False
+        buffer_disks_mounted = False
+        final_disks_mounted = False
         input_dest = None
-        time_ini = 0
 
         parser = argparse.ArgumentParser(description="Move some series.")
 
-        parser.add_argument("-D", "--dest", dest="input_dest",
-                            help="Directory where the series will be moved.")
+        parser.add_argument(
+            'path', metavar='path', nargs='1', help='path to move files')
 
         parser.add_argument("-t", "--test", dest="test",
                             action="store_true",
                             help="Runs a single test showing the output.")
 
         args = parser.parse_args()
-
         testing = args.test
-        input_dest = args.input_dest
+        user_path = args.path
 
         clear_screen()
 
-        # If user specifies a directory to move the files
-        if input_dest:
-            if os.path.isdir(input_dest):
-                time_ini = time.clock()
-                start_moving(input_dest, False, testing)
-                time_fin = time.clock()
-                total_time = time_fin - time_ini
-                print_time(total_time)
+        if user_path:
+            is_buffer = False
+
+            if os.path.isdir(user_path):
+                if user_path in BUFFER_DISKS:
+                    is_buffer = True
+
+                move(user_path, is_buffer, testing)
             else:
                 print_error("{0} is not a directory.".format(input_dest))
 
-        # If the user did not specify a directory, search for known mounted
-        # disks
         else:
-            time_ini = time.clock()
-            buffer_disks_found = move_to_known_disks(buffer_disks, True,
-                                                     testing)
-            final_disks_found = move_to_known_disks(final_disks, False,
-                                                    testing)
-            time_fin = time.clock()
+            buffer_disks_mounted = get_mounted_disks(BUFFER_DISKS)
+            final_disks_mounted = get_mounted_disks(FINAL_DISKS)
 
-            if not buffer_disks_found and not final_disks_found:
-                print_error("No disks found.")
+            if (not buffer_disks_mounted == [] or not final_disks_mounted == []):
+                pass
+
+                for disk in buffer_disks_mounted:
+                    move(disk, True, testing)
+
+                for disk in final_disks_mounted:
+                    move(disk, False, testing)
+
             else:
-                total_time = time_fin - time_ini
-                print_time(total_time)
+                print_error("No mounted disks found.")
 
     else:
         print_error("Requires Python {0}".format(REQUIRED_PYTHON_VERSION))
