@@ -14,7 +14,7 @@ from crosscutting.constants import OV_SUBTITLES
 from .file import File
 
 
-class Subtitle(object, File):
+class Subtitle(File):
 
     def __init__(self, path, file_name, testing):
         super(Subtitle, self).__init__(path, file_name, testing)
