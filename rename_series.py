@@ -9,7 +9,6 @@
 @file:    rename_series.py
 """
 
-
 import argparse
 import os
 import signal
@@ -26,7 +25,6 @@ from crosscutting.messages_rename_series import print_header
 from domain.utils.file_handler import get_subtitles
 from domain.utils.file_handler import get_videos
 from presentation.utils.screen import clear_screen
-
 
 if __name__ == "__main__":
 

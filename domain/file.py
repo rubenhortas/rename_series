@@ -20,7 +20,6 @@ from crosscutting.constants import TRANSLATED_NAMES
 from domain.utils.file_handler import mv
 from .episode import Episode
 
-
 EPISODE_TITLE_PATTERN = re.compile("[\w ]*", re.UNICODE)
 IS_WELL_FORMATTED_COMPILED_PATTERN = re.compile(
     "^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
@@ -28,7 +27,6 @@ YEAR_PATTERN = re.compile(" \(?\d{4}\)?")
 
 
 class File(object):
-
     episode = None
     episode_title = None
     episode_in_file_name = None
@@ -88,8 +86,7 @@ class File(object):
         if episode.episode_in_file_name:
             self.episode_in_file_name = episode.episode_in_file_name
             self.episode = episode.episode_formatted
-            self.new_file_name = self.file_name.replace(self.episode_in_file_name,
-                                                        self.episode)
+            self.new_file_name = self.file_name.replace(self.episode_in_file_name, self.episode)
 
     def _is_show(self):
         """
@@ -144,8 +141,7 @@ class File(object):
 
             if "(" not in year_in_show_name or ")" not in year_in_show_name:
                 new_year = "({0})".format(year_in_show_name)
-                formatted_attribute = formatted_attribute.replace(
-                    year_in_show_name, new_year)
+                formatted_attribute = formatted_attribute.replace(year_in_show_name, new_year)
 
         return formatted_attribute
 
@@ -185,8 +181,7 @@ class File(object):
             new_file_name = "{0} {1}".format(new_file_name, self.episode_title)
 
         if self.original_version:
-            new_file_name = "{0} {1}".format(
-                new_file_name, self.original_version)
+            new_file_name = "{0} {1}".format(new_file_name, self.original_version)
 
         self.new_file_name = "{0}{1}".format(new_file_name, self.extension)
 
@@ -197,10 +192,8 @@ class File(object):
         """
 
         if self.show_name in TRANSLATED_NAMES:
-            translated_show_name = TRANSLATED_NAMES.get(
-                self.show_name)
-            self.new_file_name = self.new_file_name.replace(
-                self.show_name, translated_show_name)
+            translated_show_name = TRANSLATED_NAMES.get(self.show_name)
+            self.new_file_name = self.new_file_name.replace(self.show_name, translated_show_name)
 
     def _rename_file(self):
         """
@@ -209,9 +202,10 @@ class File(object):
         """
 
         try:
-            self.new_path = os.path.join(self.path, self.new_file_name)
+            if self.new_file_name and self.new_file_name != self.file_name:
+                self.new_path = os.path.join(self.path, self.new_file_name)
 
-            mv(self.original_path, self.new_path, self.testing)
+                mv(self.original_path, self.new_path, self.testing)
 
         except Exception as ex:
             print_exception(ex)
