@@ -47,5 +47,4 @@ class Subtitle(File):
         for language in OV_SUBTITLES:
             if language in self.file_name:
                 file_name = self.file_name
-                self.new_file_name = file_name.replace(
-                    language, OV_SUBTITLES.get(language))
+                self.new_file_name = file_name.replace(language, OV_SUBTITLES.get(language))

@@ -21,8 +21,7 @@ from domain.utils.file_handler import mv
 from .episode import Episode
 
 EPISODE_TITLE_PATTERN = re.compile("[\w ]*", re.UNICODE)
-IS_WELL_FORMATTED_COMPILED_PATTERN = re.compile(
-    "^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
+IS_WELL_FORMATTED_COMPILED_PATTERN = re.compile("^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
 YEAR_PATTERN = re.compile(" \(?\d{4}\)?")
 
 

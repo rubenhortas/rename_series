@@ -23,8 +23,7 @@ def print_header(path, testing):
         testing: 
     """
 
-    header_msg = "{0}Checking for duplicate files in {1}{2}{3}".format(
-        Tag.info, Color.bold_red, path, Color.end)
+    header_msg = "{0}Checking for duplicate files in {1}{2}{3}".format(Tag.info, Color.bold_red, path, Color.end)
 
     if not testing:
         print(header_msg)
@@ -62,8 +61,7 @@ def print_no_repeated_found(path):
         path: Path.
     """
 
-    print("{0}{1}{2} No repeated files found".format(
-        Color.bold_green, path, Color.end))
+    print("{0}{1}{2} No repeated files found".format(Color.bold_green, path, Color.end))
 
 
 def print_rm(f):

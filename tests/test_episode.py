@@ -46,8 +46,7 @@ class TestFile(unittest.TestCase):
 
         episode._Episode__get_ep_format_2(file_name)
 
-        self.assertEqual(
-            expected_episode_in_file_name, episode.episode_in_file_name)
+        self.assertEqual(expected_episode_in_file_name, episode.episode_in_file_name)
         self.assertEqual(expected_episode_formatted, episode.episode_formatted)
 
     # noinspection PyUnusedLocal,PyUnusedLocal,PyUnresolvedReferences
@@ -62,8 +61,7 @@ class TestFile(unittest.TestCase):
 
         episode._Episode__get_ep_format_3(file_name)
 
-        self.assertEqual(
-            expected_episode_in_file_name, episode.episode_in_file_name)
+        self.assertEqual(expected_episode_in_file_name, episode.episode_in_file_name)
         self.assertEqual(expected_episode_formatted, episode.episode_formatted)
 
     # noinspection PyUnusedLocal,PyUnresolvedReferences,PyUnresolvedReferences

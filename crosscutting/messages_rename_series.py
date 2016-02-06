@@ -23,11 +23,9 @@ def print_header(current_disk, testing):
         current_disk:
     """
 
-    header_msg = "{0} Renaming files in {1}{2}{3}".format(
-        Tag.info, Color.bold_red, current_disk, Color.end)
+    header_msg = "{0} Renaming files in {1}{2}{3}".format(Tag.info, Color.bold_red, current_disk, Color.end)
 
     if testing:
-        header_msg = "{0} {1}[TEST]{2}".format(header_msg, Color.bold_red,
-                                               Color.end)
+        header_msg = "{0} {1}[TEST]{2}".format(header_msg, Color.bold_red, Color.end)
 
     print(header_msg)

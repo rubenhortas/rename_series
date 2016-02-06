@@ -19,7 +19,6 @@ from crosscutting.messages_search_for_duplicated_in_files import print_duplicate
 from domain.duplicated_item import DuplicatedItem
 from domain.match import Match
 
-
 MATCH_THRESHOLD = 0.90
 
 
@@ -36,8 +35,7 @@ def search_in_files(in_file, from_file):
     in_file_content = __get_file_content(in_file)
     from_file_content = __get_file_content(from_file)
 
-    __compare_lists_items(
-        from_file_content, in_file_content, from_file, in_file)
+    __compare_lists_items(from_file_content, in_file_content, from_file, in_file)
 
 
 def search_in_file(in_file):
@@ -131,7 +129,6 @@ def __get_match_ratio(item1, item2):
 
 
 def __print_duplicated_items(duplicated_items):
-
     for item in duplicated_items:
         original_item = item.name
 

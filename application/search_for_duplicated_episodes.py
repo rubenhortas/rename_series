@@ -21,15 +21,13 @@ from crosscutting.messages_search_for_duplicated_episodes import print_repeated_
 from crosscutting.messages_search_for_duplicated_episodes import print_rm
 from domain.utils.file_handler import is_video
 
-
 EPISODE_PATTERN = re.compile("[0-9]{1,2}x[0-9]{1,2}")
 
 
 def search_duplicated_episodes(path, testing):
     repeated_episodes = []
 
-    for root, dirs, files in os.walk(path, topdown=True, onerror=None,
-                                     followlinks=False):
+    for root, dirs, files in os.walk(path, topdown=True, onerror=None, followlinks=False):
 
         if len(files) > 0:
 
@@ -117,7 +115,7 @@ def __get_best_file(episode, files_in_path):
             ov_file = f
         else:
             if (best_file is None or
-                    os.path.getsize(best_file) < os.path.getsize(f)):
+                        os.path.getsize(best_file) < os.path.getsize(f)):
                 best_file = f
 
     if best_file is None:
