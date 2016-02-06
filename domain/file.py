@@ -27,7 +27,7 @@ IS_WELL_FORMATTED_COMPILED_PATTERN = re.compile(
 YEAR_PATTERN = re.compile(" \(?\d{4}\)?")
 
 
-class File:
+class File(object):
 
     episode = None
     episode_title = None
