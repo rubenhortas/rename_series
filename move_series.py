@@ -13,6 +13,7 @@ import argparse
 import os
 import signal
 
+from application.move_series import get_mounted_disks
 from application.move_series import move
 from application.utils.python_utils import exit_signal_handler
 from application.utils.python_utils import get_interpreter_version
