@@ -46,7 +46,7 @@ class TestVideo(unittest.TestCase):
 
         video = Video(self.path, self.video_name, self.testing)
         video.file_name = self.video_name
-        video._File__get_episode()
+        video._set_episode()
 
         self.assertEqual(expected, video.episode_in_file_name)
         self.assertEqual(expected, video.episode)
@@ -60,7 +60,7 @@ class TestVideo(unittest.TestCase):
 
         video = Video(self.path, self.video_name, self.testing)
         video.file_name = self.video_name
-        video._Video__get_episode()
+        video._set_episode()
 
         self.assertEqual(expected_episode, "1x20")
         self.assertEqual(expected_episode_in_name, video.episode_in_file_name)
@@ -74,7 +74,7 @@ class TestVideo(unittest.TestCase):
 
         video = Video(self.path, self.video_name, self.testing)
         video.file_name = self.video_name
-        video._Video__get_episode()
+        video._set_episode()
 
         self.assertEqual(expected_episode, "1x20")
         self.assertEqual(expected_episode_in_name, video.episode_in_file_name)
@@ -88,7 +88,7 @@ class TestVideo(unittest.TestCase):
 
         video = Video(self.path, self.video_name, self.testing)
         video.file_name = self.video_name
-        video._Video__get_episode()
+        video._set_episode()
 
         self.assertEqual(expected_episode, video.episode)
         self.assertEqual(expected_episode_in_name, video.episode_in_file_name)
@@ -99,7 +99,7 @@ class TestVideo(unittest.TestCase):
 
         video = Video(self.path, self.video_name, self.testing)
         video.file_name = self.video_name
-        video._Video__get_episode()
+        video._set_episode()
 
         self.assertIsNone(video.episode)
         self.assertIsNone(video.episode_in_file_name)
@@ -110,20 +110,20 @@ class TestVideo(unittest.TestCase):
 
         video = Video(self.path, self.video_name, self.testing)
 
-        self.assertTrue(video._Video__is_serie())
+        self.assertTrue(video._is_show())
 
     def test_is_serie_false(self):
         self.video_name = "Movie 20015.mkv"
 
         video = Video(self.path, self.video_name, self.testing)
 
-        self.assertFalse(video._Video__is_serie())
+        self.assertFalse(video._is_show())
 
     def test_set_ov_true(self):
         self.video_name = "Show S1E20 [www.kat.cr].mp4"
 
         video = Video(self.path, self.video_name, self.testing)
-        video._Video__set_ov()
+        video._set_ov()
 
         self.assertTrue(video.original_version)
 
@@ -131,7 +131,7 @@ class TestVideo(unittest.TestCase):
         self.video_name = "Show S1E20.mp4"
 
         video = Video(self.path, self.video_name, self.testing)
-        video._Video__set_ov()
+        video._set_ov()
 
         self.assertFalse(video.original_version)
 
