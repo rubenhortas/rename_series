@@ -35,7 +35,8 @@ from crosscutting.messages_move_series import print_header
 #             error_msg("{0} is not a directory".format(disk))
 #
 #     return disks_found
-def move(dest, is_buffer, testing):
+
+def move(dest, testing):
     """
     move(dest, is_buffer, debugging, testing)
         Move the series to the known disks for store tv shows.

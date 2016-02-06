@@ -22,6 +22,7 @@ def get_interpreter_version():
     return major
 
 
+# noinspection PyUnusedLocal
 def exit_signal_handler(signal, frame):
     """"
     exit_signal_handler(signal, frame)

@@ -56,7 +56,7 @@ if __name__ == "__main__":
                 if user_path in BUFFER_DISKS:
                     is_buffer = True
 
-                move(user_path, is_buffer, testing)
+                move(user_path, testing)
             else:
                 print_error("{0} is not a directory.".format(input_dest))
 
@@ -68,10 +68,10 @@ if __name__ == "__main__":
                 pass
 
                 for disk in buffer_disks_mounted:
-                    move(disk, True, testing)
+                    move(disk, testing)
 
                 for disk in final_disks_mounted:
-                    move(disk, False, testing)
+                    move(disk, testing)
 
             else:
                 print_error("No mounted disks found.")
