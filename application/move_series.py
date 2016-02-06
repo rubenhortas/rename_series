@@ -11,7 +11,8 @@
 """
 
 from application.utils.time_handler import print_time
-
+from crosscutting.messages_move_series import print_header
+import time
 
 # def __move_to_known_disks(disks_list, is_buffer, debugging, testing):
 #     """
@@ -47,11 +48,11 @@ def move(dest, testing):
 
     non_existent_paths = []
 
-    header(dest, testing)
+    print_header(dest, testing)
 
     time_ini = time.clock()
 
-    list_files = sorted(get_files(path_movies_local))
+    #list_files = sorted(get_files(path_movies_local))
 
     #     for f in list_files:
     #
