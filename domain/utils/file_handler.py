@@ -17,16 +17,16 @@ from crosscutting.constants import VIDEO_EXTENSIONS
 from crosscutting.messages_move_series import print_mv
 
 
-def is_video(file):
-    file_extension = os.path.splitext(file)[1]
+def is_video(f):
+    file_extension = os.path.splitext(f)[1]
     if file_extension in VIDEO_EXTENSIONS:
         return True
     else:
         return False
 
 
-def is_subtitle(file):
-    file_extension = os.path.splitext(file)[1]
+def is_subtitle(f):
+    file_extension = os.path.splitext(f)[1]
     if file_extension in SUBTITLE_EXTENSIONS:
         return True
     else:
