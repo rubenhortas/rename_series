@@ -78,7 +78,7 @@ def move(dest, testing):
     #                 non_existent_paths = ListHandler.append(nonexistent_dest,
     #                                                         non_existent_paths)
     time_fin = time.clock()
-    total_time = time_fin time_ini
+    total_time = time_fin - time_ini
     print_time(total_time)
 
     for path in non_existent_paths:
