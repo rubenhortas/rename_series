@@ -31,9 +31,6 @@ def search_duplicated_episodes(path, testing):
     for root, dirs, files in os.walk(path, topdown=True, onerror=None,
                                      followlinks=False):
 
-        if len(dirs) > 0:
-            dirs = dirs.sort()
-
         if len(files) > 0:
 
             if len(dirs) == 0:

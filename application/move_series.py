@@ -23,10 +23,10 @@ from crosscutting.messages_move_series import print_header
 #     __move_to_known_disks(disks_list, is_buffer, debugging, testing)
 #         Move the series to the known disks for store tv shows.
 #     Arguments:
-#         - disks_list: (string list) List with the disks used to store shows.
-#         - is_buffer: (boolean) Indicates if the disk is a disk buffer or not.
-#         - debugging: (boolean) Indicates if the program is in debug mode.
-#         - testing: (boolean) Indicates if the program is in testing mode.s
+#         disks_list: (string list) List with the disks used to store shows.
+#         is_buffer: (boolean) Indicates if the disk is a disk buffer or not.
+#         debugging: (boolean) Indicates if the program is in debug mode.
+#         testing: (boolean) Indicates if the program is in testing mode.s
 #     """
 #
 #     disks_found = False
@@ -45,9 +45,9 @@ def move(dest, testing):
     move(dest, is_buffer, debugging, testing)
         Move the series to the known disks for store tv shows.
     Arguments:
-        - dest: (string list) Destiny directories.
-        - is_buffer: (boolean) Indicates if the disk is a disk buffer or not.
-        - testing: (boolean) Indicates if the program is in testing mode.
+        dest: (string list) Destiny directories.
+        is_buffer: (boolean) Indicates if the disk is a disk buffer or not.
+        testing: (boolean) Indicates if the program is in testing mode.
     """
 
     non_existent_paths = []
@@ -78,7 +78,7 @@ def move(dest, testing):
     #                 non_existent_paths = ListHandler.append(nonexistent_dest,
     #                                                         non_existent_paths)
     time_fin = time.clock()
-    total_time = time_fin - time_ini
+    total_time = time_fin time_ini
     print_time(total_time)
 
     for path in non_existent_paths:
