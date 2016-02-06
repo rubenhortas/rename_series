@@ -78,11 +78,10 @@ class TestFile(unittest.TestCase):
 
         episode._Episode__get_ep_format_4(file_name)
 
-        self.assertEqual(
-            expected_episode_in_file_name, episode.episode_in_file_name)
+        self.assertEqual(expected_episode_in_file_name, episode.episode_in_file_name)
         self.assertEqual(expected_episode_formatted, episode.episode_formatted)
 
-        file_name = "Show13120.mp4"
+        file_name = "Show120.mp4"
         expected_episode_in_file_name = "120"
         expected_episode_formatted = "1x20"
 
@@ -92,8 +91,7 @@ class TestFile(unittest.TestCase):
 
         episode._Episode__get_ep_format_4(file_name)
 
-        self.assertEqual(
-            expected_episode_in_file_name, episode.episode_in_file_name)
+        self.assertEqual(expected_episode_in_file_name, episode.episode_in_file_name)
         self.assertEqual(expected_episode_formatted, episode.episode_formatted)
 
 
