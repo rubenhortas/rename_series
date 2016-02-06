@@ -102,7 +102,7 @@ def __compare_lists_items(list1, list2, in_file, from_file):
             duplicated_item = DuplicatedItem(item_list1, possible_matches)
             duplicated_items[duplicated_item] = matches
 
-    __print_duplicated_items(duplicated_items, in_file, from_file)
+    __print_duplicated_items(duplicated_items)
 
 
 def __get_match_ratio(item1, item2):
@@ -130,13 +130,12 @@ def __get_match_ratio(item1, item2):
     return match_ratio
 
 
-def __print_duplicated_items(duplicated_items, in_file, from_file):
+def __print_duplicated_items(duplicated_items):
 
     for item in duplicated_items:
         original_item = item.name
 
         for possible_match in item.possible_matches:
-            duplicated_name = possible_match.name
             duplicated_match_ratio = possible_match.match_ratio
             duplicated_times = item.possible_matches[possible_match]
 
