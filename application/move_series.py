@@ -88,10 +88,10 @@ def move(dest, testing):
     print()
 
 
-def get_mounted_disks():
+def get_mounted_disks(disks):
     mounted_disks = []
 
-    for disk in BUFFER_DISKS:
+    for disk in disks:
         if os.path.isdir(disk):
             mounted_disks.append(disk)
 
