@@ -17,6 +17,10 @@ def print_header(in_file, from_file, testing):
     """
     print_header()
         Print a couple of introduction lines
+
+    Args:
+        from_file:
+        in_file:
     """
 
     if not from_file:

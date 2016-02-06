@@ -17,6 +17,10 @@ def print_header(current_disk, testing):
     """
     print_header()
         Print a couple of introduction lines
+
+    Args:
+        testing:
+        current_disk:
     """
 
     header_msg = "{0} Renaming files in {1}{2}{3}".format(

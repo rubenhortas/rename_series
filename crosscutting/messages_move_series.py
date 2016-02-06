@@ -17,6 +17,10 @@ def print_header(current_disk, testing):
     """
     print_header()
         Print a couple of introduction lines
+
+    Args:
+        testing:
+        current_disk:
     """
 
     header = "{0} Moving files to {1}{2}{3}".format(
