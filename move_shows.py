@@ -21,7 +21,6 @@ from crosscutting.condition_messages import print_error
 from crosscutting.constants import BUFFER_DISKS
 from crosscutting.constants import FINAL_DISKS
 from crosscutting.constants import REQUIRED_PYTHON_VERSION
-from crosscutting.constants import SHOWS_PATHS
 from presentation.utils.screen import clear_screen
 
 if __name__ == "__main__":

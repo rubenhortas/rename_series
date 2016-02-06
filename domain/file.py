@@ -86,9 +86,9 @@ class File(object):
             self.episode = episode.episode_formatted
             self.new_file_name = self.file_name.replace(self.episode_in_file_name, self.episode)
 
-    def _is_show(self):
+    def is_show(self):
         """
-        _is_show(self)
+        is_show(self)
             Returns if the video file is a show.
         """
 

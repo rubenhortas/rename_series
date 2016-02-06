@@ -23,6 +23,7 @@ from domain.path import Path
 from domain.utils.file_handler import mv
 from crosscutting.constants import SHOWS_PATHS
 
+
 def move(dest, testing):
     """
     move(dest, bulk_move, debugging, testing)
@@ -44,24 +45,26 @@ def move(dest, testing):
             files = sorted(os.listdir(show_path))
 
             for f in files:
-                if os.path.isfile(f):
-                    files_moved = True
-                    this_file = File(show_path, f, testing)
+                this_file = File(show_path, f)
 
+                if this_file.is_show():
+                    files_moved = True
                     if dest in BUFFER_DISKS:
-                        file_dest = os.dest_path.join(dest, this_file.file_name)
-                        mv(this_file.f_abs_original_path, file_dest, testing)
+                        file_dest = os.path.join(dest, this_file.file_name)
+
+                        if not testing:
+                            mv(this_file.original_path, file_dest, testing)
 
                     else:
                         file_dest = Path(f, dest, testing)
 
                         if file_dest.final_dest:
-                            mv(this_file.f_abs_original_path, file_dest.final_dest, testing)
+                            mv(this_file.original_path, file_dest.final_dest, testing)
                         else:
-                            nonexistent_path = os.dest_path.join(dest, file_dest.show_name)
+                            nonexistent_path = os.path.join(dest, file_dest.show_name)
                             non_existent_paths = list_handler.append_non_repeated(nonexistent_path, non_existent_paths)
         else:
-            print_error("{0} is not a valid path.".format(orig))
+            print_error("{0} is not a valid path.".format(show_path))
 
     if files_moved:
         time_fin = time.clock()
