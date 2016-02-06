@@ -21,8 +21,8 @@ from crosscutting.condition_messages import print_error
 from crosscutting.constants import BUFFER_DISKS
 from crosscutting.constants import FINAL_DISKS
 from crosscutting.constants import REQUIRED_PYTHON_VERSION
-from presentation.utils.screen import clear_screen
 from crosscutting.constants import SHOWS_PATHS
+from presentation.utils.screen import clear_screen
 
 if __name__ == "__main__":
 
@@ -35,13 +35,11 @@ if __name__ == "__main__":
         buffer_disks_mounted = False
         final_disks_mounted = False
 
-        parser = argparse.ArgumentParser(description="Move some series.")
+        parser = argparse.ArgumentParser(description="Move some shows.")
 
-        parser.add_argument(
-            'dest_path', metavar='dest_path', nargs=1, help='dest_path to move files')
+        parser.add_argument("-to", "--to_path", dest="path", metavar="path", help="path to move the files")
 
-        parser.add_argument("-t", "--test", dest="test",
-                            action="store_true",
+        parser.add_argument("-t", "--test", dest="test", action="store_true",
                             help="Runs a single test showing the output.")
 
         args = parser.parse_args()
@@ -51,13 +49,13 @@ if __name__ == "__main__":
         clear_screen()
 
         if dest_path:
-            is_buffer = False
+            bulk_move = False
 
             if os.path.isdir(dest_path):
                 if dest_path in BUFFER_DISKS:
-                    is_buffer = True
+                    bulk_move = True
                 for show_path in SHOWS_PATHS:
-                    move(show_path, dest_path, testing)
+                    move(show_path, dest_path, testing, bulk_move)
             else:
                 print_error("{0} is not a directory.".format(dest_path))
 
