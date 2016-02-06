@@ -50,6 +50,7 @@ class TestFile(unittest.TestCase):
             expected_episode_in_file_name, episode.episode_in_file_name)
         self.assertEqual(expected_episode_formatted, episode.episode_formatted)
 
+    # noinspection PyUnusedLocal,PyUnusedLocal
     def test_get_format_3_ok(self):
         file_name = "Show [Cap.120].mp4"
         expected_episode_in_file_name = "[Cap.120]"
@@ -65,6 +66,7 @@ class TestFile(unittest.TestCase):
             expected_episode_in_file_name, episode.episode_in_file_name)
         self.assertEqual(expected_episode_formatted, episode.episode_formatted)
 
+    # noinspection PyUnusedLocal
     def test_get_format_4_ok(self):
         file_name = "Show120.mp4"
         expected_episode_in_file_name = "120"

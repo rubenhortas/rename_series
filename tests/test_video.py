@@ -36,7 +36,7 @@ class TestVideo(unittest.TestCase):
 
             video = Video(self.path, self.video_name, self.testing)
             video.file_name = self.video_name
-            video._Video__remove_quality()
+            video._remove_quality()
 
             self.assertEqual(expected, video.file_name)
 
@@ -46,7 +46,7 @@ class TestVideo(unittest.TestCase):
 
         video = Video(self.path, self.video_name, self.testing)
         video.file_name = self.video_name
-        video._Video__get_episode()
+        video._File__get_episode()
 
         self.assertEqual(expected, video.episode_in_file_name)
         self.assertEqual(expected, video.episode)

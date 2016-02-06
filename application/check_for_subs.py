@@ -32,10 +32,10 @@ def check_for_subs(videos, subtitles, path, testing):
             match = name_pattern.search(video_name)
 
             if match:
-                video_name = video_match.group(0)
+                video_name = match.group(0)
 
                 if OV_STRING in video_name:
-                    video_name = video_name.replace(constants.OV_STRING, "")
+                    video_name = video_name.replace(OV_STRING, "")
 
                 video_name = video_name.strip()
 
@@ -45,7 +45,7 @@ def check_for_subs(videos, subtitles, path, testing):
                 match = name_pattern.search(subtitle_name)
 
                 if match:
-                    subtitle_name = subtitle_match.group(0).strip()
+                    subtitle_name = match.group(0).strip()
 
                     if video_name == subtitle_name:
                         subtitles_found = True

@@ -48,7 +48,7 @@ class TestFile(unittest.TestCase):
         print("TestFile.test_rename_ok")
         f = File(self.path, self.file_name, self.testing)
         f.new_file_name = "FileNewName.mp4"
-        f._rename()
+        f._rename_file()
 
         self.assertTrue(True)
 

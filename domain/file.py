@@ -202,7 +202,7 @@ class File:
             self.new_file_name = self.new_file_name.replace(
                 self.show_name, translated_show_name)
 
-    def _rename_file(self, testing):
+    def _rename_file(self):
         """
         _rename_file(self)
             Renames a file with a new name.
@@ -211,7 +211,7 @@ class File:
         try:
             self.new_path = os.path.join(self.path, self.new_file_name)
 
-            mv(self.original_path, self.new_path, testing)
+            mv(self.original_path, self.new_path, self.testing)
 
         except Exception as ex:
             print_exception(ex)

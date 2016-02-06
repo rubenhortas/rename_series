@@ -42,7 +42,7 @@ class TestSubtitle(unittest.TestCase):
 
     def test_set_new_name_fail(self):
         self.file_name = "Subtitle 0x00.srt"
-        sub = Subtitle(self.path, self.file_name, self.testing)
+        Subtitle(self.path, self.file_name, self.testing)
         self.assertTrue(True)
 
 
