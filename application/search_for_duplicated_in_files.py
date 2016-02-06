@@ -140,5 +140,4 @@ def __print_duplicated_items(duplicated_items, in_file, from_file):
             duplicated_match_ratio = possible_match.match_ratio
             duplicated_times = item.possible_matches[possible_match]
 
-            print_duplicated_msg(original_item, duplicated_name, in_file,
-                                 from_file, duplicated_match_ratio, duplicated_times)
+            print_duplicated_msg(original_item, duplicated_match_ratio, duplicated_times)

@@ -30,4 +30,4 @@ class Video(object, File):
                 self._set_new_file_name()
                 self._translate()
                 self.new_path = os.path.join(self.path, self.new_file_name)
-                self._rename_file(testing)
+                self._rename_file()

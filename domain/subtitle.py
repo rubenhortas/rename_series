@@ -36,7 +36,7 @@ class Subtitle(object, File):
             if self.new_file_name:
                 self._translate()
 
-        self._rename_file(testing)
+        self._rename_file()
 
     def __set_new_name(self):
         """
