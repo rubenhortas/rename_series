@@ -20,7 +20,7 @@ $ python3 -m unittest tests/test_file.py
 
 
 class TestFile(unittest.TestCase):
-    # noinspection PyUnusedLocal
+    # noinspection PyUnusedLocal,PyUnresolvedReferences
     def test_get_format_1_ok(self):
         file_name = "Show 1x20.mp4"
         expected = "1x20"
@@ -34,7 +34,7 @@ class TestFile(unittest.TestCase):
         self.assertEqual(expected, episode.episode_in_file_name)
         self.assertEqual(expected, episode.episode_formatted)
 
-    # noinspection PyUnusedLocal
+    # noinspection PyUnusedLocal,PyUnresolvedReferences
     def test_get_format_2_ok(self):
         file_name = "Show S1E20.mp4"
         expected_episode_in_file_name = "S1E20"
@@ -50,7 +50,7 @@ class TestFile(unittest.TestCase):
             expected_episode_in_file_name, episode.episode_in_file_name)
         self.assertEqual(expected_episode_formatted, episode.episode_formatted)
 
-    # noinspection PyUnusedLocal,PyUnusedLocal
+    # noinspection PyUnusedLocal,PyUnusedLocal,PyUnresolvedReferences
     def test_get_format_3_ok(self):
         file_name = "Show [Cap.120].mp4"
         expected_episode_in_file_name = "[Cap.120]"
@@ -66,7 +66,7 @@ class TestFile(unittest.TestCase):
             expected_episode_in_file_name, episode.episode_in_file_name)
         self.assertEqual(expected_episode_formatted, episode.episode_formatted)
 
-    # noinspection PyUnusedLocal
+    # noinspection PyUnusedLocal,PyUnresolvedReferences,PyUnresolvedReferences
     def test_get_format_4_ok(self):
         file_name = "Show120.mp4"
         expected_episode_in_file_name = "120"
