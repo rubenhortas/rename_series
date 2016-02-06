@@ -19,6 +19,7 @@ def print_header(in_file, from_file, testing):
         Print a couple of introduction lines
 
     Args:
+        testing:
         from_file:
         in_file:
     """
@@ -40,6 +41,11 @@ def print_duplicated_msg(item, match_ratio, times):
     """
     duplicated(in_file, from_file)
         Prints duplicated item found.
+
+    Args:
+        times:
+        item:
+        match_ratio:
     """
     str_item = "{0}{1}{2}".format(Color.bold_green, item, Color.end)
 
