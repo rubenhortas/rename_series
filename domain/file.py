@@ -22,7 +22,7 @@ from .episode import Episode
 
 
 EPISODE_TITLE_PATTERN = re.compile("[\w ]*", re.UNICODE)
-IS_WELL_FORMATED_COMPILED_PATTERN = re.compile(
+IS_WELL_FORMATTED_COMPILED_PATTERN = re.compile(
     "^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
 YEAR_PATTERN = re.compile(" \(?\d{4}\)?")
 
@@ -56,7 +56,7 @@ class File:
             Well formatted = show_name 0x00 [episode name].avi
         """
 
-        if IS_WELL_FORMATED_COMPILED_PATTERN.match(self.file_name):
+        if IS_WELL_FORMATTED_COMPILED_PATTERN.match(self.file_name):
             return True
         else:
             return False

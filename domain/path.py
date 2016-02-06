@@ -13,7 +13,7 @@ import os
 import re
 from crosscutting.constants import SEASON_PATH_NAME
 
-FILE_WELL_FORMATED_PATTERN = re.compile(
+FILE_WELL_FORMATTED_PATTERN = re.compile(
     "(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>[\w \-\(\)])?\.(?P<extension>[\w]{3})", re.UNICODE)
 
 
@@ -33,7 +33,7 @@ class Path:
 
     def __init__(self, file_name, dest, testing):
 
-        match = FILE_WELL_FORMATED_PATTERN.search(file_name)
+        match = FILE_WELL_FORMATTED_PATTERN.search(file_name)
 
         if match:
             self.season = match.group("season")
