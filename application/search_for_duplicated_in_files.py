@@ -28,8 +28,8 @@ def search_in_files(in_file, from_file):
         Searches for coincidences between two files.
         Searches in file 'in_file' coincidences from file 'from_file'.
     Arguments:
-        in_file: (string) File [path and] name.
-        from_file: (string) File [path and] name.
+        in_file: (string) File [dest_path and] name.
+        from_file: (string) File [dest_path and] name.
     """
 
     in_file_content = __get_file_content(in_file)
@@ -43,7 +43,7 @@ def search_in_file(in_file):
     search_in_file(in_file)
         Searches for coincidences inside a file.
     Arguments:
-        in_file: (string) File [path and] name.
+        in_file: (string) File [dest_path and] name.
     """
 
     in_file_content = __get_file_content(in_file)
@@ -58,7 +58,7 @@ def __get_file_content(file_name):
     __get_file_content(file_name)
         Gets file content as a sorted list. One list item per line.
     Arguments:
-        file_name: (string) File [path and] name.
+        file_name: (string) File [dest_path and] name.
     """
 
     file_content = []

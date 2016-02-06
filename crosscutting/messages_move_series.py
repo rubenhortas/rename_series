@@ -36,11 +36,11 @@ def print_header(current_disk, testing):
 def print_mv(orig, dest):
     """
     print_mv(msg)
-        Prints a message indicating the original file path (or name)
-        and its destiny path (or name).
+        Prints a message indicating the original file dest_path (or name)
+        and its destiny dest_path (or name).
     Arguments:
-        orig: (string) Original file path/name.
-        dest: (string) Destiny file path/name.
+        orig: (string) Original file dest_path/name.
+        dest: (string) Destiny file dest_path/name.
     """
 
     print("{0} -> {1}{2}{3}".format(orig, Color.bold_green, dest, Color.end))

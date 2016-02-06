@@ -13,34 +13,16 @@
 import os
 import time
 
+from application.utils import list_handler
 from application.utils.time_handler import print_time
 from crosscutting.condition_messages import print_error
 from crosscutting.messages_move_series import print_header
+from domain.file import File
+from domain.path import Path
+from domain.utils.file_handler import mv
 
 
-# def __move_to_known_disks(disks_list, is_buffer, debugging, testing):
-#     """
-#     __move_to_known_disks(disks_list, is_buffer, debugging, testing)
-#         Move the series to the known disks for store tv shows.
-#     Arguments:
-#         disks_list: (string list) List with the disks used to store shows.
-#         is_buffer: (boolean) Indicates if the disk is a disk buffer or not.
-#         debugging: (boolean) Indicates if the program is in debug mode.
-#         testing: (boolean) Indicates if the program is in testing mode.s
-#     """
-#
-#     disks_found = False
-#
-#     for disk in disks_list:
-#         if os.path.isdir(disk):
-#             disks_found = True
-#             move(disk, is_buffer, debugging, testing)
-#         else:
-#             error_msg("{0} is not a directory".format(disk))
-#
-#     return disks_found
-
-def move(dest, testing):
+def move(orig, dest, testing, bulk_move):
     """
     move(dest, is_buffer, debugging, testing)
         Move the series to the known disks for store tv shows.
@@ -55,27 +37,24 @@ def move(dest, testing):
 
     time_ini = time.clock()
 
-    # list_files = sorted(get_files(path_movies_local))
+    files = sorted(os.listdir(orig))
 
-    #     for f in list_files:
-    #
-    #         this_file = File(path_movies_local, f, testing)
-    #
-    #         if(is_buffer):
-    #             # If is a buffer disk: Bulk move
-    #             final_dest = os.path.join(dest, this_file.file_name)
-    #             mv(this_file.f_abs_original_path, final_dest, testing)
-    #
-    #         else:
-    #             file_dest = DestDir(f, dest, debugging, testing)
-    #
-    #             if(file_dest.final_dest is not None):
-    #                 mv(this_file.f_abs_original_path, file_dest.final_dest,
-    #                    debugging, testing)
-    #             else:
-    #                 nonexistent_dest = os.path.join(dest, file_dest.show_name)
-    #                 non_existent_paths = ListHandler.append(nonexistent_dest,
-    #                                                         non_existent_paths)
+    for f in files:
+        this_file = File(orig, f, testing)
+
+        if bulk_move:  # Bulk move for buffer disks
+            file_dest = os.dest_path.join(dest, this_file.file_name)
+            mv(this_file.f_abs_original_path, file_dest, testing)
+
+        else:
+            file_dest = Path(f, dest, testing)
+
+            if file_dest.final_dest:
+                mv(this_file.f_abs_original_path, file_dest.final_dest, testing)
+            else:
+                nonexistent_path = os.dest_path.join(dest, file_dest.show_name)
+                non_existent_paths = list_handler.append_non_repeated(nonexistent_path, non_existent_paths)
+
     time_fin = time.clock()
     total_time = time_fin - time_ini
     print_time(total_time)

@@ -20,7 +20,7 @@ FILE_WELL_FORMATTED_PATTERN = re.compile(
 class Path:
     """
     Path
-        Stores the information relative to a file and its destiny path.
+        Stores the information relative to a file and its destiny dest_path.
     """
 
     show_name = None
@@ -58,11 +58,11 @@ class Path:
 
     def __path_exists(self, path):
         """
-        __path_exists(self, path)
-            Checks if already exists the path for the show in the destiny
+        __path_exists(self, dest_path)
+            Checks if already exists the dest_path for the show in the destiny
             directory.
         Arguments:
-            - path: (string) Current destiny path for the files.
+            - dest_path: (string) Current destiny dest_path for the files.
         """
 
         dest = os.path.join(path, self.show_name)
@@ -70,11 +70,11 @@ class Path:
 
     def __season_exists(self, path):
         """
-        __season_exists(self, path)
-            Checks if already exists the path for the season in the
+        __season_exists(self, dest_path)
+            Checks if already exists the dest_path for the season in the
             destiny directory.
         Arguments:
-            - path: (string) Current destiny path for the files.
+            - dest_path: (string) Current destiny dest_path for the files.
         """
 
         season_path = os.path.join(path, self.show_name, self.season_path)
@@ -82,10 +82,10 @@ class Path:
 
     def __create_season_dir(self, path, testing):
         """
-        __create_season_dir(self, path)
-            Creates the season path for the file in the destiny path.
+        __create_season_dir(self, dest_path)
+            Creates the season dest_path for the file in the destiny dest_path.
         Arguments:
-            - path: (string) Current destiny path for the files.
+            - dest_path: (string) Current destiny dest_path for the files.
         """
 
         season_path = os.path.join(path, self.show_name, self.season_path)

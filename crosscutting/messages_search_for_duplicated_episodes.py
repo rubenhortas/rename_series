@@ -55,7 +55,7 @@ def print_repeated_file(f):
 
 def print_no_repeated_found(path):
     """
-    print_no_repeated_found(path):
+    print_no_repeated_found(dest_path):
         Prints repeated file found.
     Arguments:
         path: Path.

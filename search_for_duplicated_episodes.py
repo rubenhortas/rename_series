@@ -31,8 +31,8 @@ if __name__ == "__main__":
         parser = argparse.ArgumentParser(
             description='Look for repeated chapters')
 
-        parser.add_argument('path', metavar='path',
-                            help="path where the files are being sought")
+        parser.add_argument('dest_path', metavar='dest_path',
+                            help="dest_path where the files are being sought")
 
         parser.add_argument("-t", "--test", dest="testing",
                             action="store_true",

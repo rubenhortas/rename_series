@@ -22,6 +22,7 @@ from crosscutting.constants import BUFFER_DISKS
 from crosscutting.constants import FINAL_DISKS
 from crosscutting.constants import REQUIRED_PYTHON_VERSION
 from presentation.utils.screen import clear_screen
+from crosscutting.constants import SHOWS_PATHS
 
 if __name__ == "__main__":
 
@@ -33,12 +34,11 @@ if __name__ == "__main__":
 
         buffer_disks_mounted = False
         final_disks_mounted = False
-        input_dest = None
 
         parser = argparse.ArgumentParser(description="Move some series.")
 
         parser.add_argument(
-            'path', metavar='path', nargs=1, help='path to move files')
+            'dest_path', metavar='dest_path', nargs=1, help='dest_path to move files')
 
         parser.add_argument("-t", "--test", dest="test",
                             action="store_true",
@@ -46,20 +46,20 @@ if __name__ == "__main__":
 
         args = parser.parse_args()
         testing = args.test
-        user_path = args.path
+        dest_path = args.path
 
         clear_screen()
 
-        if user_path:
+        if dest_path:
             is_buffer = False
 
-            if os.path.isdir(user_path):
-                if user_path in BUFFER_DISKS:
+            if os.path.isdir(dest_path):
+                if dest_path in BUFFER_DISKS:
                     is_buffer = True
-
-                move(user_path, testing)
+                for show_path in SHOWS_PATHS:
+                    move(show_path, dest_path, testing)
             else:
-                print_error("{0} is not a directory.".format(input_dest))
+                print_error("{0} is not a directory.".format(dest_path))
 
         else:
             buffer_disks_mounted = get_mounted_disks(BUFFER_DISKS)
@@ -68,10 +68,12 @@ if __name__ == "__main__":
             if buffer_disks_mounted or final_disks_mounted:
 
                 for disk in buffer_disks_mounted:
-                    move(disk, testing)
+                    for show_path in SHOWS_PATHS:
+                        move(show_path, disk, testing, True)
 
                 for disk in final_disks_mounted:
-                    move(disk, testing)
+                    for show_path in SHOWS_PATHS:
+                        move(show_path, disk, testing, False)
 
             else:
                 print_error("No mounted disks found.")

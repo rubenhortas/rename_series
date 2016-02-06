@@ -55,11 +55,11 @@ def search_duplicated_episodes(path, testing):
 
 def __get_best_quality(path, repeated_episodes, testing):
     """
-    __get_best_quality(path, episodes)
+    __get_best_quality(dest_path, episodes)
         Looking videos with best quality among the repeated videos.
     Arguments:
-        - path: Current path for video files_in_path.
-        - repeated_episodes: List of repeated episodes in the path.
+        - dest_path: Current dest_path for video files_in_path.
+        - repeated_episodes: List of repeated episodes in the dest_path.
     """
 
     files_in_path = []

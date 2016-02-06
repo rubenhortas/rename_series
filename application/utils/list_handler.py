@@ -22,13 +22,13 @@ def print_list(l):
         print(element)
 
 
-def append(obj, l):
+def append_non_repeated(obj, l):
     """
-    append(object, list)
+    append_non_repeated(object, list)
         Appends an object to a list, if not already included.
     Args:
-        obj : (object) Object to append.
-        l : (list) List to append the object.
+        obj : (object) Object to append_non_repeated.
+        l : (list) List to append_non_repeated the object.
     """
 
     if obj not in l:

@@ -35,7 +35,7 @@ def is_subtitle(f):
 
 def get_videos(path):
     """
-    get_videos(path)
+    get_videos(dest_path)
         Gets video files from a directory.
     Arguments:
         path: (string) Path.
@@ -55,7 +55,7 @@ def get_videos(path):
 
 def get_subtitles(path):
     """
-    get_subtitles(path)
+    get_subtitles(dest_path)
         Gets subtitle files from a directory.
     Arguments:
         path: (string) Path.
