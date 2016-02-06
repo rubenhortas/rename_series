@@ -29,8 +29,8 @@ def search_in_files(in_file, from_file):
         Searches for coincidences between two files.
         Searches in file 'in_file' coincidences from file 'from_file'.
     Arguments:
-        - in_file: (string) File [path and] name.
-        - from_file: (string) File [path and] name.
+        in_file: (string) File [path and] name.
+        from_file: (string) File [path and] name.
     """
 
     in_file_content = __get_file_content(in_file)
@@ -45,7 +45,7 @@ def search_in_file(in_file):
     search_in_file(in_file)
         Searches for coincidences inside a file.
     Arguments:
-        - in_file: (string) File [path and] name.
+        in_file: (string) File [path and] name.
     """
 
     in_file_content = __get_file_content(in_file)
@@ -60,7 +60,7 @@ def __get_file_content(file_name):
     __get_file_content(file_name)
         Gets file content as a sorted list. One list item per line.
     Arguments:
-        - file_name: (string) File [path and] name.
+        file_name: (string) File [path and] name.
     """
 
     file_content = []
@@ -81,9 +81,9 @@ def __compare_lists_items(list1, list2, in_file, from_file):
     __compare_lists_items(list1, list2, from_file)
         Searches if exists every element of list1 in list2
     Arguments:
-        - list1: (list) List one.
-        - list2: (list) List two.
-        - from_file: (string) File containing list2 items.
+        list1: (list) List one.
+        list2: (list) List two.
+        from_file: (string) File containing list2 items.
     """
 
     duplicated_items = {}
@@ -110,8 +110,8 @@ def __get_match_ratio(item1, item2):
     __get_match_ratio(str1, str2)
         Compares two lines.
     Arguments:
-        - item1: (line) item one.
-        - item2: (line) item two.
+        item1: (line) item one.
+        item2: (line) item two.
     """
 
     str1 = item1.lower().strip()

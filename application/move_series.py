@@ -46,7 +46,6 @@ def move(dest, testing):
         Move the series to the known disks for store tv shows.
     Arguments:
         dest: (string list) Destiny directories.
-        is_buffer: (boolean) Indicates if the disk is a disk buffer or not.
         testing: (boolean) Indicates if the program is in testing mode.
     """
 

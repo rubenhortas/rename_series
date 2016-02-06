@@ -28,8 +28,8 @@ def exit_signal_handler(signal, frame):
     exit_signal_handler(signal, frame)
         Handles an exit signal.
     Arguments:
-        - signal: (int) number of signal.
-        - frame: (string) name of the signal handler.
+        signal: (int) number of signal.
+        frame: (string) name of the signal handler.
     """
 
     exit(0)
