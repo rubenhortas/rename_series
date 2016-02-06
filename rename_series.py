@@ -6,15 +6,15 @@
 @contact: rubenhortas at gmail.com
 @github:  http://github.com/rubenhortas
 @license: CC BY-NC-SA 3.0 <http://creativecommons.org/licenses/by-nc-sa/3.0/>
-@file:    rename_series.py
+@file:    rename_shows.py
 """
 
 import argparse
 import os
 import signal
 
-from application.rename_series import rename_subtitles
-from application.rename_series import rename_videos
+from application.rename_shows import rename_subtitles
+from application.rename_shows import rename_videos
 from application.utils.python_utils import exit_signal_handler
 from application.utils.python_utils import get_interpreter_version
 from crosscutting.condition_messages import print_error

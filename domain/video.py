@@ -15,7 +15,7 @@ from .file import File
 
 class Video(File):
     def __init__(self, files_path, file_name, testing):
-        super(Video, self).__init__(files_path, file_name, testing)
+        super(Video, self).__init__(files_path, file_name)
 
         if not self.is_well_formatted():
             self._remove_quality()
@@ -29,4 +29,4 @@ class Video(File):
                 self._set_new_file_name()
                 self._translate()
                 self.new_path = os.path.join(self.path, self.new_file_name)
-                self._rename_file()
+                self._rename_file(testing)

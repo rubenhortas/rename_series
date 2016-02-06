@@ -39,11 +39,10 @@ class File(object):
     season = None
     show_name = None
 
-    def __init__(self, path, file_name, testing):
+    def __init__(self, path, file_name):
         self.path = path
         self.file_name = file_name
         self.original_path = os.path.join(path, self.file_name)
-        self.testing = testing
         self.extension = os.path.splitext(self.file_name)[1]
 
     def is_well_formatted(self):
@@ -109,6 +108,7 @@ class File(object):
                 self.original_version = True
                 break
 
+    # noinspection PyTypeChecker
     def _set_show_name(self):
         """
         _set_show_name(self)
@@ -194,7 +194,7 @@ class File(object):
             translated_show_name = TRANSLATED_NAMES.get(self.show_name)
             self.new_file_name = self.new_file_name.replace(self.show_name, translated_show_name)
 
-    def _rename_file(self):
+    def _rename_file(self, testing):
         """
         _rename_file(self)
             Renames a file with a new name.
@@ -204,7 +204,7 @@ class File(object):
             if self.new_file_name and self.new_file_name != self.file_name:
                 self.new_path = os.path.join(self.path, self.new_file_name)
 
-                mv(self.original_path, self.new_path, self.testing)
+                mv(self.original_path, self.new_path, testing)
 
         except Exception as ex:
             print_exception(ex)

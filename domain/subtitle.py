@@ -17,7 +17,7 @@ from .file import File
 class Subtitle(File):
 
     def __init__(self, path, file_name, testing):
-        super(Subtitle, self).__init__(path, file_name, testing)
+        super(Subtitle, self).__init__(path, file_name)
 
         if not self.is_well_formatted():
             self._remove_quality()
@@ -36,7 +36,7 @@ class Subtitle(File):
             if self.new_file_name:
                 self._translate()
 
-        self._rename_file()
+        self._rename_file(testing)
 
     def __set_new_name(self):
         """

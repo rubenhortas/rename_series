@@ -114,8 +114,7 @@ def __get_best_file(episode, files_in_path):
         if OV_STRING in f:
             ov_file = f
         else:
-            if (best_file is None or
-                        os.path.getsize(best_file) < os.path.getsize(f)):
+            if best_file is None or os.path.getsize(best_file) < os.path.getsize(f):
                 best_file = f
 
     if best_file is None:
