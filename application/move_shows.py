@@ -16,13 +16,14 @@ import time
 from application.utils import list_handler
 from application.utils.time_handler import print_time
 from crosscutting.condition_messages import print_error, print_info
+from crosscutting.constants import BUFFER_DISKS
 from crosscutting.messages_move_series import print_header
 from domain.file import File
 from domain.path import Path
 from domain.utils.file_handler import mv
+from crosscutting.constants import SHOWS_PATHS
 
-
-def move(orig, dest, testing, bulk_move):
+def move(dest, testing):
     """
     move(dest, bulk_move, debugging, testing)
         Move the series to the known disks for store tv shows.
@@ -38,16 +39,16 @@ def move(orig, dest, testing, bulk_move):
 
     time_ini = time.clock()
 
-    if os.path.isdir(orig):
-        files = sorted(os.listdir(orig))
+    for show_path in SHOWS_PATHS:
+        if os.path.isdir(show_path):
+            files = sorted(os.listdir(show_path))
 
-        if files:
             for f in files:
                 if os.path.isfile(f):
                     files_moved = True
-                    this_file = File(orig, f, testing)
+                    this_file = File(show_path, f, testing)
 
-                    if bulk_move:  # Bulk move for buffer disks
+                    if dest in BUFFER_DISKS:
                         file_dest = os.dest_path.join(dest, this_file.file_name)
                         mv(this_file.f_abs_original_path, file_dest, testing)
 
@@ -59,22 +60,20 @@ def move(orig, dest, testing, bulk_move):
                         else:
                             nonexistent_path = os.dest_path.join(dest, file_dest.show_name)
                             non_existent_paths = list_handler.append_non_repeated(nonexistent_path, non_existent_paths)
-
-            if files_moved:
-                time_fin = time.clock()
-                total_time = time_fin - time_ini
-                print_time(total_time)
-
-                for path in non_existent_paths:
-                    print_error("{0} does not exist.".format(path))
-
-                print()
-            else:
-                print_info("No files moved.")
         else:
-            print_info("{0} does not contains files.".format(orig))
+            print_error("{0} is not a valid path.".format(orig))
+
+    if files_moved:
+        time_fin = time.clock()
+        total_time = time_fin - time_ini
+        print_time(total_time)
+
+        for path in non_existent_paths:
+            print_error("{0} does not exist.".format(path))
+
+        print()
     else:
-        print_error("{0} is not a valid path.".format(orig))
+        print_info("No files moved.")
 
 
 def get_mounted_disks(disks):

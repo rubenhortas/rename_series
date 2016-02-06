@@ -46,16 +46,14 @@ if __name__ == "__main__":
         testing = args.test
         dest_path = args.path
 
+        paths = []
+
         clear_screen()
 
         if dest_path:
-            bulk_move = False
-
             if os.path.isdir(dest_path):
-                if dest_path in BUFFER_DISKS:
-                    bulk_move = True
-                for show_path in SHOWS_PATHS:
-                    move(show_path, dest_path, testing, bulk_move)
+                paths.append(dest_path)
+                move(paths, testing)
             else:
                 print_error("{0} is not a directory.".format(dest_path))
 
@@ -64,15 +62,8 @@ if __name__ == "__main__":
             final_disks_mounted = get_mounted_disks(FINAL_DISKS)
 
             if buffer_disks_mounted or final_disks_mounted:
-
-                for disk in buffer_disks_mounted:
-                    for show_path in SHOWS_PATHS:
-                        move(show_path, disk, testing, True)
-
-                for disk in final_disks_mounted:
-                    for show_path in SHOWS_PATHS:
-                        move(show_path, disk, testing, False)
-
+                paths = buffer_disks_mounted + final_disks_mounted
+                move(paths, testing)
             else:
                 print_error("No mounted disks found.")
 
