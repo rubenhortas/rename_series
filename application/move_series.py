@@ -15,7 +15,6 @@ import time
 
 from application.utils.time_handler import print_time
 from crosscutting.condition_messages import print_error
-from crosscutting.constants import BUFFER_DISKS
 from crosscutting.messages_move_series import print_header
 
 

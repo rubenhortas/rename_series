@@ -56,7 +56,7 @@ class TestFile(unittest.TestCase):
         print("TestFile.test_rename_fail")
         self.file_name = "FileOriginalName.mp4"
         f = File(self.path, self.file_name, self.testing)
-        self.assertRaises(Exception, f._rename())
+        self.assertRaises(Exception, f._rename_file())
 
     def test_translate_ok(self):
         self.file_name = "Family Guy 0x00.mp4"

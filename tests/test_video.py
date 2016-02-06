@@ -140,7 +140,7 @@ class TestVideo(unittest.TestCase):
         expected = "VideoName"
 
         video = Video(self.path, self.video_name, self.testing)
-        video._Video__get_show_name()
+        video._set_show_name()
 
         self.assertEqual(expected, video.show_name)
 
@@ -148,7 +148,7 @@ class TestVideo(unittest.TestCase):
         expected = "VideoName blah blah"
 
         video = Video(self.path, self.video_name, self.testing)
-        video._Video__get_show_name()
+        video._set_show_name()
 
         self.assertEqual(expected, video.show_name)
 
@@ -157,7 +157,7 @@ class TestVideo(unittest.TestCase):
         expected = "VideoName blah blah (2015)"
 
         video = Video(self.path, self.video_name, self.testing)
-        video._Video__get_show_name()
+        video._set_show_name()
 
         self.assertEqual(expected, video.show_name)
 
@@ -185,7 +185,7 @@ class TestVideo(unittest.TestCase):
 
         video = Video(self.path, self.video_name, self.testing)
         video.show_name = "americanhstory"
-        video._Video__expand_show_name()
+        video._expand_show_name()
 
         self.assertEqual(expected, video.show_name)
 
