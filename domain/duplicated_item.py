@@ -11,7 +11,7 @@
 """
 
 
-class DuplicatedItem():
+class DuplicatedItem:
     name = None
     possible_matches = None
 

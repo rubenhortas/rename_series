@@ -25,8 +25,7 @@ def print_header(path, testing):
     if not testing:
         print(header_msg)
     else:
-        header_msg = "{0} {1}[TEST]{2}".format(
-            header_msg, Color.bold_red, Color.end)
+        print("{0} {1}[TEST]{2}".format(header_msg, Color.bold_red, Color.end))
 
 
 def print_best_file(f):

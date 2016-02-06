@@ -1,13 +1,1 @@
-/TODO.txt
-/__pycache__
-*.pyc
-*.swp
-.*project
-/.settings/
-/TODO
-*.srt
-*.mkv
-*.mp4
-*.avi
-*.pdf
-*.txt
+.idea/

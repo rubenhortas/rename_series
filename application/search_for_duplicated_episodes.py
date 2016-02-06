@@ -50,7 +50,7 @@ def search_duplicated_episodes(path, testing):
                                 if episode not in repeated_episodes:
                                     repeated_episodes.append(episode)
 
-        if repeated_episodes != []:
+        if repeated_episodes:
             __get_best_quality(root, repeated_episodes, testing)
         else:
             relative_path = root.replace(path, "")
@@ -68,14 +68,13 @@ def __get_best_quality(path, repeated_episodes, testing):
     """
 
     files_in_path = []
-    best_file = None
 
     for f in os.listdir(path):
         file_absolute_path = os.path.join(path, f)
         if os.path.isfile(file_absolute_path):
             files_in_path.append(file_absolute_path)
 
-    if files_in_path != []:
+    if files_in_path:
         for episode in repeated_episodes:
 
             relative_path = path.replace(path, "")
@@ -89,11 +88,11 @@ def __get_best_quality(path, repeated_episodes, testing):
             for f in discarted_files:
                 print_rm(f)
 
-            if not testing:
-                try:
-                    os.remove(f)
-                except Exception as e:
-                    print_exception(e)
+                if not testing:
+                    try:
+                        os.remove(f)
+                    except Exception as e:
+                        print_exception(e)
 
 
 def __get_best_file(episode, files_in_path):

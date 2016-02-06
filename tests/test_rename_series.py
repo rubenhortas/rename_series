@@ -10,15 +10,14 @@
 @interpreter: python3
 """
 
+import unittest
+
 """
 $ python3 -m unittest tests/test_rename_series.py 
 """
 
-import unittest
-
 
 class TestFileHandler(unittest.TestCase):
-
     def setUp(self):
         pass
 
@@ -30,6 +29,7 @@ class TestFileHandler(unittest.TestCase):
 
     def testRename_subtitles(self):
         pass
+
 
 if __name__ == "__main__":
     unittest.main()

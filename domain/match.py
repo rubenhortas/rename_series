@@ -11,7 +11,7 @@
 """
 
 
-class Match():
+class Match:
     name = None
     match_ratio = None
 

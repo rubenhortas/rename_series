@@ -10,8 +10,8 @@
 """
 
 import argparse
+import os
 import signal
-import time
 
 from application.move_series import move
 from application.utils.python_utils import exit_signal_handler
@@ -21,7 +21,6 @@ from crosscutting.constants import BUFFER_DISKS
 from crosscutting.constants import FINAL_DISKS
 from crosscutting.constants import REQUIRED_PYTHON_VERSION
 from presentation.utils.screen import clear_screen
-
 
 if __name__ == "__main__":
 
@@ -65,7 +64,7 @@ if __name__ == "__main__":
             buffer_disks_mounted = get_mounted_disks(BUFFER_DISKS)
             final_disks_mounted = get_mounted_disks(FINAL_DISKS)
 
-            if (not buffer_disks_mounted == [] or not final_disks_mounted == []):
+            if not buffer_disks_mounted == [] or not final_disks_mounted == []:
                 pass
 
                 for disk in buffer_disks_mounted:

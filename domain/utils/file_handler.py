@@ -38,7 +38,7 @@ def get_videos(path):
     get_videos(path)
         Gets video files from a directory.
     Arguments:
-        - path: (string) Path.
+        path: (string) Path.
     """
 
     videos = []
@@ -58,7 +58,7 @@ def get_subtitles(path):
     get_subtitles(path)
         Gets subtitle files from a directory.
     Arguments:
-        - path: (string) Path.
+        path: (string) Path.
     """
 
     subtitles = []
@@ -78,10 +78,9 @@ def mv(orig, dest, testing):
     mv(orig, dest, debugging, testing)
         Moves all the files to the same directory.
     Arguments:
-        - orig: (string) Directory where the files will be gotten.
-        - dest: (string) Directory where the files will be moved.
-        - debugging: (boolean) Indicates if the program is in debug mode.
-        - testing: (boolean) Indicates if the program is in testing mode.s
+        orig: (string) Directory where the files will be gotten.
+        dest: (string) Directory where the files will be moved.
+        testing: (boolean) Indicates if the program is in testing mode.s
     """
 
     try:

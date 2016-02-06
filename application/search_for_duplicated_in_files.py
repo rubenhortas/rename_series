@@ -75,6 +75,7 @@ def __get_file_content(file_name):
     return sorted(file_content)
 
 
+# noinspection PyUnusedLocal
 def __compare_lists_items(list1, list2, in_file, from_file):
     """
     __compare_lists_items(list1, list2, from_file)

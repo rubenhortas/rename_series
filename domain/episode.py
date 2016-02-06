@@ -18,7 +18,7 @@ PATTERN_3 = re.compile("\[Cap.[0-9]*\]")  # [Cap.120]
 PATTERN_4 = re.compile("[0-9]{3,6}")  # 120
 
 
-class Episode():
+class Episode:
 
     episode_in_file_name = None
     episode_formatted = None
@@ -112,7 +112,7 @@ class Episode():
             match_group = match.group(0)
 
             if int(match_group[:-2]) < 19:  # Skip years 19xx;20xx
-                if (len(match_group) % 2 == 0):
+                if len(match_group) % 2 == 0:
                     episode_in_file_name = match_group[-4:]
                     episode = episode_in_file_name[-2:]
                     season = episode_in_file_name[-3:-2]

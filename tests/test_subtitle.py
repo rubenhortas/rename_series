@@ -10,16 +10,16 @@
 @interpreter: python3
 """
 
+import unittest
+
+from domain.subtitle import Subtitle
+
 """
 $ python3 -m unittest tests/test_subtitle.py 
 """
 
-import unittest
-from domain.subtitle import Subtitle
-
 
 class TestSubtitle(unittest.TestCase):
-
     path = None
     file_name = None
     testing = None

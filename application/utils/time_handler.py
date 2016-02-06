@@ -15,7 +15,7 @@ def print_time(num_secs):
     __print_time(num_secs)
         Prints the time taken by the program to complete the moving task.
     Arguments:
-        - num_secs: (int) Time taken by the program in seconds.s
+        num_secs: (int) Time taken by the program in seconds.s
     """
 
     str_time = ""
@@ -24,14 +24,14 @@ def print_time(num_secs):
     num_hrs = int(hrs)
 
     if num_hrs > 0:
-        num_secs = num_secs - (3600 * hrs)
+        num_secs = num_secs(3600 * hrs)
         str_time = "{0}h".format(num_hrs)
 
     mins = (num_secs / 60)
     num_mins = int(mins)
 
     if num_mins > 0:
-        num_secs = num_secs - (60 * mins)
+        num_secs = num_secs(60 * mins)
         str_time = "{0} {1}m".format(str_time, num_mins)
 
     str_sec = '%2.2f' % num_secs

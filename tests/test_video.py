@@ -10,18 +10,17 @@
 @interpreter: python3
 """
 
-"""
-$ python3 -m unittest tests/test_subtitle.py 
-"""
-
 import unittest
 
 from crosscutting import constants
 from domain.video import Video
 
+"""
+$ python3 -m unittest tests/test_subtitle.py 
+"""
+
 
 class TestVideo(unittest.TestCase):
-
     path = None
     video_name = None
     testing = None
@@ -205,6 +204,7 @@ class TestVideo(unittest.TestCase):
         video = Video(self.path, self.video_name, self.testing)
 
         self.assertEqual(expected, video.new_file_name)
+
 
 if __name__ == "__main__":
     unittest.main()

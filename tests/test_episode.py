@@ -10,16 +10,17 @@
 @interpreter: python3
 """
 
+import unittest
+
+from domain.episode import Episode
+
 """
 $ python3 -m unittest tests/test_file.py 
 """
 
-import unittest
-from domain.episode import Episode
-
 
 class TestFile(unittest.TestCase):
-
+    # noinspection PyUnusedLocal
     def test_get_format_1_ok(self):
         file_name = "Show 1x20.mp4"
         expected = "1x20"
@@ -33,6 +34,7 @@ class TestFile(unittest.TestCase):
         self.assertEqual(expected, episode.episode_in_file_name)
         self.assertEqual(expected, episode.episode_formatted)
 
+    # noinspection PyUnusedLocal
     def test_get_format_2_ok(self):
         file_name = "Show S1E20.mp4"
         expected_episode_in_file_name = "S1E20"

@@ -15,7 +15,7 @@ def print_list(l):
     print_list(l)
         Prints a list in a nice format.
     Args:
-        - l : (string list) List to print.
+        l : (string list) List to print.
     """
 
     for element in l:
@@ -27,8 +27,8 @@ def append(obj, l):
     append(object, list)
         Appends an object to a list, if not already included.
     Args:
-        - obj : (object) Object to append.
-        - l : (list) List to append the object.
+        obj : (object) Object to append.
+        l : (list) List to append the object.
     """
 
     if obj not in l:

@@ -66,13 +66,13 @@ if __name__ == "__main__":
                         search_in_files(in_file, from_file)
 
                     else:
-                        error_msg("{0} is not a file.".format(args.from_file))
+                        print_error("{0} is not a file.".format(args.from_file))
                         sys.exit(-1)
                 else:
                     search_in_file(in_file)
 
             else:
-                error_msg("{0} is not a file.".format(args.in_file))
+                print_error("{0} is not a file.".format(args.in_file))
                 sys.exit(-1)
     else:
         print_error("Requires Python {0}".format(REQUIRED_PYTHON_VERSION))

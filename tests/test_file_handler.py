@@ -10,18 +10,17 @@
 @interpreter: python3
 """
 
-"""
-$ python3 -m unittest tests/test_file_handler.py 
-"""
-
 import os
 import unittest
 
 from domain.utils import file_handler
 
+"""
+$ python3 -m unittest tests/test_file_handler.py 
+"""
+
 
 class TestFileHandler(unittest.TestCase):
-
     script_path = None
     subtitles = None
     test_empty_path = None
@@ -101,6 +100,7 @@ class TestFileHandler(unittest.TestCase):
         testing = False
 
         self.assertRaises(Exception, file_handler.mv(orig, dest, testing))
+
 
 if __name__ == "__main__":
     unittest.main()

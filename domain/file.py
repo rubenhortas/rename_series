@@ -41,7 +41,6 @@ class File:
     path = None
     season = None
     show_name = None
-    testing = False
 
     def __init__(self, path, file_name, testing):
         self.path = path
@@ -128,7 +127,8 @@ class File:
 
         self.show_name = show_name
 
-    def _wrap_year(self, attribute):
+    @staticmethod
+    def _wrap_year(attribute):
         """
         _wrap_year(self)
             Wraps the year (if exists) into parentheses.
@@ -211,7 +211,7 @@ class File:
         try:
             self.new_path = os.path.join(self.path, self.new_file_name)
 
-            mv(self.original_path, self.new_path, self.testing)
+            mv(self.original_path, self.new_path, testing)
 
         except Exception as ex:
             print_exception(ex)

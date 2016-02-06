@@ -21,7 +21,6 @@ SHOWS_PATHS = ['/home/ruben/Vídeos', '/home/ruben/Vídeos/temp']
 BUFFER_DISKS = ["/home/ruben/Lab/fakedDestBuffer"]
 FINAL_DISKS = ["/media/ruben/3tb"]
 
-
 # File extensions
 SUBTITLE_EXTENSIONS = [".srt"]
 VIDEO_EXTENSIONS = [".mp4", ".avi", ".mkv"]
@@ -29,7 +28,7 @@ VIDEO_EXTENSIONS = [".mp4", ".avi", ".mkv"]
 # Video qualities
 QUALITIES = ["720p", "1080p"]
 
-#ES_TRACKERS = ["[www.DivxTotaL.com]", "www.newpct1.com", "(Elitetorrent.net)"]
+# ES_TRACKERS = ["[www.DivxTotaL.com]", "www.newpct1.com", "(Elitetorrent.net)"]
 
 # Original Vesion name trackers
 OV_TRACKERS = ["kat.cr", "[ett]"]
@@ -54,75 +53,75 @@ OV_SUBTITLES = {
 EXPANDED_NAMES = {
     # American Horror Story
     "americanhstory": "American Horror Story",
-    "ahs":            "American Horror Story",
-    "americanstory":  "American Horror Story",
+    "ahs": "American Horror Story",
+    "americanstory": "American Horror Story",
 
     # Arrow
     "arr": "Arrow",
 
     # Bates Motel
-    "bmotel":        "Bates Motel",
-    "bamotel":       "Bates Motel",
-    "batesmotel":    "Bates Motel",
+    "bmotel": "Bates Motel",
+    "bamotel": "Bates Motel",
+    "batesmotel": "Bates Motel",
 
     # Boardwalk Empire
-    "booardempire":      "Boardwalk Empire",
-    "boardwalkempire":   "Boardwalk Empire",
-    "boarempire":        "Boardwalk Empire",
+    "booardempire": "Boardwalk Empire",
+    "boardwalkempire": "Boardwalk Empire",
+    "boarempire": "Boardwalk Empire",
 
     # Bob"s Burgers
-    "bobs burgers":  "Bob\"s Burgers",
+    "bobs burgers": "Bob\"s Burgers",
 
     # Castle
     "cas": "Castle",
 
     # Doctor Who
-    "doctor who (2005)":    "Doctor Who (2005)",
-    "doctorwho":            "Doctor Who (2005)",
+    "doctor who (2005)": "Doctor Who (2005)",
+    "doctorwho": "Doctor Who (2005)",
 
     # Érase una vez
-    "erasevez":      "Érase una vez (Once upon a time)",
+    "erasevez": "Érase una vez (Once upon a time)",
     "erase una vez": "Érase una vez (Once upon a time)",
 
     # El mentalista
-    "ementalista":   "El mentalista",
-    "mentalista":    "El mentalista",
+    "ementalista": "El mentalista",
+    "mentalista": "El mentalista",
 
     # Elementary
-    "ele":          "Elementary",
-    "elem":         "Elementary",
-    "eleme":        "Elementary",
-    "elmntry":      "Elementary",
-    "elementary":   "Elementary",
+    "ele": "Elementary",
+    "elem": "Elementary",
+    "eleme": "Elementary",
+    "elmntry": "Elementary",
+    "elementary": "Elementary",
 
     # Marvel"s Agents of SHIELD
-    "marvel\"s agents of s h i e l d":   "Marvel\"s Agents of S.H.I.E.L.D.",
-    "marvels agents":                    "Marvel\"s Agents of S.H.I.E.L.D.",
+    "marvel\"s agents of s h i e l d": "Marvel\"s Agents of S.H.I.E.L.D.",
+    "marvels agents": "Marvel\"s Agents of S.H.I.E.L.D.",
 
     # Ray Donovan
     "rdonovan": "Ray Donovan",
 
     # South Park
-    "sp":        "South Park",
-    "spark":     "South Park",
+    "sp": "South Park",
+    "spark": "South Park",
     "southpark": "South Park",
 
     # Supernatural
     "supernatural": "Supernatural",
 
     # The Big Bang Theory
-    "tbbtheory":     "The Big Bang Theory",
-    "tbibatheory":   "The Big Bang Theory",
+    "tbbtheory": "The Big Bang Theory",
+    "tbibatheory": "The Big Bang Theory",
 
     # The Middle
-    "tmidd":        "The Middle",
-    "tmid":         "The Middle",
+    "tmidd": "The Middle",
+    "tmid": "The Middle",
 
     # The Walking Dead
-    "twalkdead":     "The Walking Dead",
-    "twalkingdead":  "The Walking Dead",
+    "twalkdead": "The Walking Dead",
+    "twalkingdead": "The Walking Dead",
 
     # True Detective
-    "tdetective":    "True detective",
-    "trdetective":   "True detective",
+    "tdetective": "True detective",
+    "trdetective": "True detective",
 }

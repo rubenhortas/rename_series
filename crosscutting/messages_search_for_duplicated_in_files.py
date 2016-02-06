@@ -32,7 +32,7 @@ def print_header(in_file, from_file, testing):
         print("{0} [TEST] {1}".format(header_msg, Color.end))
 
 
-def print_duplicated_msg(item, from_item, in_file, from_file, match_ratio, times):
+def print_duplicated_msg(item, match_ratio, times):
     """
     duplicated(in_file, from_file)
         Prints duplicated item found.

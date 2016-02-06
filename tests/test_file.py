@@ -10,16 +10,16 @@
 @interpreter: python3
 """
 
+import unittest
+
+from domain.file import File
+
 """
 $ python3 -m unittest tests/test_file.py 
 """
 
-import unittest
-from domain.file import File
-
 
 class TestFile(unittest.TestCase):
-
     path = None
     file_name = None
     testing = None
@@ -92,6 +92,7 @@ class TestFile(unittest.TestCase):
         output = f._wrap_year(self.file_name)
 
         self.assertEqual(expected, output)
+
 
 if __name__ == "__main__":
     unittest.main()

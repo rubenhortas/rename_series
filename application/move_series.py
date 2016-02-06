@@ -82,7 +82,7 @@ def move(dest, is_buffer, testing):
     print()
 
 
-def get_mounted_disks(disks):
+def get_mounted_disks():
     mounted_disks = []
 
     for disk in BUFFER_DISKS:

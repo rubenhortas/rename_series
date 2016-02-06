@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
         clear_screen()
 
-        if(args.paths):
+        if args.paths:
             paths = args.paths
         else:
             paths = SHOWS_PATHS
