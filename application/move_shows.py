@@ -47,7 +47,7 @@ def move(dest, testing):
             for f in files:
                 this_file = File(show_path, f)
 
-                if this_file.is_show():
+                if this_file.is_well_formatted():
                     files_moved = True
                     if dest in BUFFER_DISKS:
                         file_dest = os.path.join(dest, this_file.file_name)

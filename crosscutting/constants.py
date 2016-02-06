@@ -17,7 +17,8 @@ OV_STRING = "(VO)"
 
 # rename_series configuration
 SEASON_PATH_NAME = "Temporada"
-SHOWS_PATHS = ["/home/ruben/Vídeos", "/home/ruben/Vídeos/temp"]
+#SHOWS_PATHS = ["/home/ruben/Vídeos", "/home/ruben/Vídeos/temp"]
+SHOWS_PATHS = ["/home/ruben/Workspaces/temp/rename_series"]
 BUFFER_DISKS = ["/home/ruben/Lab/fakedDestBuffer"]
 FINAL_DISKS = ["/media/ruben/3tb"]
 

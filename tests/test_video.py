@@ -110,14 +110,14 @@ class TestVideo(unittest.TestCase):
 
         video = Video(self.path, self.video_name, self.testing)
 
-        self.assertTrue(video.is_show())
+        self.assertTrue(video._is_show())
 
     def test_is_serie_false(self):
         self.video_name = "Movie 20015.mkv"
 
         video = Video(self.path, self.video_name, self.testing)
 
-        self.assertFalse(video.is_show())
+        self.assertFalse(video._is_show())
 
     def test_set_ov_true(self):
         self.video_name = "Show S1E20 [www.kat.cr].mp4"

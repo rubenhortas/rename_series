@@ -20,7 +20,7 @@ class Video(File):
         if not self.is_well_formatted():
             self._remove_quality()
             self._set_episode()
-            if self.is_show():
+            if self._is_show():
                 self._set_ov()
                 self._set_show_name()
                 self.show_name = self._wrap_year(self.show_name)
