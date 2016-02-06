@@ -10,9 +10,14 @@
 @interpreter: python3
 """
 
-from application.utils.time_handler import print_time
-from crosscutting.messages_move_series import print_header
+import os
 import time
+
+from application.utils.time_handler import print_time
+from crosscutting.condition_messages import print_error
+from crosscutting.constants import BUFFER_DISKS
+from crosscutting.messages_move_series import print_header
+
 
 # def __move_to_known_disks(disks_list, is_buffer, debugging, testing):
 #     """
@@ -52,7 +57,7 @@ def move(dest, testing):
 
     time_ini = time.clock()
 
-    #list_files = sorted(get_files(path_movies_local))
+    # list_files = sorted(get_files(path_movies_local))
 
     #     for f in list_files:
     #
@@ -78,7 +83,7 @@ def move(dest, testing):
     print_time(total_time)
 
     for path in non_existent_paths:
-        error_msg("{0} does not exist.".format(path))
+        print_error("{0} does not exist.".format(path))
 
     print()
 
@@ -88,6 +93,6 @@ def get_mounted_disks():
 
     for disk in BUFFER_DISKS:
         if os.path.isdir(disk):
-            mounted_disks.Append(disk)
+            mounted_disks.append(disk)
 
     return mounted_disks
