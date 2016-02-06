@@ -52,7 +52,7 @@ class File:
     def is_well_formatted(self):
         """
         is_well_formatted(self)
-            Returns if the file is well formated
+            Returns if the file is well formatted
             Well formatted = show_name 0x00 [episode name].avi
         """
 
@@ -152,7 +152,7 @@ class File:
     def _expand_show_name(self):
         """
         _expand_show_name(self)
-            Expands some serie titles.
+            Expands some show titles.
         """
 
         if self.show_name.lower() in EXPANDED_NAMES:

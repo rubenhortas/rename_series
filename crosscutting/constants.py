@@ -30,7 +30,7 @@ QUALITIES = ["720p", "1080p"]
 
 # ES_TRACKERS = ["[www.DivxTotaL.com]", "www.newpct1.com", "(Elitetorrent.net)"]
 
-# Original Vesion name trackers
+# Original Version name trackers
 OV_TRACKERS = ["kat.cr", "[ett]"]
 
 # Translations
