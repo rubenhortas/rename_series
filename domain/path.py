@@ -14,7 +14,9 @@ import re
 from crosscutting.constants import SEASON_PATH_NAME
 from crosscutting.condition_messages import print_exception
 
-FILE_WELL_FORMATTED_PATTERN = re.compile("(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>.*)?\.(?P<extension>[\w]{3})", re.UNICODE)
+FILE_WELL_FORMATTED_PATTERN = re.compile(
+    "(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>.*)?\.(?P<extension>[\w]{3})", re.UNICODE)
+
 
 class Path:
     """

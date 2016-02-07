@@ -29,7 +29,7 @@ def move(dests, testing):
     move(dest, bulk_move, debugging, testing)
         Move the series to the known disks for store tv shows.
     Arguments:
-        dest: (string list) Destiny directories.
+        dests: (string list) Destiny directories.
         testing: (boolean) Indicates if the program is in testing mode.
     """
 
