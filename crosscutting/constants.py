@@ -37,7 +37,6 @@ OV_TRACKERS = ["kat.cr", "[ettv]", "TASTETV", "[MPup]", "X264-DIMENSION"]
 # Translations
 TRANSLATED_NAMES = {
     "Family Guy": "Padre de familia",
-    "Marvels Agents of S H I E L D": "Marvel\"s Agents Of S.H.I.E.L.D.",
     "Supernatural": "Sobrenatural",
     "The Simpsons": "Los Simpson",
     "Warehouse 13": "Almacén 13",
@@ -96,7 +95,7 @@ EXPANDED_NAMES = {
     "elementary": "Elementary",
 
     # Marvel"s Agents of SHIELD
-    "marvel\"s agents of s h i e l d": "Marvel\"s Agents of S.H.I.E.L.D.",
+    "marvels agents of shield": "Marvel\"s Agents of S.H.I.E.L.D.",
     "marvels agents": "Marvel\"s Agents of S.H.I.E.L.D.",
 
     # Ray Donovan

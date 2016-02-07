@@ -11,6 +11,7 @@
 
 import os
 import re
+import string
 
 from crosscutting.condition_messages import print_exception
 from crosscutting.constants import EXPANDED_NAMES, OV_STRING
@@ -123,7 +124,10 @@ class File(object):
         file_name = os.path.splitext(self.file_name)[0]
 
         show_name = file_name.split(self.episode_in_file_name)[0]
-        show_name = show_name.replace(".", " ")
+
+        for p in string.punctuation:
+            show_name = show_name.replace(p, '')
+
         show_name = show_name.strip()
 
         self.show_name = show_name
