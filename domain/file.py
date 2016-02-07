@@ -17,6 +17,7 @@ from crosscutting.constants import EXPANDED_NAMES
 from crosscutting.constants import OV_TRACKERS
 from crosscutting.constants import QUALITIES
 from crosscutting.constants import TRANSLATED_NAMES
+from crosscutting.constants import OWN_LANGUAGE_TRACKERS
 from domain.utils.file_handler import mv
 from .episode import Episode
 
@@ -103,8 +104,13 @@ class File(object):
             Sets if the file is in Original Version.
         """
 
-        for tracker_name in OV_TRACKERS:
-            if tracker_name in self.file_name:
+        # for tracker_name in OV_TRACKERS:
+        #     if tracker_name in self.file_name:
+        #         self.original_version = True
+        #         break
+
+        for tracker_name in OWN_LANGUAGE_TRACKERS:
+            if tracker_name not in self.file_name:
                 self.original_version = True
                 break
 
