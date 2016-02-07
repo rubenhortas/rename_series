@@ -14,7 +14,7 @@ import re
 from crosscutting.constants import SEASON_PATH_NAME
 from crosscutting.condition_messages import print_exception
 
-FILE_WELL_FORMATTED_PATTERN = re.compile("(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>.*])?\.(?P<extension>[\w]{3})", re.UNICODE)
+FILE_WELL_FORMATTED_PATTERN = re.compile("(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>.*)?\.(?P<extension>[\w]{3})", re.UNICODE)
 
 class Path:
     """
@@ -43,7 +43,7 @@ class Path:
 
                 name_tmp = "{0}x{1}".format(self.season, self.episode)
 
-                if self.episode_title is not None:
+                if self.episode_title and (self.episode_title != ""):
                     name_tmp = "{0} - {1}".format(name_tmp, self.episode_title)
 
                 file_final_name = "{0}.{1}".format(name_tmp, self.extension)

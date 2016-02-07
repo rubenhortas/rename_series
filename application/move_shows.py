@@ -16,7 +16,7 @@ import time
 from application.utils import list_handler
 from application.utils.time_handler import print_time
 from crosscutting.condition_messages import print_error, print_info
-from crosscutting.constants import BUFFER_DISKS
+from crosscutting.constants import FINAL_DISKS
 from crosscutting.messages_move_series import print_header
 from domain.file import File
 from domain.path import Path
@@ -24,7 +24,7 @@ from domain.utils.file_handler import mv
 from crosscutting.constants import SHOWS_PATHS
 
 
-def move(dest, testing):
+def move(dests, testing):
     """
     move(dest, bulk_move, debugging, testing)
         Move the series to the known disks for store tv shows.
@@ -36,36 +36,34 @@ def move(dest, testing):
     files_moved = False
     non_existent_paths = []
 
-    print_header(dest, testing)
-
     time_ini = time.clock()
 
     for show_path in SHOWS_PATHS:
-        if os.path.isdir(show_path):
-            files = sorted(os.listdir(show_path))
+        for dest in dests:
+            print_header(dest, testing)
+            if os.path.isdir(show_path):
+                files = sorted(os.listdir(show_path))
 
-            for f in files:
-                this_file = File(show_path, f)
+                for f in files:
+                    this_file = File(show_path, f)
 
-                if this_file.is_well_formatted():
-                    files_moved = True
-                    if dest in BUFFER_DISKS:
-                        file_dest = os.path.join(dest, this_file.file_name)
-
-                        if not testing:
+                    if this_file.is_well_formatted():
+                        files_moved = True
+                        if dest not in FINAL_DISKS:
+                            file_dest = os.path.join(dest, this_file.file_name)
                             mv(this_file.original_path, file_dest, testing)
 
-                    else:
-                        file_dest = Path(f, show_path, testing)
-
-                        if file_dest.final_dest:
-                            mv(this_file.original_path, file_dest.final_dest, testing)
                         else:
-                            if file_dest.show_name:  # Remove when fixed RE
-                                nonexistent_path = os.path.join(show_path, file_dest.show_name)
-                                non_existent_paths = list_handler.append_non_repeated(nonexistent_path, non_existent_paths)
-        else:
-            print_error("{0} is not a valid path.".format(show_path))
+                            file_dest = Path(f, dest, testing)
+
+                            if file_dest.final_dest:
+                                mv(this_file.original_path, file_dest.final_dest, testing)
+                            else:
+                                if file_dest.show_name:  # Remove when fixed RE
+                                    nonexistent_path = os.path.join(show_path, file_dest.show_name)
+                                    non_existent_paths = list_handler.append_non_repeated(nonexistent_path, non_existent_paths)
+            else:
+                print_error("{0} is not a valid path.".format(show_path))
 
     if files_moved:
         time_fin = time.clock()
