@@ -23,7 +23,6 @@ from crosscutting.constants import REQUIRED_PYTHON_VERSION
 from crosscutting.messages_search_for_duplicated_in_files import print_header
 from presentation.utils.screen import clear_screen
 
-
 if __name__ == "__main__":
 
     signal.signal(signal.SIGINT, exit_signal_handler)
@@ -38,14 +37,11 @@ if __name__ == "__main__":
         parser = argparse.ArgumentParser(
             description='Look for repeated strings in file[s]')
 
-        parser.add_argument('-from', dest='from_file',
-                            help="from file", metavar="file")
+        parser.add_argument('-from', dest='from_file', help="from file", metavar="file")
 
-        parser.add_argument('-in', dest='in_file',
-                            help="in file", metavar="file", required=True)
+        parser.add_argument('-in', dest='in_file', help="in file", metavar="file", required=True)
 
-        parser.add_argument("-t", "--test", dest="test",
-                            action="store_true",
+        parser.add_argument("-t", "--test", dest="test", action="store_true",
                             help="runs a single test showing the expected output")
 
         args = parser.parse_args()
