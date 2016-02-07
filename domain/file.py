@@ -13,11 +13,10 @@ import os
 import re
 
 from crosscutting.condition_messages import print_exception
-from crosscutting.constants import EXPANDED_NAMES
-from crosscutting.constants import OV_TRACKERS
+from crosscutting.constants import EXPANDED_NAMES, OV_STRING
+from crosscutting.constants import OWN_LANGUAGE_TRACKERS
 from crosscutting.constants import QUALITIES
 from crosscutting.constants import TRANSLATED_NAMES
-from crosscutting.constants import OWN_LANGUAGE_TRACKERS
 from domain.utils.file_handler import mv
 from .episode import Episode
 
@@ -186,7 +185,7 @@ class File(object):
             new_file_name = "{0} {1}".format(new_file_name, self.episode_title)
 
         if self.original_version:
-            new_file_name = "{0} {1}".format(new_file_name, self.original_version)
+            new_file_name = "{0} {1}".format(new_file_name, OV_STRING)
 
         self.new_file_name = "{0}{1}".format(new_file_name, self.extension)
 
