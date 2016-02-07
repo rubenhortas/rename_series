@@ -12,10 +12,9 @@
 import os
 import re
 from crosscutting.constants import SEASON_PATH_NAME
+from crosscutting.condition_messages import print_exception
 
-FILE_WELL_FORMATTED_PATTERN = re.compile(
-    "(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>[\w \-\(\)])?\.(?P<extension>[\w]{3})", re.UNICODE)
-
+FILE_WELL_FORMATTED_PATTERN = re.compile("(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>.*])?\.(?P<extension>[\w]{3})", re.UNICODE)
 
 class Path:
     """
@@ -34,27 +33,29 @@ class Path:
     def __init__(self, file_name, dest, testing):
 
         match = FILE_WELL_FORMATTED_PATTERN.search(file_name)
+        try:
+            if match:
+                self.season = match.group("season")
+                self.episode = match.group("episode")
+                self.episode_title = match.group("episode_title")
+                self.extension = match.group("extension")
+                self.show_name = file_name.split(self.season)[0].strip()
 
-        if match:
-            self.season = match.group("season")
-            self.episode = match.group("episode")
-            self.episode_title = match.group("episode_title")
-            self.extension = match.group("extension")
-            self.show_name = file_name.split(self.season)[0].strip()
+                name_tmp = "{0}x{1}".format(self.season, self.episode)
 
-            name_tmp = "{0}x{1}".format(self.season, self.episode)
+                if self.episode_title is not None:
+                    name_tmp = "{0} - {1}".format(name_tmp, self.episode_title)
 
-            if self.episode_title is not None:
-                name_tmp = "{0} - {1}".format(name_tmp, self.episode_title)
+                file_final_name = "{0}.{1}".format(name_tmp, self.extension)
 
-            file_final_name = "{0}.{1}".format(name_tmp, self.extension)
+                if self.__path_exists(dest):
+                    self.season_path = "{0} {1}".format(SEASON_PATH_NAME, self.season)
+                    if not self.__season_exists(dest):
+                        self.__create_season_dir(dest, testing)
 
-            if self.__path_exists(dest):
-                self.season_path = "{0} {1}".format(SEASON_PATH_NAME, self.season)
-                if not self.__season_exists(dest):
-                    self.__create_season_dir(dest, testing)
-
-                self.final_dest = os.path.join(dest, self.show_name, self.season_path, file_final_name)
+                    self.final_dest = os.path.join(dest, self.show_name, self.season_path, file_final_name)
+        except Exception as e:
+            print_exception(e)
 
     def __path_exists(self, path):
         """

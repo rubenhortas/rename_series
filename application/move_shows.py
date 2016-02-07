@@ -56,13 +56,14 @@ def move(dest, testing):
                             mv(this_file.original_path, file_dest, testing)
 
                     else:
-                        file_dest = Path(f, dest, testing)
+                        file_dest = Path(f, show_path, testing)
 
                         if file_dest.final_dest:
                             mv(this_file.original_path, file_dest.final_dest, testing)
                         else:
-                            nonexistent_path = os.path.join(dest, file_dest.show_name)
-                            non_existent_paths = list_handler.append_non_repeated(nonexistent_path, non_existent_paths)
+                            if file_dest.show_name:  # Remove when fixed RE
+                                nonexistent_path = os.path.join(show_path, file_dest.show_name)
+                                non_existent_paths = list_handler.append_non_repeated(nonexistent_path, non_existent_paths)
         else:
             print_error("{0} is not a valid path.".format(show_path))
 
