@@ -34,7 +34,7 @@ def rename_videos(videos, path, testing):
     for video in sorted(videos):
         current_video = Video(path, video, testing)
 
-        if current_video.file_name != current_video.new_file_name:
+        if current_video.new_file_name and (current_video.file_name != current_video.new_file_name):
             renamed_videos = True
 
     if not renamed_videos:
