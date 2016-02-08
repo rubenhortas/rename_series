@@ -35,7 +35,7 @@ class File(object):
     new_file_name = None
     new_path = None
     original_path = None
-    original_version = False
+    original_version = True
     path = None
     season = None
     show_name = None
@@ -110,8 +110,8 @@ class File(object):
         #         break
 
         for tracker_name in OWN_LANGUAGE_TRACKERS:
-            if tracker_name not in self.file_name:
-                self.original_version = True
+            if tracker_name in self.file_name:
+                self.original_version = False
                 break
 
     # noinspection PyTypeChecker
