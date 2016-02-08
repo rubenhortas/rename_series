@@ -114,6 +114,7 @@ EXPANDED_NAMES = {
     # The Big Bang Theory
     "tbbtheory": "The Big Bang Theory",
     "tbibatheory": "The Big Bang Theory",
+    "thebigbangtheory": "The Big Bang Theory",
 
     # The Middle
     "tmidd": "The Middle",
