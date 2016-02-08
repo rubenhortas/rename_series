@@ -50,7 +50,7 @@ def get_videos(path):
             if is_video(f):
                 videos.append(f)
 
-    return sorted(videos)
+    return videos
 
 
 def get_subtitles(path):
@@ -70,7 +70,7 @@ def get_subtitles(path):
             if is_subtitle(f):
                 subtitles.append(f)
 
-    return sorted(subtitles)
+    return subtitles
 
 
 def mv(orig, dest, testing):
