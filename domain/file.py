@@ -110,7 +110,7 @@ class File(object):
         #         break
 
         for tracker_name in OWN_LANGUAGE_TRACKERS:
-            if tracker_name in self.file_name:
+            if tracker_name.lower() in self.file_name.lower():
                 self.original_version = False
                 break
 

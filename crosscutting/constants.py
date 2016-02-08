@@ -29,7 +29,7 @@ VIDEO_EXTENSIONS = [".mp4", ".avi", ".mkv"]
 # Video qualities
 QUALITIES = ["720p", "1080p"]
 
-OWN_LANGUAGE_TRACKERS = ["[www.DivxTotaL.com]", "www.newpct1.com", "(Elitetorrent.net)"]
+OWN_LANGUAGE_TRACKERS = ["www.DivxTotaL.com", "www.newpct1.com", "EliteTorrent.net"]
 
 # Original Version name trackers
 OV_TRACKERS = ["kat.cr", "[ettv]", "TASTETV", "[MPup]", "X264-DIMENSION"]
