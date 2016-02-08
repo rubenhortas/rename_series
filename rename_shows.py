@@ -62,11 +62,11 @@ if __name__ == "__main__":
 
                 print_header(current_path, testing)
 
-                subtitles = get_subtitles(current_path)
                 videos = get_videos(current_path)
+                subtitles = get_subtitles(current_path)
 
-                rename_subtitles(subtitles, current_path, args.testing)
                 rename_videos(videos, current_path, args.testing)
+                rename_subtitles(subtitles, current_path, args.testing)
 
         if not directories_found:
             print_error('Has not entered any directory')
