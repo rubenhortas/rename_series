@@ -93,6 +93,8 @@ EXPANDED_NAMES = {
     "eleme": "Elementary",
     "elmntry": "Elementary",
     "elementary": "Elementary",
+    "elm": "Elementary",
+    "elmnt": "Elementary",
 
     # Marvel"s Agents of SHIELD
     "marvels agents of shield": "Marvel\"s Agents of S.H.I.E.L.D.",
