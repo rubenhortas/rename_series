@@ -2,25 +2,22 @@
 # _*_ coding:utf-8 _*
 
 """
-@author:    Rubén Hortas Astariz <http://rubenhortas.blogspot.com>
-@contact:   rubenhortas at gmail.com
-@github:    http://github.com/rubenhortas
+@author:    Rubén Hortas Astariz <http://rubenhortashortas.blogspot.com>
+@contact:   rubenhortashortas at gmail.com
+@github:    http://github.com/rubenhortashortas
 @license:   CC BY-NC-SA 3.0 <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 @file:      config
 """
 
-# Application configuration
+# ########################## Common application configuration section ########################################
+
+# Paths containing the tv shows
+SHOWS_PATHS = ["/home/rubenhortas/Vídeos", "/home/rubenhortas/Vídeos/temp"]
+
+# ########################## rename_shows section ############################################################
 
 # String added to the end of Original Version files
 OV_STRING = "(VO)"
-
-# rename_shows configuration
-# SHOWS_PATHS = ["/home/ruben/Vídeos", "/home/ruben/Vídeos/temp"]
-SHOWS_PATHS = ["/home/ruben/Workspaces/temp/rename_series"]
-BUFFER_DISKS = ["/home/ruben/Lab/fakedDestBuffer"]
-FINAL_DISKS = ["/media/ruben/3tb"]
-
-SEASON_PATH_NAME = "Temporada"
 
 # Strings contained into into files downloaded from trackers in own language.
 OWN_LANGUAGE_TRACKERS = ["www.DivxTotaL.com", "www.newpct1.com", "EliteTorrent.net"]
@@ -53,7 +50,7 @@ OV_SUBTITLES = {
 # Expands abbreviated names from tv shows.
 # "americanhstory": "American Horror Story" means that if the file name is "americanhstory" the result file name
 # will be named "American Horror Story".
-# Add your own.
+# Add your own and/or modify these.
 EXPANDED_NAMES = {
     # American Horror Story
     "americanhstory": "American Horror Story",
@@ -132,3 +129,14 @@ EXPANDED_NAMES = {
     "tdetective": "True detective",
     "trdetective": "True detective",
 }
+
+# ########################## move_shows section ##############################################################
+
+# Name of the season in the disks containing organized tv shows in format <SHOW NAME>/<SEASON>/<EPISODES>.
+SEASON_PATH_NAME = "Temporada"
+
+# Disks containing non organized tv shows
+BUFFER_DISKS = ["/home/rubenhortas/Lab/fakedDestBuffer"]
+
+# Disks containing organized tv shows in format <SHOW NAME>/<SEASON>/<EPISODES>
+FINAL_DISKS = ["/media/rubenhortas/3tb"]

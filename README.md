@@ -1,17 +1,93 @@
-rename_series
+SHOWS MANAGER
 ===========
 
-	rename_series is a python application that renames series, subtitles
-	and puts the subtitles to the chapters.
+    Shows manager is a little framework that allows you easy and/or manage your downloaded tv shows.
+    You can:
+        - rename your shows to a nice format <SHOW NAME> <SEASON>x<EPISODE> [ - <EPISODE TITLE>] [OV].<EXTENSION>
+        - rename your subtitles to a nice format <SHOW NAME> <SEASON>x<EPISODE> [ - <EPISODE TITLE>] [OV].<EXTENSION>
+        - search for duplicated episodes in an organized disk
+        - search for duplicated names into one or two files
+        - automatically move files to one or more disks
+        
+     Requires python >= 3.0
+    
+rename_shows.py
+===========
+
+	This application searches in one or more paths for tv shows and subtitles in various languages. 
+    Renames the tv shows to a nice format <SHOW NAME> <SEASON>x<EPISODE> [ - <EPISODE TITLE>] [OV].<EXTENSION>
+    Renames the subtitles to a nice format <SHOW NAME> <SEASON>x<EPISODE> [ - <EPISODE TITLE>] [OV].<EXTENSION>
+    
+    usage: rename_shows.py [-h] [-t] [paths [paths ...]]
+
+    Renames some series.
+
+    positional arguments:
+    paths       paths to rename files
+
+    optional arguments:
+      -h, --help  show this help message and exit
+      -t, --test  run a single test showing the expected output
+
+
+search_for_duplicated_episodes.py
+===========
+	This application searches for duplicated episodes in an organized disk.
+	The disk organization must be in <SHOW NAME>/<SEASON NAME>/<EPISODES> format.
 	
-	Basically, this application search in one (or more directories) for 
-	series and subtitles in various languages. 
+	usage: search_for_duplicated_episodes.py [-h] [-t] [-d] dest_path
+
+    Look for repeated chapters
+    
+    positional arguments:
+      dest_path    dest_path where the files are being sought
+    
+    optional arguments:
+      -h, --help   show this help message and exit
+      -t, --test   run a single test showing the expected output
+      -d, --debug  show debug info
+
 	
-	First renames the chapters to a nice format:
-		<show name> <season>x<episode> [<episode title>] [(VO)].<extension> 
-	
-	Then renames the subtitles.
-	
+search_for_duplicated_in_files.py
+===========
+
+    This application searches for duplicated names into one or two files.
+    The files could be tv shows and/or movies lists.
+    
+    usage: search_for_duplicated_in_files.py [-h] [-from file] -in file [-t]
+
+    Look for repeated strings in file[s]
+    
+    optional arguments:
+      -h, --help  show this help message and exit
+      -from file  from file
+      -in file    in file
+      -t, --test  runs a single test showing the expected output
+
+move_shows.py
+===========
+    This application automatically move files to one or more disks.
+    Includes two types of disks:
+    
+        - Buffer disk: A disk that contains a bunch of unorganized tv shows and/or movies and/or subtitles. 
+            Tv shows and subtitles will end in <SHOW NAME> <SEASON>x<EPISODE> [ - <EPISODE TITLE>] [OV].<EXTENSION>
+            format.
+            
+         - Final disk: A disk that contains organized tv shows.
+            Disk structure must be <SHOW NAME>/<SEASON NAME>/<EPISODES>
+            Tv shows and subtitles will end in <SEASON NAME>x<EPISODE> [ - <EPISODE TITLE>] [OV].<EXTENSION> format
+            inside within their respective path.
+            
+    usage: move_shows.py [-h] [-to path] [-t]
+    
+    Move some shows.
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      -to path, --to_path path
+                            path to move the files
+      -t, --test            Runs a single test showing the output.
+
 AUTHOR
 
     Rubén Hortas
@@ -22,52 +98,6 @@ LICENSE
 
     CC BY-NC-SA 3.0
     http://creativecommons.org/licenses/by-nc-sa/3.0/
-
-USAGE
-
-	$ python3 <script> <arguments>
-
-	or (if you have python3 as your default version):
-
-	$ ./<script> <arguments>
-
-	RENAME SERIES
-
-		usage: rename_series.py [-h] [-t] [-d] [-D USER_DIR]
-
-		Renames some series.
-
-		Optional arguments:
-  		-h, --help            			show this help message and exit
-  		-t, --test            			run a single test showing the expected output
-	
-	SEARCH FOR DUPLICATED EPISODES
-		
-		usage: search_for_duplicated_episodes.py [-h] [-t] [-d] path
-
-		Look for repeated chapters
-
-		positional arguments:
-  		path         path where the files are being sought
-
-		optional arguments:
-  		-h, --help   show this help message and exit
-  		-t, --test   run a single test showing the expected output
-  		-d, --debug  show debug info
-
-	SEARCH FOR DUPLICATED IN FILES
-
-		usage: search_for_duplicated_in_files.py [-h] [-from FROM_FILE] [-in IN_FILE]
-   		                                      [-t] [-d]
-
-		Look for repeated strings in file[s]
-
-        optional arguments:
-        -h, --help  show this help message and exit
-        -from file  from file
-        -in file    in file
-        -t, --test  runs a single test showing the expected output
-
 
 CONTACT
 
