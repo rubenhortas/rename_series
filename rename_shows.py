@@ -17,9 +17,9 @@ from application.rename_shows import rename_subtitles
 from application.rename_shows import rename_videos
 from application.utils.python_utils import exit_signal_handler
 from application.utils.python_utils import get_interpreter_version
+from config import SHOWS_PATHS
 from crosscutting.condition_messages import print_error
 from crosscutting.constants import REQUIRED_PYTHON_VERSION
-from crosscutting.constants import SHOWS_PATHS
 from crosscutting.messages_rename_series import print_header
 from domain.utils.file_handler import get_subtitles
 from domain.utils.file_handler import get_videos
