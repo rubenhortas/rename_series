@@ -13,7 +13,7 @@ import argparse
 import os
 import signal
 
-from application.rename_shows import rename_subtitles
+from application.rename_shows import rename_subtitles, check_for_subtitles
 from application.rename_shows import rename_videos
 from application.utils.python_utils import exit_signal_handler
 from application.utils.python_utils import get_interpreter_version
@@ -66,8 +66,15 @@ if __name__ == "__main__":
                 videos = get_videos(current_path)
                 subtitles = get_subtitles(current_path)
 
-                rename_videos(videos, current_path, args.testing)
-                rename_subtitles(subtitles, current_path, args.testing)
+                rename_videos(videos, current_path, testing)
+                rename_subtitles(subtitles, current_path, testing)
+
+                # Check for subtitles previously stored on the path witch have different file names
+                # f.e. a video without episode name and a subtitle with episode name.
+                videos = get_videos(current_path)
+                subtitles = get_subtitles(current_path)
+
+                check_for_subtitles(videos, subtitles, current_path, testing)
 
         if not directories_found:
             print_error('Has not entered any directory')

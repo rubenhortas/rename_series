@@ -15,6 +15,7 @@ import re
 from config import SEASON_PATH_NAME
 from crosscutting.condition_messages import print_exception
 
+# noinspection PyBroadException
 try:
     # python 3.5 re. Crashes on minor versions
     FILE_WELL_FORMATTED_PATTERN = re.compile(
