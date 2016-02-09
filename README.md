@@ -12,7 +12,6 @@ SHOWS MANAGER
      Requires python >= 3.0
     
 rename_shows.py
-===========
 
 	This application searches in one or more paths for tv shows and subtitles in various languages. 
     Renames the tv shows to a nice format <SHOW NAME> <SEASON>x<EPISODE> [ - <EPISODE TITLE>] [OV].<EXTENSION>
@@ -31,7 +30,7 @@ rename_shows.py
 
 
 search_for_duplicated_episodes.py
-===========
+
 	This application searches for duplicated episodes in an organized disk.
 	The disk organization must be in <SHOW NAME>/<SEASON NAME>/<EPISODES> format.
 	
@@ -49,7 +48,6 @@ search_for_duplicated_episodes.py
 
 	
 search_for_duplicated_in_files.py
-===========
 
     This application searches for duplicated names into one or two files.
     The files could be tv shows and/or movies lists.
@@ -65,7 +63,7 @@ search_for_duplicated_in_files.py
       -t, --test  runs a single test showing the expected output
 
 move_shows.py
-===========
+
     This application automatically move files to one or more disks.
     Includes two types of disks:
     
