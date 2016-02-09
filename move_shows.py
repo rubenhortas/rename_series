@@ -13,12 +13,11 @@ import argparse
 import os
 import signal
 
-from configx import BUFFER_DISKS
-
 from application.move_shows import get_mounted_disks
 from application.move_shows import move
 from application.utils.python_utils import exit_signal_handler
 from application.utils.python_utils import get_interpreter_version
+from config import BUFFER_DISKS
 from config import FINAL_DISKS
 from crosscutting.condition_messages import print_error
 from crosscutting.constants import REQUIRED_PYTHON_VERSION
