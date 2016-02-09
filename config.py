@@ -52,6 +52,10 @@ OV_SUBTITLES = {
 # will be named "American Horror Story".
 # Add your own and/or modify these.
 EXPANDED_NAMES = {
+
+    # American Dad
+    "americandad": "American Dad",
+
     # American Horror Story
     "americanhstory": "American Horror Story",
     "ahs": "American Horror Story",
