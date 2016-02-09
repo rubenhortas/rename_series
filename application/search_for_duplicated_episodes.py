@@ -13,8 +13,8 @@
 import os
 import re
 
+from config import OV_STRING
 from crosscutting.condition_messages import print_exception
-from crosscutting.constants import OV_STRING
 from crosscutting.messages_search_for_duplicated_episodes import print_best_file
 from crosscutting.messages_search_for_duplicated_episodes import print_no_repeated_found
 from crosscutting.messages_search_for_duplicated_episodes import print_repeated_file

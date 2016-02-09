@@ -1,0 +1,134 @@
+#!/usr/bin/env python
+# _*_ coding:utf-8 _*
+
+"""
+@author:    Rubén Hortas Astariz <http://rubenhortas.blogspot.com>
+@contact:   rubenhortas at gmail.com
+@github:    http://github.com/rubenhortas
+@license:   CC BY-NC-SA 3.0 <http://creativecommons.org/licenses/by-nc-sa/3.0/>
+@file:      config
+"""
+
+# Application configuration
+
+# String added to the end of Original Version files
+OV_STRING = "(VO)"
+
+# rename_shows configuration
+# SHOWS_PATHS = ["/home/ruben/Vídeos", "/home/ruben/Vídeos/temp"]
+SHOWS_PATHS = ["/home/ruben/Workspaces/temp/rename_series"]
+BUFFER_DISKS = ["/home/ruben/Lab/fakedDestBuffer"]
+FINAL_DISKS = ["/media/ruben/3tb"]
+
+SEASON_PATH_NAME = "Temporada"
+
+# Strings contained into into files downloaded from trackers in own language.
+OWN_LANGUAGE_TRACKERS = ["www.DivxTotaL.com", "www.newpct1.com", "EliteTorrent.net"]
+
+# Strings contained into into file names downloaded from trackers in original version language.
+OV_TRACKERS = ["kat.cr", "[ettv]", "TASTETV", "[MPup]", "X264-DIMENSION"]
+
+# Translations
+# "Family Guy": "Padre de familia" means that if the file is named "Family Guy" the result file will be named
+# "Padre de familia".
+# Add your own and/or modify these.
+TRANSLATED_NAMES = {
+    "Family Guy": "Padre de familia",
+    "Supernatural": "Sobrenatural",
+    "The Simpsons": "Los Simpson",
+    "Warehouse 13": "Almacén 13",
+    "Warehouse13": "Almacén 13"
+}
+
+# Replace strings contained in subtitle files.
+# " "(Español (España))": "VOSE" " means that if  "(Español (España))" is into the subtitle name  the result file name
+#  will contains "VOSE".
+# Add your own and/or modify these.
+OV_SUBTITLES = {
+    "(Español (España))": "VOSE",
+    "(Español (Latinoamérica))": "VOSE"
+}
+
+# Video Expanded Names
+# Expands abbreviated names from tv shows.
+# "americanhstory": "American Horror Story" means that if the file name is "americanhstory" the result file name
+# will be named "American Horror Story".
+# Add your own.
+EXPANDED_NAMES = {
+    # American Horror Story
+    "americanhstory": "American Horror Story",
+    "ahs": "American Horror Story",
+    "americanstory": "American Horror Story",
+
+    # Arrow
+    "arr": "Arrow",
+
+    # Bates Motel
+    "bmotel": "Bates Motel",
+    "bamotel": "Bates Motel",
+    "batesmotel": "Bates Motel",
+
+    # Boardwalk Empire
+    "booardempire": "Boardwalk Empire",
+    "boardwalkempire": "Boardwalk Empire",
+    "boarempire": "Boardwalk Empire",
+
+    # Bob"s Burgers
+    "bobs burgers": "Bob\"s Burgers",
+
+    # Castle
+    "cas": "Castle",
+
+    # Doctor Who
+    "doctor who (2005)": "Doctor Who (2005)",
+    "doctorwho": "Doctor Who (2005)",
+
+    # Érase una vez
+    "erasevez": "Érase una vez (Once upon a time)",
+    "erase una vez": "Érase una vez (Once upon a time)",
+
+    # El mentalista
+    "ementalista": "El mentalista",
+    "mentalista": "El mentalista",
+
+    # Elementary
+    "ele": "Elementary",
+    "elem": "Elementary",
+    "eleme": "Elementary",
+    "elmntry": "Elementary",
+    "elementary": "Elementary",
+    "elm": "Elementary",
+    "elmnt": "Elementary",
+
+    # Marvel"s Agents of SHIELD
+    "marvels agents of shield": "Marvel\"s Agents of S.H.I.E.L.D.",
+    "marvels agents": "Marvel\"s Agents of S.H.I.E.L.D.",
+
+    # Ray Donovan
+    "rdonovan": "Ray Donovan",
+
+    # South Park
+    "sp": "South Park",
+    "spark": "South Park",
+    "southpark": "South Park",
+
+    # Supernatural
+    "supernatural": "Supernatural",
+
+    # The Big Bang Theory
+    "tbbtheory": "The Big Bang Theory",
+    "tbibatheory": "The Big Bang Theory",
+    "thebigbangtheory": "The Big Bang Theory",
+
+    # The Middle
+    "tmidd": "The Middle",
+    "tmid": "The Middle",
+
+    # The Walking Dead
+    "twalkdead": "The Walking Dead",
+    "twalkingdead": "The Walking Dead",
+
+    # True Detective
+    "tdetective": "True detective",
+    "trdetective": "True detective",
+}

@@ -15,9 +15,9 @@ import time
 
 from application.utils import list_handler
 from application.utils.time_handler import print_time
+from config import FINAL_DISKS
+from config import SHOWS_PATHS
 from crosscutting.condition_messages import print_error, print_info
-from crosscutting.constants import FINAL_DISKS
-from crosscutting.constants import SHOWS_PATHS
 from crosscutting.messages_move_series import print_header
 from domain.file import File
 from domain.path import Path

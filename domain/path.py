@@ -11,7 +11,8 @@
 
 import os
 import re
-from crosscutting.constants import SEASON_PATH_NAME
+
+from config import SEASON_PATH_NAME
 from crosscutting.condition_messages import print_exception
 
 FILE_WELL_FORMATTED_PATTERN = re.compile(

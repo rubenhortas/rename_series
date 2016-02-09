@@ -13,11 +13,12 @@ import os
 import re
 import string
 
+from config import EXPANDED_NAMES
+from config import OV_STRING
+from config import OWN_LANGUAGE_TRACKERS
+from config import TRANSLATED_NAMES
 from crosscutting.condition_messages import print_exception
-from crosscutting.constants import EXPANDED_NAMES, OV_STRING
-from crosscutting.constants import OWN_LANGUAGE_TRACKERS
 from crosscutting.constants import QUALITIES
-from crosscutting.constants import TRANSLATED_NAMES
 from domain.utils.file_handler import mv
 from .episode import Episode
 
