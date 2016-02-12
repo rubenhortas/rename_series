@@ -101,6 +101,9 @@ EXPANDED_NAMES = {
     "elm": "Elementary",
     "elmnt": "Elementary",
 
+    # Expediente X
+    "expx" : "Expediente X",
+
     # Marvel"s Agents of SHIELD
     "marvels agents of shield": "Marvel\"s Agents of S.H.I.E.L.D.",
     "marvels agents": "Marvel\"s Agents of S.H.I.E.L.D.",
