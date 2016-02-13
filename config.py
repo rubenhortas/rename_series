@@ -96,6 +96,7 @@ EXPANDED_NAMES = {
     "ele": "Elementary",
     "elem": "Elementary",
     "eleme": "Elementary",
+    "elmntr": "Elementary",
     "elmntry": "Elementary",
     "elementary": "Elementary",
     "elm": "Elementary",
