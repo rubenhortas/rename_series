@@ -10,7 +10,9 @@ SHOWS MANAGER
         - automatically move files to one or more disks
         
      Requires python >= 3.0
-    
+
+USAGE
+
 rename_shows.py
 
 	This application searches in one or more paths for tv shows and subtitles in various languages. 
