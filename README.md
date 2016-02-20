@@ -1,4 +1,4 @@
-SHOWS MANAGER
+Shows Manager
 ===========
 
     Shows manager is a little framework that allows you easy and/or manage your downloaded tv shows.
