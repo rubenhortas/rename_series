@@ -60,6 +60,7 @@ EXPANDED_NAMES = {
     "americanhstory": "American Horror Story",
     "ahs": "American Horror Story",
     "americanstory": "American Horror Story",
+    "american horror story": "American Horror Story",
 
     # Arrow
     "arr": "Arrow",
@@ -129,6 +130,7 @@ EXPANDED_NAMES = {
     # The Middle
     "tmidd": "The Middle",
     "tmid": "The Middle",
+    "themiddle": "The Middle",
 
     # The Walking Dead
     "twalkdead": "The Walking Dead",
