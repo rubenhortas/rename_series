@@ -107,6 +107,9 @@ EXPANDED_NAMES = {
     # Expediente X
     "expx" : "Expediente X",
 
+    # Marvel's Agent Carter
+    "marvelsagentcarter": "Marvel's Agent Carter",
+
     # Marvel"s Agents of SHIELD
     "marvels agents of shield": "Marvel\"s Agents of S.H.I.E.L.D.",
     "marvels agents": "Marvel\"s Agents of S.H.I.E.L.D.",
@@ -135,6 +138,7 @@ EXPANDED_NAMES = {
     # The Walking Dead
     "twalkdead": "The Walking Dead",
     "twalkingdead": "The Walking Dead",
+    "twd": "The Walking Dead",
 
     # True Detective
     "tdetective": "True detective",
