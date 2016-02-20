@@ -104,10 +104,11 @@ CONTACT
     If you have problems, questions, ideas or suggestions, you can
     contribute with this little project in the github repository:
 
-    https://github.com/rubenhortas/rename_series
+    https://github.com/rubenhortas/shows_manager
 
 WEB SITE
 
     Visit the rename_series github site for the latest news and downloads:
 
-    https://github.com/rubenhortas/rename_series
+    https://github.com/rubenhortas/shows_manager
+
