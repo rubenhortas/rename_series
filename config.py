@@ -107,6 +107,9 @@ EXPANDED_NAMES = {
     # Expediente X
     "expx" : "Expediente X",
 
+    # Family Guy
+    "familyguy": "Family Guy",
+
     # Marvel's Agent Carter
     "marvelsagentcarter": "Marvel's Agent Carter",
 
@@ -134,6 +137,9 @@ EXPANDED_NAMES = {
     "tmidd": "The Middle",
     "tmid": "The Middle",
     "themiddle": "The Middle",
+
+    # The Simpsons
+    "thesimpsons": "The Simpsons",
 
     # The Walking Dead
     "twalkdead": "The Walking Dead",
