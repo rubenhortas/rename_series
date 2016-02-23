@@ -22,7 +22,7 @@ from domain.video import Video
 def rename_subtitles(subtitles, path, testing):
     renamed_subtitles = False
 
-    for subtitle in sorted(subtitles):
+    for subtitle in subtitles:
         current_subtitle = Subtitle(path, subtitle, testing)
 
         if current_subtitle.new_file_name and (current_subtitle.file_name != current_subtitle.new_file_name):
@@ -35,7 +35,7 @@ def rename_subtitles(subtitles, path, testing):
 def rename_videos(videos, path, testing):
     renamed_videos = False
 
-    for video in sorted(videos):
+    for video in videos:
         current_video = Video(path, video, testing)
 
         if current_video.new_file_name and (current_video.file_name != current_video.new_file_name):
@@ -48,11 +48,10 @@ def rename_videos(videos, path, testing):
 def check_for_subtitles(videos, subtitles, path, testing):
     name_pattern = re.compile("^[\w \(\)]*", re.UNICODE)
     subtitles_found = False
-    sorted_subtitles = sorted(subtitles)
 
     print_info("Checking for subtitles")
 
-    for video in sorted(videos):
+    for video in videos:
         if OV_STRING in video:
             match = name_pattern.search(video)
 
@@ -62,7 +61,7 @@ def check_for_subtitles(videos, subtitles, path, testing):
                 video_name = video_name.strip()
                 video_extension = os.path.splitext(video)[1]
 
-                for subtitle in sorted_subtitles:
+                for subtitle in subtitles:
                     subtitle_original_name = os.path.splitext(subtitle)[0]
 
                     match = name_pattern.search(subtitle_original_name)
@@ -74,7 +73,7 @@ def check_for_subtitles(videos, subtitles, path, testing):
                             subtitles_found = True
                             new_video_name = subtitle_original_name + video_extension
 
-                            sorted_subtitles.remove(subtitle)
+                            subtitles.remove(subtitle)
 
                             current_video_path = os.path.join(path, video)
                             new_video_path = os.path.join(path, new_video_name)
@@ -84,6 +83,4 @@ def check_for_subtitles(videos, subtitles, path, testing):
                             break
 
     if not subtitles_found:
-        print_info("No subtitles found.")
-
-    print()
+        print_info("No subtitles found.\n")
