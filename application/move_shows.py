@@ -42,7 +42,7 @@ def move(dests, testing):
         for dest in dests:
             print_header(dest, testing)
             if os.path.isdir(show_path):
-                files = sorted(os.listdir(show_path))
+                files = os.listdir(show_path)
 
                 for f in files:
                     this_file = File(show_path, f)
@@ -66,17 +66,12 @@ def move(dests, testing):
                 print_error("{0} is not a valid path.".format(show_path))
 
     if files_moved:
-        print()
-
         for path in non_existent_paths:
-            print_info("{0} does not exist.".format(path))
+            print_info("\n\n{0} does not exist.".format(path))
 
         time_fin = time.clock()
         total_time = time_fin - time_ini
-        print()
         print_time(total_time)
-
-        print()
     else:
         print_info("No files moved.")
 

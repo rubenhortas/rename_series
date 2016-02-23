@@ -37,4 +37,4 @@ def print_time(num_secs):
     str_sec = '%2.2f' % num_secs
     str_time = "{0} {1}s".format(str_time, str_sec)
 
-    print("{0}".format(str_time.strip()))
+    print("\n\n{0}\n".format(str_time.strip()))
