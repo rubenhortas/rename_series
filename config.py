@@ -116,6 +116,7 @@ EXPANDED_NAMES = {
     # Marvel"s Agents of SHIELD
     "marvels agents of shield": "Marvel\"s Agents of S.H.I.E.L.D.",
     "marvels agents": "Marvel\"s Agents of S.H.I.E.L.D.",
+    "MarvelsAgentsofSHIELD": "Marvel\"s Agents of S.H.I.E.L.D.",
 
     # Ray Donovan
     "rdonovan": "Ray Donovan",
