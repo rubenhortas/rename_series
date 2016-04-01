@@ -64,6 +64,7 @@ EXPANDED_NAMES = {
 
     # Arrow
     "arr": "Arrow",
+    "arrw": "Arrow",
 
     # Bates Motel
     "bmotel": "Bates Motel",
