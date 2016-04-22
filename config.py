@@ -151,6 +151,10 @@ EXPANDED_NAMES = {
     # True Detective
     "tdetective": "True detective",
     "trdetective": "True detective",
+
+    # Vikings
+    "vkngs": "Vikings",
+    "viki": "Vikings"
 }
 
 # ########################## move_shows section ##############################################################
