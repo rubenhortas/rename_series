@@ -106,7 +106,7 @@ EXPANDED_NAMES = {
     "elmnt": "Elementary",
 
     # Expediente X
-    "expx" : "Expediente X",
+    "expx": "Expediente X",
 
     # Family Guy
     "familyguy": "Family Guy",

@@ -46,7 +46,7 @@ def rename_videos(videos, path, testing):
 
 
 def check_for_subtitles(videos, subtitles, path, testing):
-    name_pattern = re.compile("^[\w \(\)]*", re.UNICODE)
+    name_pattern = re.compile("^[\w ()]*", re.UNICODE)
     subtitles_found = False
 
     print_info("Checking for subtitles")

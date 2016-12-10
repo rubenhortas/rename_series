@@ -24,12 +24,12 @@ from domain.path import Path
 from domain.utils.file_handler import mv
 
 
-def move(dests, testing):
+def move(destinations, testing):
     """
-    move(dest, bulk_move, debugging, testing)
+    move(destinies, bulk_move, debugging, testing)
         Move the series to the known disks for store tv shows.
     Arguments:
-        dests: (string list) Destiny directories.
+        destinations: (string list) Destiny directories.
         testing: (boolean) Indicates if the program is in testing mode.
     """
 
@@ -39,8 +39,8 @@ def move(dests, testing):
     time_ini = time.clock()
 
     for show_path in SHOWS_PATHS:
-        for dest in dests:
-            print_header(dest, testing)
+        for destination in destinations:
+            print_header(destination, testing)
             if os.path.isdir(show_path):
                 files = os.listdir(show_path)
 
@@ -49,15 +49,15 @@ def move(dests, testing):
 
                     if this_file.is_well_formatted():
                         files_moved = True
-                        if dest not in FINAL_DISKS:
-                            file_dest = os.path.join(dest, this_file.file_name)
+                        if destination not in FINAL_DISKS:
+                            file_dest = os.path.join(destination, this_file.file_name)
                             mv(this_file.original_path, file_dest, testing)
 
                         else:
-                            file_dest = Path(f, dest, testing)
+                            file_dest = Path(f, destination, testing)
 
-                            if file_dest.final_dest:
-                                mv(this_file.original_path, file_dest.final_dest, testing)
+                            if file_dest.final_destination:
+                                mv(this_file.original_path, file_dest.final_destination, testing)
                             else:
                                 nonexistent_path = os.path.join(show_path, file_dest.show_name)
                                 non_existent_paths = list_handler.append_non_repeated(nonexistent_path,
@@ -69,8 +69,8 @@ def move(dests, testing):
         for path in non_existent_paths:
             print_info("\n\n{0} does not exist.".format(path))
 
-        time_fin = time.clock()
-        total_time = time_fin - time_ini
+        time_end = time.clock()
+        total_time = time_end - time_ini
         print_time(total_time)
     else:
         print_info("No files moved.")

@@ -9,6 +9,7 @@
 """
 
 
+# noinspection PyClassHasNoInit
 class Color:
     """
     Class color

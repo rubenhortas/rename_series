@@ -23,14 +23,14 @@ try:
 except:
     # python 3 re
     FILE_WELL_FORMATTED_PATTERN = re.compile(
-        "(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>[\w \-\(\)])?\.(?P<extension>[\w]{3})",
+        "(?P<season>[\d]{1,2})x(?P<episode>[\d]{1,2})(?P<episode_title>[\w \-()])?\.(?P<extension>[\w]{3})",
         re.UNICODE)
 
 
 class Path:
     """
     Path
-        Stores the information relative to a file and its destiny dest_path.
+        Stores the information relative to a file and it's destination path.
     """
 
     show_name = None
@@ -39,7 +39,7 @@ class Path:
     episode = None
     episode_title = None
     extension = None
-    final_dest = None
+    final_destination = None
 
     def __init__(self, file_name, dest, testing):
 
@@ -64,29 +64,29 @@ class Path:
                     if not self.__season_exists(dest):
                         self.__create_season_dir(dest, testing)
 
-                    self.final_dest = os.path.join(dest, self.show_name, self.season_path, file_final_name)
+                    self.final_destination = os.path.join(dest, self.show_name, self.season_path, file_final_name)
         except Exception as e:
             print_exception(e)
 
     def __path_exists(self, path):
         """
-        __path_exists(self, dest_path)
-            Checks if already exists the dest_path for the show in the destiny
+        __path_exists(self, path)
+            Checks if the path for the show already exists in the destination
             directory.
         Arguments:
-            - dest_path: (string) Current destiny dest_path for the files.
+            - path: (string) Current destination path for the files.
         """
 
-        dest = os.path.join(path, self.show_name)
-        return os.path.isdir(dest)
+        destination = os.path.join(path, self.show_name)
+        return os.path.isdir(destination)
 
     def __season_exists(self, path):
         """
-        __season_exists(self, dest_path)
-            Checks if already exists the dest_path for the season in the
+        __season_exists(self, path)
+            Checks if already exists the path for the season in the
             destiny directory.
         Arguments:
-            - dest_path: (string) Current destiny dest_path for the files.
+            - path: (string) Current destiny path for the files.
         """
 
         season_path = os.path.join(path, self.show_name, self.season_path)
@@ -94,10 +94,10 @@ class Path:
 
     def __create_season_dir(self, path, testing):
         """
-        __create_season_dir(self, dest_path)
-            Creates the season dest_path for the file in the destiny dest_path.
+        __create_season_dir(self, path)
+            Creates the season path for the file in the destination path.
         Arguments:
-            - dest_path: (string) Current destiny dest_path for the files.
+            - path: (string) Current destiny path for the files.
         """
 
         season_path = os.path.join(path, self.show_name, self.season_path)

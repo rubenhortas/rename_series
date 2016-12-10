@@ -14,6 +14,7 @@
 from .color import Color
 
 
+# noinspection PyClassHasNoInit
 class Tag:
     """
     Defines the tags for each message shown in the output.

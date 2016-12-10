@@ -14,8 +14,8 @@ from .file import File
 
 
 class Video(File):
-    def __init__(self, files_path, file_name, testing):
-        super(Video, self).__init__(files_path, file_name)
+    def __init__(self, path, file_name, testing):
+        super(Video, self).__init__(path, file_name)
 
         if not self.is_well_formatted():
             self._remove_quality()

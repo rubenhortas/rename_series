@@ -43,18 +43,18 @@ if __name__ == "__main__":
 
         args = parser.parse_args()
         testing = args.test
-        dest_path = args.path
+        destination_path = args.path
 
         paths = []
 
         clear_screen()
 
-        if dest_path:
-            if os.path.isdir(dest_path):
-                paths.append(dest_path)
+        if destination_path:
+            if os.path.isdir(destination_path):
+                paths.append(destination_path)
                 move(paths, testing)
             else:
-                print_error("{0} is not a directory.".format(dest_path))
+                print_error("{0} is not a directory.".format(destination_path))
 
         else:
             buffer_disks_mounted = get_mounted_disks(BUFFER_DISKS)

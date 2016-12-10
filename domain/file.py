@@ -23,7 +23,7 @@ from domain.utils.file_handler import mv
 from .episode import Episode
 
 EPISODE_TITLE_PATTERN = re.compile("[\w ]*", re.UNICODE)
-IS_WELL_FORMATTED_COMPILED_PATTERN = re.compile("^[\w \(\)]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
+IS_WELL_FORMATTED_COMPILED_PATTERN = re.compile("^[\w ()]*[\d]{1,2}x[\d]{1,2}", re.UNICODE)
 YEAR_PATTERN = re.compile(" \(?\d{4}\)?")
 
 
@@ -104,11 +104,6 @@ class File(object):
         _set_ov(self)
             Sets if the file is in Original Version.
         """
-
-        # for tracker_name in OV_TRACKERS:
-        #     if tracker_name in self.file_name:
-        #         self.original_version = True
-        #         break
 
         for tracker_name in OWN_LANGUAGE_TRACKERS:
             if tracker_name.lower() in self.file_name.lower():

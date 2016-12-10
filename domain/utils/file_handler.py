@@ -18,7 +18,7 @@ from crosscutting.messages_move_series import print_mv
 
 
 def is_video(f):
-    file_extension = os.path.splitext(f)[1]
+    file_extension = os.path.splitext(f)[1].replace(".", "")
     if file_extension in VIDEO_EXTENSIONS:
         return True
     else:
@@ -26,8 +26,16 @@ def is_video(f):
 
 
 def is_subtitle(f):
-    file_extension = os.path.splitext(f)[1]
+    file_extension = os.path.splitext(f)[1].replace(".", "")
     if file_extension in SUBTITLE_EXTENSIONS:
+        return True
+    else:
+        return False
+
+
+def is_python(f):
+    file_extension = os.path.splitext(f)[1]
+    if file_extension == ".py":
         return True
     else:
         return False
