@@ -166,7 +166,8 @@ class TestVideo(unittest.TestCase):
         expected = self.video_name
 
         video = Video(self.path, self.video_name, self.testing)
-        output = video._wrap_year(self.video_name)
+        video.show_name = self.video_name
+        output = video._wrap_year()
 
         self.assertEqual(expected, output)
 
@@ -175,7 +176,8 @@ class TestVideo(unittest.TestCase):
         expected = "VideoName (2015).mp4"
 
         video = Video(self.path, self.video_name, self.testing)
-        output = video._wrap_year(self.video_name)
+        video.show_name = self.video_name
+        output = video._wrap_year()
 
         self.assertEqual(expected, output)
 

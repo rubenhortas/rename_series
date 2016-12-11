@@ -23,7 +23,7 @@ class Video(File):
             if self._is_show():
                 self._set_ov()
                 self._set_show_name()
-                self.show_name = self._wrap_year(self.show_name)
+                self.show_name = self._wrap_year()
                 self._expand_show_name()
                 self._set_episode_title()
                 self._set_new_file_name()

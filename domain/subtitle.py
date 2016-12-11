@@ -25,22 +25,22 @@ class Subtitle(File):
             if self._is_show():
                 self._set_ov()
                 self._set_show_name()
-                self.show_name = self._wrap_year(self.show_name)
+                self.show_name = self._wrap_year()
                 self._expand_show_name()
                 self._set_episode_title()
                 self._set_new_file_name()
                 self._translate()
                 self.new_path = os.path.join(self.path, self.new_file_name)
         else:
-            self.__set_new_name()
+            self._set_new_name()
             if self.new_file_name:
                 self._translate()
 
         self._rename_file(testing)
 
-    def __set_new_name(self):
+    def _set_new_name(self):
         """
-        __set_new_name(self)
+        _set_new_name(self)
             Sets new file name.
         """
 

@@ -128,8 +128,7 @@ class File(object):
 
         self.show_name = show_name
 
-    @staticmethod
-    def _wrap_year(attribute):
+    def _wrap_year(self):
         """
         _wrap_year(self)
             Wraps the year (if exists) into parentheses.
@@ -137,8 +136,8 @@ class File(object):
             - attribute: (string) Attribute where the year will be formatted.
         """
 
-        formatted_attribute = attribute
-        year_match = YEAR_PATTERN.search(attribute)
+        formatted_attribute = self.show_name
+        year_match = YEAR_PATTERN.search(self.show_name)
 
         if year_match:
             year_in_show_name = year_match.group(0).strip()

@@ -80,7 +80,8 @@ class TestFile(unittest.TestCase):
 
         f = File(self.path, self.file_name)
         f.new_file_name = f.file_name
-        f._wrap_year(f.new_file_name)
+        f.show_name = f.file_name
+        f._wrap_year()
 
         self.assertEqual(self.file_name, f.new_file_name)
 
@@ -89,7 +90,8 @@ class TestFile(unittest.TestCase):
         expected = "FileName (2015).mkv"
 
         f = File(self.path, self.file_name)
-        output = f._wrap_year(self.file_name)
+        f.show_name = self.file_name
+        output = f._wrap_year()
 
         self.assertEqual(expected, output)
 
