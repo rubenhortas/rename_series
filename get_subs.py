@@ -23,18 +23,32 @@ from domain.utils.file_handler import is_video, get_videos
 
 
 def _get_shows_paths_files():
-    files = []
+    video_files = []
 
     for path in SHOWS_PATHS:
         if os.path.exists(path):
             videos = get_videos(path)
-            files.append(videos)
+            # TODO: Test this
+            video_files.append(list(videos))
         else:
             print_error("{0} does not exists".format(path))
 
-    return files
+    return video_files
+
+
+def _get_video_files_from_args(files):
+    video_files = []
+
+    for f in files:
+        if is_video(f):
+            video_files.append(f)
+        else:
+            print_error("{0} is not a video".format(f))
+
+    return video_files
 
 if __name__ == "__main__":
+    video_files = []
 
     signal.signal(signal.SIGINT, exit_signal_handler)
 
@@ -51,29 +65,28 @@ if __name__ == "__main__":
         print_info("Getting subtitles")
 
         if args.files:
-            files = args.files
-        else:
-            files = _get_shows_paths_files()
+            video_files = _get_video_files_from_args(args.files)
 
-        if len(files) > 0:
+        else:
+            video_files = _get_shows_paths_files()
+
+        if len(video_files) > 0:
                 plugins_loaded = load_plugins()
 
                 if plugins_loaded:
                     print_info("Downloading subtitles...")
 
-                    for f in files:
-                        if is_video(f):
-                            subtitle_found = False
+                    for f in video_files:
+                        subtitle_found = False
 
-                            for plugin in plugins_loaded:
-                                subtitle_found = execute_plugin(plugin, f)
-                                if subtitle_found:
-                                    break
+                        for plugin in plugins_loaded:
+                            subtitle_found = execute_plugin(plugin, f)
+                            if subtitle_found:
+                                break
 
-                            if not subtitle_found:
-                                print_info("\tSubtitle not found")
-                        else:
-                            print_error("{0} is not a video".format(f))
+                        if not subtitle_found:
+                            print_info("\tSubtitle not found")
+
         else:
             print_error("No files specified")
 else:
