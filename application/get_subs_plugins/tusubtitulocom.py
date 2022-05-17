@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# _*_ coding:utf-8 _*
 from .get_sub_plugin import GetSubsPlugin
 
 NAME = "tusubtitulo.com"

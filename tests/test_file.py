@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# _*_ coding:utf-8 _*
-
 """
 $ python3 -m unittest tests/test_file.py 
 """

@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# _*_ coding:utf-8 _*
 # ########################## Common application configuration section ########################################
 
 # Paths containing the tv shows

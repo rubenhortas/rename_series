@@ -1,10 +1,3 @@
-#!/usr/bin/env python
-# _*_ coding:utf-8 _*
-import os
-import unittest
-
-from domain.utils import file_handler
-
 """
 $ python3 -m unittest tests/test_file_handler.py 
 """

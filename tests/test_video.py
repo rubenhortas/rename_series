@@ -1,10 +1,3 @@
-#!/usr/bin/env python
-# _*_ coding:utf-8 _*
-import unittest
-
-from crosscutting import constants
-from domain.video import Video
-
 """
 $ python3 -m unittest tests/test_subtitle.py 
 """

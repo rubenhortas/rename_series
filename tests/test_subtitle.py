@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# _*_ coding:utf-8 _*
-import unittest
-
-from domain.subtitle import Subtitle
-
 """
 $ python3 -m unittest tests/test_subtitle.py 
 """
