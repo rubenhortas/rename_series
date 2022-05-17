@@ -87,4 +87,4 @@ USAGE
       -t, --test            Runs a single test showing the output.
 
 ## Support
-If you find this widget useful you can star this repo.
+If you find this application useful you can star this repo.
