@@ -1,6 +1,4 @@
-Shows Manager
-===========
-
+# Shows Manager
     Shows manager is a little framework that allows you easy and/or manage your downloaded tv shows.
     You can:
         - rename your shows to a nice format <SHOW NAME> <SEASON>x<EPISODE> [ - <EPISODE TITLE>] [OV].<EXTENSION>
@@ -88,26 +86,5 @@ USAGE
                             path to move the files
       -t, --test            Runs a single test showing the output.
 
-AUTHOR
-
-    Rubén Hortas
-    Contact: rubenhortas at gmail.com
-    Website: http://www.rubenhortas.blogspot.com.es
-
-LICENSE
-
-    CC BY-NC-SA 3.0
-    http://creativecommons.org/licenses/by-nc-sa/3.0/
-
-CONTACT
-
-    If you have problems, questions, ideas or suggestions, you can
-    contribute with this little project in the github repository:
-
-    https://github.com/rubenhortas/shows_manager
-
-WEB SITE
-
-    Visit the rename_series github site for the latest news and downloads:
-
-    https://github.com/rubenhortas/shows_manager
+## Support
+If you find this widget useful you can star this repo.

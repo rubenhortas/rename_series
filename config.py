@@ -1,14 +1,5 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*
-
-"""
-@author:    Rubén Hortas Astariz <http://rubenhortashortas.blogspot.com>
-@contact:   rubenhortashortas at gmail.com
-@github:    http://github.com/rubenhortashortas
-@license:   CC BY-NC-SA 3.0 <http://creativecommons.org/licenses/by-nc-sa/3.0/>
-@file:      config
-"""
-
 # ########################## Common application configuration section ########################################
 
 # Paths containing the tv shows
